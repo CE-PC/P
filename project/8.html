@@ -7,6 +7,8 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/Properties-Corporation/static/css/styles.css">
+    <link rel="stylesheet" href="/Properties-Corporation/static/css/modal.css">
+
     <style>
         /* Main layout styling to make footer stick to the bottom */
         html, body {
@@ -66,10 +68,12 @@
     .carousel-item img {
         max-width: 100%;
         height: auto;
+        margin: auto;
     }
 
     .carousel-inner {
-        background-color: #c8102e; /* Carousel background color */
+        background-color: #c8102e;
+        /* Carousel background color */
     }
 
     .carousel-control-prev-icon,
@@ -136,14 +140,15 @@
     <div class="row">
         <!-- Left Half: Text Content -->
         <div class="col-md-6">
-            <h1>8:</h1>
+            <h1 id ="projectName">8:</h1>
 
             <!-- Display text content -->
             <section>
                 
-                <p style="font-size: 20px;"></p>
+                <p id="listing-text" style="font-size: 20px;"></p>
                 
             </section>
+            <a id="whatsappLink" target="_blank">Message Us on WhatsApp</a>
         </div>
 
         <!-- Right Half: Carousel -->
@@ -152,13 +157,16 @@
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                        class="active"></li>
                     
                 </ol>
                 <div class="carousel-inner">
                     
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="/Properties-Corporation/static/images/projects/8/image_106.jpeg" alt="Slide 1">
+                        <img class="d-block img-fluid"
+                            src="/Properties-Corporation/static/images/projects/8/image_106.jpeg"
+                            alt="Slide 1">
                     </div>
                     
                 </div>
@@ -178,7 +186,8 @@
     <div class="row gallery-container justify-content-center">
         
         <div class="gallery" onclick="changeCarouselSlide('0')">
-            <img src="/Properties-Corporation/static/images/projects/8/image_106.jpeg" alt="Image 1">
+            <img src="/Properties-Corporation/static/images/projects/8/image_106.jpeg"
+                alt="Image 1">
         </div>
         
     </div>
@@ -203,6 +212,20 @@
     function changeCarouselSlide(slideIndex) {
         $('#carouselExampleIndicators').carousel(parseInt(slideIndex));
     }
+</script>
+
+<script>
+    var listingText = document.getElementById("listing-text").textContent;
+    var projectName = document.getElementById("projectName").textContent;
+    const phoneNumber = "639276154651";
+    const message = "Hello, I’m interested in learning more about " + projectName +listingText + "Could you please provide more details?";
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // Set the href of the link with id "whatsappLink" to the generated WhatsApp link
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("whatsappLink").href = whatsappLink;
+    });
 </script>
 
 </body>
