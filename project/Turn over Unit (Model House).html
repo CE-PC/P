@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/P/static/css/styles.css">
     <link rel="stylesheet" href="/P/static/css/modal.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Main layout styling to make footer stick to the bottom */
         html, body {
@@ -140,7 +140,7 @@
     <div class="row">
         <!-- Left Half: Text Content -->
         <div class="col-md-6 center-text">
-            <h1 id ="projectName">Turn over Unit (Model House):</h1>
+            <h1 id="projectName">Turn over Unit (Model House):</h1>
 
             <!-- Display text content -->
             <section>
@@ -150,7 +150,12 @@ READY FOR OCCUPANCY FLOOR AREA: 4850M LOT AREA: 80SOM
 PRICE STARTS AT 2,633,000.00</p>
                 
             </section>
-            <a id="whatsappLink" target="_blank">Message Us on WhatsApp</a>
+            <!-- WhatsApp Link with Icon -->
+            <a id="whatsappLink" target="_blank" class="whatsapp-link">
+                <i class="fab fa-whatsapp whatsapp-icon"></i>
+                Message Us on WhatsApp
+            </a>
+
         </div>
 
         <!-- Right Half: Carousel -->
@@ -304,7 +309,7 @@ PRICE STARTS AT 2,633,000.00</p>
     var listingText = document.getElementById("listing-text").textContent;
     var projectName = document.getElementById("projectName").textContent;
     const phoneNumber = "639276154651";
-    const message = "Hello, I’m interested in learning more about " + projectName +listingText + "Could you please provide more details?";
+    const message = "Hello, I’m interested in learning more about " + projectName + listingText + "Could you please provide more details?";
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
