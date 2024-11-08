@@ -4,7 +4,7 @@ function openModal(src, title) {
     var captionText = document.getElementById("caption");
 
     modal.style.display = "block";
-    modalImg.src = src;
+    modalImg.src = "/P/"+src;
     captionText.innerHTML = title.split(".png")[0];
 }
 
