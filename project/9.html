@@ -40,6 +40,9 @@
             bottom: 0;
         }
     </style>
+
+    <link rel="icon" href="/P/static/images/icon.jpg" type="image/x-icon">
+
     
 <style>
     /* Ensure gallery images resize dynamically */
@@ -155,7 +158,7 @@
             </a>
 
             <div class="container mt-5 text-center">
-                <a target="_self" class="email-link">
+                <a id="emailLink" target="_self" class="email-link">
                     <i class="fas fa-envelope"></i> Email Us about 9
                 </a>
             </div>
@@ -205,7 +208,16 @@
 
     </main>
     <footer class="text-center">
-        <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.</p>
+        <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.
+            
+        </p>
+        <a id="whatsappLink" target="_blank" class="whatsapp-link">
+            <i class="fab fa-whatsapp whatsapp-icon"></i>
+        </a>
+        <a href="mailto:cepc.development@gmail.com?subject=Inquiry%20about%20Calamba%20Expressive%20Properties&body=Hello,%20I%20am%20interested%20in%20learning%20more%20about%20your%20services.%20Please%20provide%20me%20with%20additional%20information." target="_self" class="email-link">
+            <i class="fas fa-envelope"></i> 
+        </a>
+        
     </footer>
 
     <!-- Include Bootstrap JS and dependencies -->
@@ -240,7 +252,7 @@
         document.getElementById("whatsappLink").href = whatsappLink;
     });
     document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("email-link").href = emailLink;
+        document.getElementById("emailLink").href = emailLink;
     });
 </script>
 
