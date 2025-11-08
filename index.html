@@ -3,118 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calamba Expressive Properties - Your trusted partner in real estate. Excellence in property development, sales, and rentals.">
     <title>Home - Calamba Expressive Properties</title>
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/P/static/css/styles.css">
-    <link rel="stylesheet" href="/P/static/css/modal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Main layout styling to make footer stick to the bottom */
-        html, body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        main {
-            flex: 1; /* This will make the main content area expand to fill available space */
-        }
-
-        .navbar-custom {
-            background-color: #c8102e !important; /* Navbar background color */
-        }
-
-        .navbar-custom .nav-link, .navbar-custom .navbar-brand, .navbar-custom .navbar-text {
-            color: #f3ef11 !important; /* Navbar text color */
-        }
-
-        /* Footer styling */
-        footer {
-            background-color: #c8102e; /* Footer background color */
-            color: #f3ef11; /* Footer text color */
-            padding: 20px 0;
-            width: 100%;
-            position: relative;
-            bottom: 0;
-        }
-    </style>
-
-    <link rel="icon" href="/P/static/images/icon.jpg" type="image/x-icon">
-
     
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/P/static/css/modern-styles.css">
+    <!-- Favicon -->
+    <link rel="icon" href="/P/static/images/icon.jpg" type="image/x-icon">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-            <a class="navbar-brand" href="#">Calamba Expressive Properties</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/P/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/P/about.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/P/services.html">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/P/projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/P/team.html">Our Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/P/achievements.html">Achievements</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/P/partners.html">Partners</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/P/contact.html">Contact Us</a>
-                    </li>
-                </ul>
-                <span class="navbar-text">
-                    Excellence in Real Estate
-                </span>
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" href="/P/">
+                    <i class="fas fa-building"></i> Calamba Expressive Properties
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/P/"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/P/about.html"><i class="fas fa-info-circle"></i> About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/P/services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/P/projects.html"><i class="fas fa-city"></i> Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/P/team.html"><i class="fas fa-users"></i> Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/P/achievements.html"><i class="fas fa-trophy"></i> Achievements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/P/partners.html"><i class="fas fa-handshake"></i> Partners</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/P/contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
-    <main>
-        
-<section style="text-align: center;">
-    <h2 >Welcome to Calamba Expressive Properties Corporation</h2>
-    <p >Your trusted partner in real estate.</p>
-    <div class="image-container">
-        <img src="/P/static/images/image_1.jpg" alt="Real estate image" class="center-img">
-    </div>
-</section>
 
-    </main>
-    <footer class="text-center">
-        <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="fade-in">Welcome to Calamba Expressive Properties</h1>
+                <p class="fade-in">Your trusted partner in real estate excellence</p>
+                <div class="mt-4">
+                    <a href="/P/projects.html" class="btn-view-property" style="margin: 0.5rem;">
+                        <i class="fas fa-search"></i> Browse Properties
+                    </a>
+                    <a href="/P/contact.html" class="btn-view-property" style="margin: 0.5rem; background-color: #a77846;">
+                        <i class="fas fa-phone"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Image -->
+        <section class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="property-card fade-in">
+                        <img src="/P/static/images/image_1.jpg" 
+                             alt="Calamba Expressive Properties" 
+                             class="property-card-img"
+                             style="height: 400px; cursor: pointer;"
+                             onclick="lightbox.open(this.src, 'Calamba Expressive Properties')">
+                        <div class="property-card-body">
+                            <h3 class="property-card-title">Building Dreams, Creating Homes</h3>
+                            <p class="property-card-text">
+                                We specialize in providing exceptional real estate services, from property development 
+                                to sales and rentals. With years of experience and a commitment to excellence, 
+                                we help you find the perfect property for your needs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Services -->
+        <section class="container mt-5">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive real estate solutions tailored to your needs</p>
             
-        </p>
-        <a id="whatsappLink" target="_blank" class="whatsapp-link" href="https://wa.me/639276154651?text=Hello%2C%20I%E2%80%99m%20interested%20in%20learning%20more%20about%20your%20listings%20Could%20you%20please%20provide%20more%20details%3F">
-            <i class="fab fa-whatsapp whatsapp-icon"></i>
-        </a>
-        <a href="mailto:cepc.development@gmail.com?subject=Inquiry%20about%20Calamba%20Expressive%20Properties&body=Hello,%20I%20am%20interested%20in%20learning%20more%20about%20your%20services.%20Please%20provide%20me%20with%20additional%20information." target="_self" class="email-link">
-            <i class="fas fa-envelope"></i> 
-        </a>
-        
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h4 class="service-title">Property Sales</h4>
+                    <p>Find your dream home from our extensive portfolio of houses, lots, and condominiums.</p>
+                    <a href="/P/projects.html" class="btn-view-property btn-sm mt-2">View Properties</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon"><i class="fas fa-key"></i></div>
+                    <h4 class="service-title">Rentals</h4>
+                    <p>Quality residential and commercial properties available for rent at competitive rates.</p>
+                    <a href="/P/services.html" class="btn-view-property btn-sm mt-2">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon"><i class="fas fa-hammer"></i></div>
+                    <h4 class="service-title">Development</h4>
+                    <p>Professional property development and construction services with proven expertise.</p>
+                    <a href="/P/services.html" class="btn-view-property btn-sm mt-2">Our Projects</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+                    <h4 class="service-title">Documentation</h4>
+                    <p>Complete assistance with title transfers, permits, and all legal requirements.</p>
+                    <a href="/P/services.html" class="btn-view-property btn-sm mt-2">Get Help</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="container mt-5 mb-5">
+            <div class="text-center p-5" style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); border-radius: 12px; color: white;">
+                <h2 class="mb-3">Ready to Find Your Perfect Property?</h2>
+                <p class="mb-4" style="font-size: 1.1rem;">Let our experienced team guide you through every step of your real estate journey.</p>
+                <a href="/P/contact.html" class="contact-link">
+                    <i class="fas fa-phone"></i> Contact Us Today
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://wa.me/639276154651?text=Hello%2C%20I%E2%80%99m%20interested%20in%20learning%20more%20about%20your%20listings%20Could%20you%20please%20provide%20more%20details%3F" 
+                   target="_blank" class="footer-icon" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:cepc.development@gmail.com?subject=Inquiry%20about%20Calamba%20Expressive%20Properties&body=Hello,%20I%20am%20interested%20in%20learning%20more%20about%20your%20services.%20Please%20provide%20me%20with%20additional%20information." 
+                   class="footer-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/expressivesrealty.lynmanguiat/" 
+                   target="_blank" class="footer-icon" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Include Bootstrap JS and dependencies -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
-    <script src="/P/static/js/modal.js"></script>
-    
+    <script src="/P/static/js/enhanced-modal.js"></script>
 </body>
 </html>
