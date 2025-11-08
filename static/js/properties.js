@@ -15,12 +15,12 @@
 window.PROPERTY_DATA = {
     // Base path - DON'T CHANGE THIS
     basePath: "/P/static/images/projects/",
-
+    
     // ===================================
     // ADD YOUR PROJECTS HERE
     // ===================================
     projects: {
-
+        
         "1": {
             name: "Project 1",
             location: "Calamba, Laguna",
@@ -33,7 +33,7 @@ window.PROPERTY_DATA = {
                 "image_87.jpeg"
             ]
         },
-
+        
         "2": {
             name: "Project 2",
             location: "Calamba, Laguna",
@@ -43,7 +43,7 @@ window.PROPERTY_DATA = {
                 "image_90.jpeg"
             ]
         },
-
+        
         "3": {
             name: "Project 3",
             location: "Calamba, Laguna",
@@ -52,7 +52,7 @@ window.PROPERTY_DATA = {
                 "image_92.jpeg"
             ]
         },
-
+        
         "4": {
             name: "Project 4",
             location: "Calamba, Laguna",
@@ -61,7 +61,7 @@ window.PROPERTY_DATA = {
                 "image_97.jpeg"
             ]
         },
-
+        
         "5": {
             name: "Project 5",
             location: "Calamba, Laguna",
@@ -70,7 +70,7 @@ window.PROPERTY_DATA = {
                 "a.jpeg"
             ]
         },
-
+        
         "6": {
             name: "Project 6",
             location: "Calamba, Laguna",
@@ -79,7 +79,7 @@ window.PROPERTY_DATA = {
                 "image_102.jpeg"
             ]
         },
-
+        
         "7": {
             name: "Project 7",
             location: "Calamba, Laguna",
@@ -88,7 +88,7 @@ window.PROPERTY_DATA = {
                 "Image_104.jpeg"
             ]
         },
-
+        
         "8": {
             name: "Project 8",
             location: "Calamba, Laguna",
@@ -97,7 +97,7 @@ window.PROPERTY_DATA = {
                 "image_106.jpeg"
             ]
         },
-
+        
         "9": {
             name: "Project 9",
             location: "Calamba, Laguna",
@@ -106,7 +106,7 @@ window.PROPERTY_DATA = {
                 "Image_108.jpeg"
             ]
         },
-
+        
         "10": {
             name: "Project 10",
             location: "Calamba, Laguna",
@@ -115,7 +115,7 @@ window.PROPERTY_DATA = {
                 "image_111.jpeg"
             ]
         },
-
+        
         "11": {
             name: "Project 11",
             location: "Calamba, Laguna",
@@ -124,7 +124,7 @@ window.PROPERTY_DATA = {
                 "image_118.jpeg"
             ]
         },
-
+        
         "12": {
             name: "Project 12",
             location: "Calamba, Laguna",
@@ -133,14 +133,14 @@ window.PROPERTY_DATA = {
                 "image_123.jpeg"
             ]
         },
-
+        
         "13": {
             name: "Project 13",
             location: "Calamba, Laguna",
             folder: "13",
             images: []
         },
-
+        
         "14": {
             name: "Project 14",
             location: "Calamba, Laguna",
@@ -149,7 +149,7 @@ window.PROPERTY_DATA = {
                 "image_127.jpeg"
             ]
         },
-
+        
         "model-house": {
             name: "Turn over Unit (Model House)",
             location: "Calamba, Laguna",
@@ -158,11 +158,11 @@ window.PROPERTY_DATA = {
                 "image_142.jpeg"
             ]
         }
-
+        
         // ===================================
         // ADD NEW PROJECTS BELOW THIS LINE
         // ===================================
-
+        
         // TEMPLATE - Copy this to add Project 15:
         /*
         ,"15": {
@@ -176,25 +176,25 @@ window.PROPERTY_DATA = {
             ]
         }
         */
-
+        
     },
-
+    
     // ===================================
     // AUTOMATIC FUNCTIONS - DON'T EDIT BELOW
     // ===================================
-
+    
     /**
      * Get property with full image paths
      */
     async getProperty(id) {
         const project = this.projects[id];
         if (!project) return null;
-
+        
         // Build full image paths
-        const images = project.images.map(filename =>
+        const images = project.images.map(filename => 
             this.basePath + project.folder + "/" + filename
         );
-
+        
         // Try to load description
         let description = null;
         try {
@@ -205,7 +205,7 @@ window.PROPERTY_DATA = {
         } catch (error) {
             // No description file, that's okay
         }
-
+        
         return {
             id: id,
             name: project.name,
@@ -220,7 +220,7 @@ window.PROPERTY_DATA = {
             ]
         };
     },
-
+    
     /**
      * Get all properties
      */

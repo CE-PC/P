@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,380 +13,156 @@
     <!-- Favicon -->
     <link rel="icon" href="/P/static/images/icon.jpg" type="image/x-icon">
     <style>
-        body {
-            overflow-x: hidden;
+        .projects-container {
+            padding: 40px 0;
         }
-
-        /* Main layout - split screen */
-        .zillow-layout {
-            display: flex;
-            min-height: calc(100vh - 200px);
-            margin-top: 20px;
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
-
-        /* Left side - Large preview */
-        .preview-section {
-            flex: 1;
-            position: sticky;
-            top: 80px;
-            height: calc(100vh - 100px);
+        
+        .project-card {
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
-        }
-
-        .preview-image-container {
-            position: relative;
-            height: 60%;
-            background: #000;
-            overflow: hidden;
-        }
-
-        .preview-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .preview-image.fade {
-            opacity: 0;
-        }
-
-        .preview-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #c8102e;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 600;
-            z-index: 10;
-        }
-
-        .preview-controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .preview-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
-            transition: all 0.3s;
         }
-
-        .preview-dot.active {
-            background: white;
-            width: 30px;
-            border-radius: 5px;
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
-
-        /* Preview info section */
-        .preview-info {
-            height: 40%;
-            padding: 30px;
-            background: white;
-            overflow-y: auto;
+        
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
         }
-
-        .preview-price {
-            font-size: 2rem;
+        
+        .project-image-wrapper {
+            position: relative;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
             font-weight: 700;
             color: #2a2a33;
             margin-bottom: 10px;
         }
-
-        .preview-address {
-            font-size: 1.2rem;
-            color: #2a2a33;
-            margin-bottom: 5px;
-        }
-
-        .preview-location {
+        
+        .project-location {
             color: #69707f;
-            margin-bottom: 20px;
-        }
-
-        .preview-stats {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .preview-stat {
-            text-align: center;
-        }
-
-        .preview-stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2a2a33;
-        }
-
-        .preview-stat-label {
-            font-size: 0.875rem;
-            color: #69707f;
-        }
-
-        .preview-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .preview-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .preview-btn-primary {
-            background: #c8102e;
-            color: white;
-        }
-
-        .preview-btn-primary:hover {
-            background: #a00d25;
-            color: white;
-        }
-
-        .preview-btn-secondary {
-            background: #25D366;
-            color: white;
-        }
-
-        .preview-btn-secondary:hover {
-            background: #1da851;
-            color: white;
-        }
-
-        /* Right side - Property grid */
-        .properties-grid-section {
-            width: 45%;
-            padding: 0 20px;
-            overflow-y: auto;
-            height: calc(100vh - 100px);
-        }
-
-        .properties-header {
-            position: sticky;
-            top: 0;
-            background: white;
-            z-index: 10;
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 20px;
-        }
-
-        .properties-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .properties-count {
-            color: #69707f;
-            font-size: 0.875rem;
-        }
-
-        /* Property card in grid */
-        .property-grid-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 3px solid transparent;
-        }
-
-        .property-grid-card:hover {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .property-grid-card.selected {
-            border-color: #c8102e;
-            box-shadow: 0 4px 16px rgba(200, 16, 46, 0.3);
-        }
-
-        .property-grid-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .property-grid-body {
-            padding: 15px;
-        }
-
-        .property-grid-price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #2a2a33;
-            margin-bottom: 8px;
-        }
-
-        .property-grid-location {
-            font-size: 0.875rem;
-            color: #69707f;
-            margin-bottom: 8px;
-        }
-
-        .property-grid-details {
-            font-size: 0.75rem;
-            color: #69707f;
-            display: flex;
-            gap: 15px;
-        }
-
-        /* Search box */
-        .search-box {
+            font-size: 0.95rem;
             margin-bottom: 15px;
         }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 12px 12px 40px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 0.875rem;
+        
+        .project-meta {
+            display: flex;
+            gap: 15px;
+            color: #69707f;
+            font-size: 0.9rem;
         }
-
-        .search-box {
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        
+        .search-container {
             position: relative;
         }
-
-        .search-box i {
+        
+        .search-icon {
             position: absolute;
-            left: 12px;
+            left: 18px;
             top: 50%;
             transform: translateY(-50%);
             color: #69707f;
+            font-size: 1.2rem;
         }
-
-        /* Loading */
+        
         .loading {
             text-align: center;
-            padding: 3rem;
+            padding: 60px 0;
         }
-
+        
         .loading i {
             font-size: 3rem;
             color: #c8102e;
             animation: spin 1s linear infinite;
         }
-
+        
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Mobile responsive */
-        @media (max-width: 768px) {
-            .zillow-layout {
-                flex-direction: column;
-            }
-
-            .preview-section {
-                position: relative;
-                height: auto;
-            }
-
-            .properties-grid-section {
-                width: 100%;
-                height: auto;
-            }
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
-
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-custom">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="/P/">
                     <i class="fas fa-building"></i> Calamba Expressive Properties
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                    <span class="navbar-toggler-icon"
-                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
+                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="/P/"><i class="fas fa-home"></i> Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/P/about.html"><i class="fas fa-info-circle"></i>
-                                About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/P/services.html"><i
-                                    class="fas fa-concierge-bell"></i> Services</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="/P/projects.html"><i
-                                    class="fas fa-city"></i> Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/P/team.html"><i class="fas fa-users"></i>
-                                Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/P/achievements.html"><i
-                                    class="fas fa-trophy"></i> Achievements</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/P/partners.html"><i
-                                    class="fas fa-handshake"></i> Partners</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/P/contact.html"><i class="fas fa-envelope"></i>
-                                Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/P/about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/P/services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="/P/projects.html"><i class="fas fa-city"></i> Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/P/team.html"><i class="fas fa-users"></i> Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/P/achievements.html"><i class="fas fa-trophy"></i> Achievements</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/P/partners.html"><i class="fas fa-handshake"></i> Partners</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/P/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Loading State -->
-    <div id="loading" class="loading">
-        <i class="fas fa-spinner fa-spin"></i>
-        <p style="margin-top: 1rem;">Loading properties...</p>
-    </div>
+    <main>
+        <div class="container projects-container">
+            <h1 class="section-title text-center">Our Projects</h1>
+            <p class="section-subtitle text-center">Explore our portfolio of quality properties in Calamba, Laguna</p>
 
-    <!-- Main Zillow Layout -->
-    <div id="zillow-layout" class="zillow-layout" style="display: none;">
-        <!-- Left - Large Preview -->
-        <div class="preview-section" id="preview-section">
-            <!-- Will be populated by JavaScript -->
-        </div>
-
-        <!-- Right - Properties Grid -->
-        <div class="properties-grid-section">
-            <div class="properties-header">
-                <h2>Properties in Calamba, Laguna</h2>
-                <div class="properties-count" id="properties-count">Loading...</div>
-
-                <!-- Search -->
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Search properties..." onkeyup="filterProperties()">
-                </div>
+            <!-- Search -->
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search projects..." onkeyup="filterProjects()">
             </div>
 
-            <!-- Property Cards Grid -->
-            <div id="properties-grid">
-                <!-- Cards will be populated by JavaScript -->
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p style="margin-top: 15px; color: #666;">Loading projects...</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="projects-grid" style="display: none;">
+                <!-- Cards populated by JavaScript -->
             </div>
         </div>
-    </div>
+    </main>
 
     <footer class="text-center mt-5">
         <div class="container">
@@ -411,210 +186,73 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/P/static/js/enhanced-modal.js"></script>
-
+    
     <!-- Load Properties Data -->
     <script src="/P/static/js/properties.js"></script>
-
+    
     <script>
-        let allProperties = [];
-        let selectedProperty = null;
-        let slideshowInterval = null;
-        let currentSlideIndex = 0;
-
-        // Load all properties
-        async function loadProperties() {
+        let allCards = [];
+        
+        function loadProjects() {
+            const grid = document.getElementById('projects-grid');
+            const loading = document.getElementById('loading');
             const projects = window.PROPERTY_DATA.projects;
-            const gridContainer = document.getElementById('properties-grid');
-
-            for (let id in projects) {
-                const project = projects[id];
-                if (!project.images || project.images.length === 0) continue;
-
-                const property = {
-                    id: id,
-                    name: project.name,
-                    location: project.location,
-                    folder: project.folder,
-                    images: project.images.map(img => window.PROPERTY_DATA.basePath + project.folder + '/' + img)
-                };
-
-                allProperties.push(property);
-
-                // Create card
-                const card = document.createElement('div');
-                card.className = 'property-grid-card';
-                card.setAttribute('data-id', id);
-                card.setAttribute('data-name', project.name.toLowerCase());
-                card.setAttribute('data-location', project.location.toLowerCase());
-                card.onclick = () => selectProperty(id);
-
-                card.innerHTML = `
-                    <img src="${property.images[0]}" alt="${property.name}" class="property-grid-image">
-                    <div class="property-grid-body">
-                        <div class="property-grid-price">${property.name}</div>
-                        <div class="property-grid-location">
-                            <i class="fas fa-map-marker-alt"></i> ${property.location}
-                        </div>
-                        <div class="property-grid-details">
-                            <span><i class="fas fa-images"></i> ${property.images.length} photos</span>
-                        </div>
-                    </div>
-                `;
-
-                gridContainer.appendChild(card);
-            }
-
-            // Update count
-            document.getElementById('properties-count').textContent = `${allProperties.length} results`;
-
-            // Hide loading, show layout
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('zillow-layout').style.display = 'flex';
-
-            // Select first property
-            if (allProperties.length > 0) {
-                selectProperty(allProperties[0].id);
-            }
-
-            console.log(`✅ Loaded ${allProperties.length} properties in Zillow-style layout`);
-        }
-
-        // Select property and update preview
-        function selectProperty(id) {
-            // Find property
-            const property = allProperties.find(p => p.id === id);
-            if (!property) return;
-
-            selectedProperty = property;
-            currentSlideIndex = 0;
-
-            // Update card selection
-            document.querySelectorAll('.property-grid-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            document.querySelector(`[data-id="${id}"]`).classList.add('selected');
-
-            // Update preview
-            updatePreview();
-
-            // Start slideshow
-            startSlideshow();
-        }
-
-        // Update preview section
-        function updatePreview() {
-            const previewSection = document.getElementById('preview-section');
-
-            // Create dots for slideshow
-            const dotsHTML = selectedProperty.images.map((img, i) =>
-                `<div class="preview-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></div>`
-            ).join('');
-
-            previewSection.innerHTML = `
-                <div class="preview-image-container">
-                    <!--  <div class="preview-badge">Featured Property</div> -->
-                    <img src="${selectedProperty.images[0]}" alt="${selectedProperty.name}" class="preview-image" id="preview-image">
-                    <div class="preview-controls">${dotsHTML}</div>
-                </div>
-                <div class="preview-info">
-                    <div class="preview-price">${selectedProperty.name}</div>
-                    <div class="preview-address">${selectedProperty.location}</div>
-                    <div class="preview-location">
-                        <i class="fas fa-map-marker-alt"></i> Calamba, Laguna, Philippines
-                    </div>
-                    
-                    <div class="preview-stats">
-                        <div class="preview-stat">
-                            <div class="preview-stat-value">${selectedProperty.images.length}</div>
-                            <div class="preview-stat-label">Photos</div>
-                        </div>
-                    </div>
-                    
-                    <div class="preview-buttons">
-                        <a href="/P/property.html?id=${selectedProperty.id}" class="preview-btn preview-btn-primary">
-                            <i class="fas fa-eye"></i> View Details
-                        </a>
-                        <a href="https://wa.me/639276154651?text=Hello, I'm interested in ${encodeURIComponent(selectedProperty.name)}" target="_blank" class="preview-btn preview-btn-secondary">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
-                    
-                    <a href="mailto:cepc.development@gmail.com?subject=Inquiry about ${encodeURIComponent(selectedProperty.name)}" class="preview-btn preview-btn-primary mt-2" style="display: flex;">
-                        <i class="fas fa-envelope"></i> Email Us
-                    </a>
-                </div>
-            `;
-        }
-
-        // Slideshow functions
-        function startSlideshow() {
-            // Clear existing interval
-            if (slideshowInterval) {
-                clearInterval(slideshowInterval);
-            }
-
-            // Start new slideshow (change every 3 seconds)
-            slideshowInterval = setInterval(() => {
-                nextSlide();
-            }, 3000);
-        }
-
-        function nextSlide() {
-            currentSlideIndex = (currentSlideIndex + 1) % selectedProperty.images.length;
-            updateSlide();
-        }
-
-        function goToSlide(index) {
-            currentSlideIndex = index;
-            updateSlide();
-            startSlideshow(); // Restart timer
-        }
-
-        function updateSlide() {
-            const img = document.getElementById('preview-image');
-            const dots = document.querySelectorAll('.preview-dot');
-
-            // Fade out
-            img.classList.add('fade');
-
+            
             setTimeout(() => {
-                // Change image
-                img.src = selectedProperty.images[currentSlideIndex];
-
-                // Update dots
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === currentSlideIndex);
-                });
-
-                // Fade in
-                img.classList.remove('fade');
+                loading.style.display = 'none';
+                grid.style.display = 'grid';
+                
+                for (let id in projects) {
+                    const project = projects[id];
+                    if (!project.images || project.images.length === 0) continue;
+                    
+                    const firstImage = window.PROPERTY_DATA.basePath + project.folder + '/' + project.images[0];
+                    
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.setAttribute('data-name', project.name.toLowerCase());
+                    card.setAttribute('data-location', project.location.toLowerCase());
+                    card.onclick = () => window.location.href = `/P/property.html?id=${id}`;
+                    
+                    card.innerHTML = `
+                        <div class="project-image-wrapper">
+                            <img src="${firstImage}" alt="${project.name}" class="project-image">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">${project.name}</div>
+                            <div class="project-location">
+                                <i class="fas fa-map-marker-alt"></i> ${project.location}
+                            </div>
+                            <div class="project-meta">
+                                <span><i class="fas fa-images"></i> ${project.images.length} photos</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    grid.appendChild(card);
+                    allCards.push(card);
+                }
+                
+                console.log(`✅ Loaded ${Object.keys(projects).length} projects`);
             }, 500);
         }
-
-        // Filter properties
-        function filterProperties() {
+        
+        function filterProjects() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.property-grid-card');
-            let visibleCount = 0;
-
-            cards.forEach(card => {
+            
+            allCards.forEach(card => {
                 const name = card.getAttribute('data-name');
                 const location = card.getAttribute('data-location');
-
+                
                 if (name.includes(searchInput) || location.includes(searchInput)) {
                     card.style.display = 'block';
-                    visibleCount++;
                 } else {
                     card.style.display = 'none';
                 }
             });
-
-            document.getElementById('properties-count').textContent = `${visibleCount} result${visibleCount !== 1 ? 's' : ''}`;
         }
-
-        // Load on page load
-        document.addEventListener('DOMContentLoaded', loadProperties);
+        
+        document.addEventListener('DOMContentLoaded', loadProjects);
     </script>
 </body>
-
 </html>
