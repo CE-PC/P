@@ -49,14 +49,14 @@ AUTO-GENERATES:
 ## 📂 WHERE TO UPLOAD
 
 ```
-/P/
-├── projects.html     → /P/projects.html
-├── property.html     → /P/property.html
-├── index.html        → /P/index.html
-├── (other pages)     → /P/
-├── modern-styles.css → /P/static/css/modern-styles.css
-├── enhanced-modal.js → /P/static/js/enhanced-modal.js
-└── properties.js     → /P/static/js/properties.js
+/
+├── projects.html     → /projects.html
+├── property.html     → /property.html
+├── index.html        → /index.html
+├── (other pages)     → /
+├── modern-styles.css → /static/css/modern-styles.css
+├── enhanced-modal.js → /static/js/enhanced-modal.js
+└── properties.js     → /static/js/properties.js
 ```
 
 ---
@@ -65,7 +65,7 @@ AUTO-GENERATES:
 
 **Step 1:** Create folder
 ```
-/P/static/images/projects/15/
+/static/images/projects/15/
 ├── photo1.jpg
 ├── photo2.jpg
 └── zzz_description.txt
@@ -83,14 +83,14 @@ AUTO-GENERATES:
 
 **Step 3:** Upload properties.js
 
-**Done!** Visit `/P/projects.html` to see your new card!
+**Done!** Visit `/projects.html` to see your new card!
 
 ---
 
 ## ✅ TESTING
 
 After uploading:
-1. Visit `/P/projects.html`
+1. Visit `/projects.html`
 2. See Zillow-style horizontal cards ✅
 3. Click left/right arrows to scroll ✅
 4. Search for a project ✅

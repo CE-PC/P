@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Legacy function for backward compatibility
 function openModal(src, title) {
     if (lightbox) {
-        const fullSrc = src.startsWith('/P/') ? src : '/P/' + src;
+        const fullSrc = src.startsWith('/') ? src : '/' + src;
         lightbox.open(fullSrc, title);
     }
 }

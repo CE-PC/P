@@ -9,36 +9,36 @@
 These make the dynamic project system work:
 
 1. **properties.js** - YOU EDIT THIS! Contains all project data
-   - Location: /P/static/js/properties.js
+   - Location: /static/js/properties.js
    - What it does: Stores all projects, images, names, locations
 
 2. **projects-auto.html** - Auto-generates project cards
-   - Location: /P/projects.html (rename from projects-auto.html)
+   - Location: /projects.html (rename from projects-auto.html)
    - What it does: Reads properties.js and creates project grid
 
 3. **property.html** - Individual property detail page
-   - Location: /P/property.html
+   - Location: /property.html
    - What it does: Shows one property when clicked
 
 4. **modern-styles.css** - All styling
-   - Location: /P/static/css/modern-styles.css
+   - Location: /static/css/modern-styles.css
    - What it does: Makes everything look good
 
 5. **enhanced-modal.js** - Interactive features
-   - Location: /P/static/js/enhanced-modal.js
+   - Location: /static/js/enhanced-modal.js
    - What it does: Lightbox, animations, smooth scrolling
 
 ---
 
 ### 📄 **MAIN WEBSITE PAGES (7 files)**
 
-6. **index.html** → /P/index.html
-7. **about.html** → /P/about.html
-8. **services.html** → /P/services.html
-9. **team.html** → /P/team.html
-10. **achievements.html** → /P/achievements.html
-11. **partners.html** → /P/partners.html
-12. **contact.html** → /P/contact.html
+6. **index.html** → /index.html
+7. **about.html** → /about.html
+8. **services.html** → /services.html
+9. **team.html** → /team.html
+10. **achievements.html** → /achievements.html
+11. **partners.html** → /partners.html
+12. **contact.html** → /contact.html
 
 ---
 
@@ -74,7 +74,7 @@ These make the dynamic project system work:
 ## 📁 YOUR FILE STRUCTURE
 
 ```
-/P/
+/
 ├── index.html
 ├── about.html
 ├── services.html
@@ -119,7 +119,7 @@ These make the dynamic project system work:
 ### Step 1: Create Folder & Add Files
 
 ```
-/P/static/images/projects/15/
+/static/images/projects/15/
 ├── photo1.jpg
 ├── photo2.jpg
 ├── photo3.jpg
@@ -128,7 +128,7 @@ These make the dynamic project system work:
 
 ### Step 2: Edit properties.js
 
-Open: `/P/static/js/properties.js`
+Open: `/static/js/properties.js`
 
 Find the section that says `// ADD NEW PROJECTS BELOW THIS LINE`
 
@@ -152,8 +152,8 @@ Add this code:
 ### Step 3: Upload & Done!
 
 - Upload `properties.js` to server
-- Visit `/P/projects.html` → See new card
-- Click card → See full details at `/P/property.html?id=15`
+- Visit `/projects.html` → See new card
+- Click card → See full details at `/property.html?id=15`
 
 ---
 
@@ -165,14 +165,14 @@ If you see a spinning wheel forever, it means:
 
 ### Solution:
 
-1. Make sure `properties.js` is at: `/P/static/js/properties.js`
+1. Make sure `properties.js` is at: `/static/js/properties.js`
 2. Check that `projects-auto.html` has this line:
    ```html
-   <script src="/P/static/js/properties.js"></script>
+   <script src="/static/js/properties.js"></script>
    ```
 3. Check that `property.html` has this line:
    ```html
-   <script src="/P/static/js/properties.js"></script>
+   <script src="/static/js/properties.js"></script>
    ```
 
 ---
@@ -181,8 +181,8 @@ If you see a spinning wheel forever, it means:
 
 After uploading all files:
 
-1. Visit `/P/index.html` → Homepage loads ✅
-2. Visit `/P/projects.html` → See grid of project cards ✅
+1. Visit `/index.html` → Homepage loads ✅
+2. Visit `/projects.html` → See grid of project cards ✅
 3. Click any project card → Goes to property detail ✅
 4. On property page:
    - Images show in carousel ✅

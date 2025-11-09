@@ -10,7 +10,7 @@ This system uses a **JSON file** instead of PHP, perfect for GitHub Pages!
 
 ### Your File Structure:
 ```
-/P/
+/
 ├── property.html (ONE page for ALL properties!)
 └── static/
     ├── css/
@@ -46,29 +46,29 @@ This system uses a **JSON file** instead of PHP, perfect for GitHub Pages!
 ### Step 1: Upload Core Files
 
 ```
-/P/static/css/modern-styles.css
-/P/static/js/enhanced-modal.js
-/P/static/js/simple-loader.js  ← NEW!
-/P/static/js/projects-data.json  ← NEW!
+/static/css/modern-styles.css
+/static/js/enhanced-modal.js
+/static/js/simple-loader.js  ← NEW!
+/static/js/projects-data.json  ← NEW!
 ```
 
 ### Step 2: Upload Pages
 
 ```
-/P/index.html
-/P/about.html
-/P/services.html
-/P/projects.html
-/P/team.html
-/P/achievements.html
-/P/partners.html
-/P/contact.html
-/P/property.html  ← NEW!
+/index.html
+/about.html
+/services.html
+/projects.html
+/team.html
+/achievements.html
+/partners.html
+/contact.html
+/property.html  ← NEW!
 ```
 
 ### Step 3: Test!
 
-Visit: `yoursite.com/P/property.html?id=1`
+Visit: `yoursite.com/property.html?id=1`
 
 Should show Project 1 with:
 - ✅ All images from folder
@@ -84,7 +84,7 @@ Should show Project 1 with:
 ### Step 1: Create Folder & Add Files
 
 ```
-/P/static/images/projects/15/
+/static/images/projects/15/
 ├── zzz_description.txt  (your description)
 ├── photo1.jpg
 ├── photo2.jpg
@@ -93,7 +93,7 @@ Should show Project 1 with:
 
 ### Step 2: Edit projects-data.json
 
-Open: `/P/static/js/projects-data.json`
+Open: `/static/js/projects-data.json`
 
 Add this inside the `"projects": {` section:
 
@@ -113,12 +113,12 @@ Add this inside the `"projects": {` section:
 
 **IMPORTANT:** 
 - Just list filenames, NOT full paths!
-- System adds `/P/static/images/projects/15/` automatically
+- System adds `/static/images/projects/15/` automatically
 - Don't forget comma after previous entry!
 
 ### Step 3: Done!
 
-Visit: `yoursite.com/P/property.html?id=15`
+Visit: `yoursite.com/property.html?id=15`
 
 The system automatically:
 - ✅ Loads your 3 images
@@ -175,7 +175,7 @@ The system automatically:
 - **"id"**: Used in URL (`property.html?id=15`)
 - **"name"**: Property title shown on page
 - **"location"**: Where property is located
-- **"folder"**: Folder name in `/P/static/images/projects/`
+- **"folder"**: Folder name in `/static/images/projects/`
 - **"images"**: Array of image filenames (NOT full paths!)
 
 ---
@@ -212,7 +212,7 @@ families looking for a safe and comfortable environment.
 ## 🔄 UPDATING EXISTING PROJECTS
 
 ### To Update Description:
-1. Edit `/P/static/images/projects/1/zzz_description.txt`
+1. Edit `/static/images/projects/1/zzz_description.txt`
 2. Save and upload
 3. Refresh page - changes appear!
 
@@ -264,16 +264,16 @@ Edit projects-data.json → Change ALL projects!
 After uploading, verify:
 
 ### Files Uploaded:
-- [ ] `/P/property.html`
-- [ ] `/P/static/js/simple-loader.js`
-- [ ] `/P/static/js/projects-data.json`
-- [ ] `/P/static/css/modern-styles.css`
-- [ ] `/P/static/js/enhanced-modal.js`
+- [ ] `/property.html`
+- [ ] `/static/js/simple-loader.js`
+- [ ] `/static/js/projects-data.json`
+- [ ] `/static/css/modern-styles.css`
+- [ ] `/static/js/enhanced-modal.js`
 - [ ] All 8 main HTML pages
 
 ### Functionality:
-- [ ] Visit `/P/property.html?id=1` shows Project 1
-- [ ] Visit `/P/property.html?id=2` shows Project 2
+- [ ] Visit `/property.html?id=1` shows Project 1
+- [ ] Visit `/property.html?id=2` shows Project 2
 - [ ] Images load correctly
 - [ ] Carousel works (click arrows)
 - [ ] Thumbnails work (click to change main image)
@@ -357,7 +357,7 @@ Paste your projects-data.json and click "Validate JSON"
 - Fix any syntax errors
 
 **Check 3:** Are image paths correct?
-- File: `/P/static/images/projects/15/photo1.jpg`
+- File: `/static/images/projects/15/photo1.jpg`
 - JSON: `"images": ["photo1.jpg"]`
 - Folder: `"folder": "15"`
 
@@ -371,7 +371,7 @@ Paste your projects-data.json and click "Validate JSON"
 ### Description Not Showing?
 
 **Check:** 
-- File exists: `/P/static/images/projects/1/zzz_description.txt`
+- File exists: `/static/images/projects/1/zzz_description.txt`
 - File name is exact: `zzz_description.txt` (lowercase, underscores)
 - File has content (not empty)
 
@@ -382,18 +382,18 @@ Paste your projects-data.json and click "Validate JSON"
 ### File Locations:
 | File | Location |
 |------|----------|
-| projects-data.json | /P/static/js/projects-data.json |
-| simple-loader.js | /P/static/js/simple-loader.js |
-| property.html | /P/property.html |
-| modern-styles.css | /P/static/css/modern-styles.css |
-| enhanced-modal.js | /P/static/js/enhanced-modal.js |
+| projects-data.json | /static/js/projects-data.json |
+| simple-loader.js | /static/js/simple-loader.js |
+| property.html | /property.html |
+| modern-styles.css | /static/css/modern-styles.css |
+| enhanced-modal.js | /static/js/enhanced-modal.js |
 
 ### URLs:
 ```
-/P/property.html?id=1        → Project 1
-/P/property.html?id=2        → Project 2
-/P/property.html?id=15       → Project 15
-/P/property.html?id=model-house  → Model House
+/property.html?id=1        → Project 1
+/property.html?id=2        → Project 2
+/property.html?id=15       → Project 15
+/property.html?id=model-house  → Model House
 ```
 
 ---

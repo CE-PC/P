@@ -5,7 +5,7 @@
  */
 
 window.ACHIEVEMENTS_DATA = {
-    basePath: "/P/static/images/achievements/",
+    basePath: "/static/images/achievements/",
     
     achievements: [
         {
@@ -78,7 +78,7 @@ window.ACHIEVEMENTS_DATA = {
 /**
  * TO ADD NEW ACHIEVEMENT:
  * =======================
- * 1. Upload image to /P/static/images/achievements/
+ * 1. Upload image to /static/images/achievements/
  * 2. Add entry above:
  * 
  * {

@@ -80,25 +80,25 @@ Replace the old CSS and JS references in ALL HTML files:
 
 **Old:**
 ```html
-<link rel="stylesheet" href="/P/static/css/styles.css">
-<link rel="stylesheet" href="/P/static/css/modal.css">
-<script src="/P/static/js/modal.js"></script>
+<link rel="stylesheet" href="/static/css/styles.css">
+<link rel="stylesheet" href="/static/css/modal.css">
+<script src="/static/js/modal.js"></script>
 ```
 
 **New:**
 ```html
-<link rel="stylesheet" href="/P/static/css/modern-styles.css">
-<script src="/P/static/js/enhanced-modal.js"></script>
+<link rel="stylesheet" href="/static/css/modern-styles.css">
+<script src="/static/js/enhanced-modal.js"></script>
 ```
 
 ### Step 2: Upload Files to Server
 
 Upload these files to your server:
-- `modern-styles.css` → `/P/static/css/modern-styles.css`
-- `enhanced-modal.js` → `/P/static/js/enhanced-modal.js`
+- `modern-styles.css` → `/static/css/modern-styles.css`
+- `enhanced-modal.js` → `/static/js/enhanced-modal.js`
 
 ### Step 3: Replace HTML Files
-Upload all the new HTML files to your `/P/` directory, replacing the old ones.
+Upload all the new HTML files to your `/` directory, replacing the old ones.
 
 ### Step 4: Test Everything
 1. Visit your homepage
@@ -212,7 +212,7 @@ The enhanced lightbox includes:
 
 ### Images not showing
 - Check file paths are correct
-- Ensure images are uploaded to `/P/static/images/`
+- Ensure images are uploaded to `/static/images/`
 - Verify image file names match exactly (case-sensitive)
 
 ### Lightbox not working
@@ -246,7 +246,7 @@ Edit `services.html` and add a new service card:
 Edit `team.html` and add to the team grid:
 ```html
 <div class="team-member fade-in">
-    <img src="/P/static/images/team/name.jpg" alt="Name" class="team-img">
+    <img src="/static/images/team/name.jpg" alt="Name" class="team-img">
     <h3 class="team-name">Full Name</h3>
     <p class="team-role">Position</p>
     <p style="color: #666; margin-top: 1rem;">Description...</p>

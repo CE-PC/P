@@ -170,9 +170,9 @@ When demonstrating to clients or stakeholders:
 
 Upload these files to your server:
 
-1. modern-styles.css  →  /P/static/css/modern-styles.css
-2. enhanced-modal.js  →  /P/static/js/enhanced-modal.js
-3. All 8 HTML files   →  /P/ directory (replace old ones)
+1. modern-styles.css  →  /static/css/modern-styles.css
+2. enhanced-modal.js  →  /static/js/enhanced-modal.js
+3. All 8 HTML files   →  / directory (replace old ones)
 
 That's it! Three simple steps.
 

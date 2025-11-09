@@ -6,7 +6,7 @@
  * 
  * TO ADD NEW PROJECT:
  * -------------------
- * 1. Create folder: /P/static/images/projects/15/
+ * 1. Create folder: /static/images/projects/15/
  * 2. Add images and zzz_description.txt
  * 3. Add entry below (copy the template)
  * 4. Upload this file - Done!
@@ -14,7 +14,7 @@
 
 window.PROPERTY_DATA = {
     // Base path - DON'T CHANGE THIS
-    basePath: "/P/static/images/projects/",
+    basePath: "/static/images/projects/",
     
     // ===================================
     // ADD YOUR PROJECTS HERE
@@ -244,7 +244,7 @@ window.PROPERTY_LOADER = window.PROPERTY_DATA;
  * 
  * Step 1: Create folder and add files
  * ------------------------------------
- * /P/static/images/projects/15/
+ * /static/images/projects/15/
  *   ├── photo1.jpg
  *   ├── photo2.jpg
  *   ├── photo3.jpg
@@ -273,15 +273,15 @@ window.PROPERTY_LOADER = window.PROPERTY_DATA;
  * 
  * Step 3: Upload & Done!
  * ----------------------
- * Upload this file to: /P/static/js/properties.js
- * Visit: yoursite.com/P/property.html?id=15
+ * Upload this file to: /static/js/properties.js
+ * Visit: yoursite.com/property.html?id=15
  * 
  * =============================================
  * 
  * NOTES:
  * ------
  * - Just list filenames, NOT full paths
- * - System adds /P/static/images/projects/15/ automatically
+ * - System adds /static/images/projects/15/ automatically
  * - Images are loaded in the order you list them
  * - First image = main carousel image
  * - zzz_description.txt is loaded automatically

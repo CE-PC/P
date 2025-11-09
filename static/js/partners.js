@@ -5,7 +5,7 @@
  */
 
 window.PARTNERS_DATA = {
-    basePath: "/P/static/images/partners/",
+    basePath: "/static/images/partners/",
     
     partners: [
         {
@@ -75,7 +75,7 @@ window.PARTNERS_DATA = {
 /**
  * TO ADD NEW PARTNER:
  * ===================
- * 1. Upload logo to /P/static/images/partners/
+ * 1. Upload logo to /static/images/partners/
  * 2. Add entry above:
  * 
  * {
