@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Generate and Deploy
 
 on:
   push:
@@ -15,59 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Step 1: Generate property data (only if images changed)
-  generate:
-    runs-on: ubuntu-latest
-    outputs:
-      images_changed: ${{ steps.check_images.outputs.changed }}
-    
-    steps:
-    - name: 📥 Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 2  # Need previous commit to compare
-        
-    - name: 🔍 Check if images changed
-      id: check_images
-      run: |
-        if git diff --name-only HEAD~1 HEAD | grep -qE 'static/images/(projects|partners)/'; then
-          echo "changed=true" >> $GITHUB_OUTPUT
-          echo "📸 Images changed - will generate data files"
-        else
-          echo "changed=false" >> $GITHUB_OUTPUT
-          echo "ℹ️ No image changes - skipping generation"
-        fi
-        
-    - name: 🟢 Setup Node.js
-      if: steps.check_images.outputs.changed == 'true'
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        
-    - name: 🔨 Generate property and partner data
-      if: steps.check_images.outputs.changed == 'true'
-      run: |
-        echo "🏠 Generating properties.js..."
-        node generate-properties.js
-        echo "🤝 Generating partners.js..."
-        node generate-partners.js
-        
-    - name: 📤 Commit generated files
-      if: steps.check_images.outputs.changed == 'true'
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git add static/js/properties.js static/js/partners.js
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "🤖 Update generated data files"
-          git push
-        fi
-
-  # Step 2: Deploy to GitHub Pages (always runs, but after generation if needed)
-  deploy:
-    needs: generate
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     environment:
@@ -75,22 +23,86 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
-      - name: 📥 Checkout latest code
+      # Step 1: Checkout code
+      - name: 📥 Checkout
         uses: actions/checkout@v4
         with:
-          ref: main  # Get the latest including any commits from generate job
-          
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      
+      # Step 2: Setup Node.js
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      # Step 3: Generate property data (always run)
+      - name: 🔨 Generate properties.js
+        run: |
+          echo "Generating properties.js..."
+          node generate-properties.js
+          echo "✅ Properties generated"
+      
+      # Step 4: Generate partners data (always run)
+      - name: 🤝 Generate partners.js
+        run: |
+          echo "Generating partners.js..."
+          node generate-partners.js
+          echo "✅ Partners generated"
+      
+      # Step 5: Check if generation created changes
+      - name: 🔍 Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet static/js/properties.js static/js/partners.js; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No changes to generated files"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "📝 Generated files have changes"
+          fi
+      
+      # Step 6: Commit changes if any
+      - name: 📤 Commit generated files
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add static/js/properties.js static/js/partners.js
+          git commit -m "🤖 Update generated data files"
+          git push
+          echo "✅ Changes committed and pushed"
+      
+      # Step 7: Wait a moment for changes to propagate
+      - name: ⏱️ Wait for git sync
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: sleep 3
+      
+      # Step 8: Checkout again to get latest (including any commits we just made)
+      - name: 📥 Checkout latest
+        if: steps.check_changes.outputs.has_changes == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      
+      # Step 9: Setup Pages
       - name: ⚙️ Setup Pages
         uses: actions/configure-pages@v5
-        
+      
+      # Step 10: Upload artifact
       - name: 📦 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-          
+      
+      # Step 11: Deploy to GitHub Pages
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
-      - name: ✅ Deployment complete
-        run: echo "✅ Site deployed successfully!"
+      
+      # Step 12: Success message
+      - name: ✅ Complete
+        run: |
+          echo "✅ Workflow complete!"
+          echo "📊 Generated files: ${{ steps.check_changes.outputs.has_changes == 'true' && 'Updated' || 'No changes' }}"
+          echo "🌐 Deployed to: ${{ steps.deployment.outputs.page_url }}"
