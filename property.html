@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +21,13 @@
             border-radius: 12px;
             margin-bottom: 2rem;
         }
-        
+
         .property-detail-hero img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .property-gallery-thumb {
             width: 100%;
             height: 120px;
@@ -36,42 +37,42 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 3px solid transparent;
         }
-        
+
         .property-gallery-thumb:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
-        
+
         .property-gallery-thumb.active {
             border-color: #c8102e;
         }
-        
+
         .property-info-card {
             background: white;
             border-radius: 12px;
             padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
         }
-        
+
         .property-feature {
             display: flex;
             align-items: center;
             padding: 1rem;
             border-bottom: 1px solid #eee;
         }
-        
+
         .property-feature:last-child {
             border-bottom: none;
         }
-        
+
         .property-feature i {
             font-size: 1.5rem;
             color: #c8102e;
             margin-right: 1rem;
             min-width: 30px;
         }
-        
+
         .cta-section {
             background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             border-radius: 12px;
@@ -80,35 +81,39 @@
             text-align: center;
             margin-top: 2rem;
         }
-        
-        .carousel-control-prev, .carousel-control-next {
+
+        .carousel-control-prev,
+        .carousel-control-next {
             width: 5%;
         }
-        
+
         .carousel-indicators {
             bottom: -50px;
         }
-        
+
         .carousel-indicators li {
             background-color: #c8102e;
         }
-        
+
         .loading {
             text-align: center;
             padding: 5rem;
         }
-        
+
         .loading i {
             font-size: 4rem;
             color: #c8102e;
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-custom">
@@ -117,18 +122,26 @@
                     <i class="fas fa-building"></i> Calamba Expressive Properties
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
+                    <span class="navbar-toggler-icon"
+                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about.html"><i class="fas fa-info-circle"></i> About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="/projects.html"><i class="fas fa-city"></i> Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/team.html"><i class="fas fa-users"></i> Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/achievements.html"><i class="fas fa-trophy"></i> Achievements</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/partners.html"><i class="fas fa-handshake"></i> Partners</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about.html"><i class="fas fa-info-circle"></i>
+                                About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/services.html"><i
+                                    class="fas fa-concierge-bell"></i> Services</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="/projects.html"><i
+                                    class="fas fa-city"></i> Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/team.html"><i class="fas fa-users"></i> Team</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/achievements.html"><i class="fas fa-trophy"></i>
+                                Achievements</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/partners.html"><i class="fas fa-handshake"></i>
+                                Partners</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contact.html"><i class="fas fa-envelope"></i>
+                                Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -151,7 +164,8 @@
         <div class="container">
             <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.</p>
             <div class="footer-links">
-                <a href="https://wa.me/639276154651?text=Hello%2C%20I%E2%80%99m%20interested%20in%20learning%20more%20about%20your%20listings" target="_blank" class="footer-icon">
+                <a href="https://wa.me/639276154651?text=Hello%2C%20I%E2%80%99m%20interested%20in%20learning%20more%20about%20your%20listings"
+                    target="_blank" class="footer-icon">
                     <i class="fab fa-whatsapp"></i>
                 </a>
                 <a href="mailto:cepc.development@gmail.com" class="footer-icon">
@@ -169,10 +183,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/static/js/enhanced-modal.js"></script>
-    
+
     <!-- Property Configuration -->
-    <script src="/static/js/properties.js"></script>
-    
+    <script src="/static/js/properties.js?v=123"></script>
+
     <script>
         // Get property ID from URL parameter
         function getPropertyId() {
@@ -302,7 +316,7 @@
                     </div>
                 </div>
             `;
-            
+
             return content;
         }
 
@@ -353,7 +367,7 @@
         }
 
         // Update active thumbnail when carousel changes
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#propertyCarousel').on('slid.bs.carousel', function (e) {
                 const index = $(e.relatedTarget).index();
                 document.querySelectorAll('.property-gallery-thumb').forEach((thumb, i) => {
@@ -363,30 +377,30 @@
         });
 
         // Initialize page
-        document.addEventListener('DOMContentLoaded', async function() {
+        document.addEventListener('DOMContentLoaded', async function () {
             const propertyId = getPropertyId();
             const mainContent = document.getElementById('main-content');
             const loading = document.getElementById('loading');
-            
+
             if (!propertyId) {
                 // No ID provided, redirect to projects
                 window.location.href = '/projects.html';
                 return;
             }
-            
+
             // Wait a moment for data to load
             await new Promise(resolve => setTimeout(resolve, 300));
-            
+
             // Get property data (async)
             const property = await window.PROPERTY_DATA.getProperty(propertyId);
-            
+
             // Hide loading
             loading.style.display = 'none';
-            
+
             if (property) {
                 // Update page title
                 document.title = `${property.name} - Calamba Expressive Properties`;
-                
+
                 // Build and inject content
                 mainContent.innerHTML = buildPropertyPage(property);
             } else {
@@ -396,4 +410,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -22,29 +22,29 @@ function scanPartners() {
         console.log('💡 Make sure you run this from the root of your project');
         process.exit(1);
     }
-    
+
     const files = fs.readdirSync(PARTNERS_DIR);
-    
+
     // Get all image files
-    const images = files.filter(file => 
+    const images = files.filter(file =>
         /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
     ).sort(); // Sort alphabetically
-    
+
     console.log(`📁 Found ${images.length} partner images\n`);
-    
+
     // Generate partner objects - filename (without extension) as title
     const partners = images.map(filename => {
         // Use filename without extension as title
         const title = filename.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
-        
+
         console.log(`✓ ${filename} → "${title}"`);
-        
+
         return {
             filename: filename,
             title: title
         };
     });
-    
+
     return partners;
 }
 
@@ -53,9 +53,9 @@ function scanPartners() {
  */
 function generateFile() {
     console.log('🔨 Generating partners.js...\n');
-    
+
     const partners = scanPartners();
-    
+
     const fileContent = `/**
  * AUTO-GENERATED PARTNERS CONFIG
  * ==============================
@@ -102,15 +102,15 @@ window.PARTNERS_DATA = {
  * =============================================
  */
 `;
-    
+
     // Ensure output directory exists
     const outputDir = path.dirname(OUTPUT_FILE);
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
-    
+
     fs.writeFileSync(OUTPUT_FILE, fileContent);
-    
+
     console.log(`\n✅ Generated ${OUTPUT_FILE}`);
     console.log(`📦 Total partners: ${partners.length}`);
     console.log(`\n🚀 Ready to commit and push!`);

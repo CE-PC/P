@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,67 +17,67 @@
         .projects-container {
             padding: 40px 0;
         }
-        
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-        
+
         .project-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
-        
+
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
-        
+
         .project-image {
             width: 100%;
             height: 220px;
             object-fit: cover;
         }
-        
+
         .project-image-wrapper {
             position: relative;
         }
-        
+
         .project-content {
             padding: 20px;
         }
-        
+
         .project-title {
             font-size: 1.4rem;
             font-weight: 700;
             color: #2a2a33;
             margin-bottom: 10px;
         }
-        
+
         .project-location {
             color: #69707f;
             font-size: 0.95rem;
             margin-bottom: 15px;
         }
-        
+
         .project-meta {
             display: flex;
             gap: 15px;
             color: #69707f;
             font-size: 0.9rem;
         }
-        
+
         .search-container {
             max-width: 600px;
             margin: 0 auto 30px;
         }
-        
+
         .search-input {
             width: 100%;
             padding: 15px 20px 15px 50px;
@@ -84,11 +85,11 @@
             border-radius: 10px;
             font-size: 1rem;
         }
-        
+
         .search-container {
             position: relative;
         }
-        
+
         .search-icon {
             position: absolute;
             left: 18px;
@@ -97,23 +98,26 @@
             color: #69707f;
             font-size: 1.2rem;
         }
-        
+
         .loading {
             text-align: center;
             padding: 60px 0;
         }
-        
+
         .loading i {
             font-size: 3rem;
             color: #c8102e;
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-custom">
@@ -122,18 +126,26 @@
                     <i class="fas fa-building"></i> Calamba Expressive Properties
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                    <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
+                    <span class="navbar-toggler-icon"
+                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about.html"><i class="fas fa-info-circle"></i> About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="/projects.html"><i class="fas fa-city"></i> Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/team.html"><i class="fas fa-users"></i> Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/achievements.html"><i class="fas fa-trophy"></i> Achievements</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/partners.html"><i class="fas fa-handshake"></i> Partners</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about.html"><i class="fas fa-info-circle"></i>
+                                About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/services.html"><i
+                                    class="fas fa-concierge-bell"></i> Services</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="/projects.html"><i
+                                    class="fas fa-city"></i> Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/team.html"><i class="fas fa-users"></i> Team</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/achievements.html"><i class="fas fa-trophy"></i>
+                                Achievements</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/partners.html"><i class="fas fa-handshake"></i>
+                                Partners</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contact.html"><i class="fas fa-envelope"></i>
+                                Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -148,7 +160,8 @@
             <!-- Search -->
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" id="searchInput" placeholder="Search projects..." onkeyup="filterProjects()">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search projects..."
+                    onkeyup="filterProjects()">
             </div>
 
             <!-- Loading -->
@@ -186,34 +199,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/static/js/enhanced-modal.js"></script>
-    
+
     <!-- Load Properties Data -->
-    <script src="/static/js/properties.js"></script>
-    
+    <script src="/static/js/properties.js?v=123"></script>
+
     <script>
         let allCards = [];
-        
+
         function loadProjects() {
             const grid = document.getElementById('projects-grid');
             const loading = document.getElementById('loading');
             const projects = window.PROPERTY_DATA.projects;
-            
+
             setTimeout(() => {
                 loading.style.display = 'none';
                 grid.style.display = 'grid';
-                
+
                 for (let id in projects) {
                     const project = projects[id];
                     if (!project.images || project.images.length === 0) continue;
-                    
+
                     const firstImage = window.PROPERTY_DATA.basePath + project.folder + '/' + project.images[0];
-                    
+
                     const card = document.createElement('div');
                     card.className = 'project-card';
                     card.setAttribute('data-name', project.name.toLowerCase());
                     card.setAttribute('data-location', project.location.toLowerCase());
                     card.onclick = () => window.location.href = `/property.html?id=${id}`;
-                    
+
                     card.innerHTML = `
                         <div class="project-image-wrapper">
                             <img src="${firstImage}" alt="${project.name}" class="project-image">
@@ -228,22 +241,22 @@
                             </div>
                         </div>
                     `;
-                    
+
                     grid.appendChild(card);
                     allCards.push(card);
                 }
-                
+
                 console.log(`✅ Loaded ${Object.keys(projects).length} projects`);
             }, 500);
         }
-        
+
         function filterProjects() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            
+
             allCards.forEach(card => {
                 const name = card.getAttribute('data-name');
                 const location = card.getAttribute('data-location');
-                
+
                 if (name.includes(searchInput) || location.includes(searchInput)) {
                     card.style.display = 'block';
                 } else {
@@ -251,8 +264,9 @@
                 }
             });
         }
-        
+
         document.addEventListener('DOMContentLoaded', loadProjects);
     </script>
 </body>
+
 </html>

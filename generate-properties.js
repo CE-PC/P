@@ -17,43 +17,43 @@ const OUTPUT_FILE = './static/js/properties.js';
  */
 function scanProjects() {
     const projects = {};
-    
+
     // Check if directory exists
     if (!fs.existsSync(PROJECTS_DIR)) {
         console.error(`❌ Directory not found: ${PROJECTS_DIR}`);
         console.log('💡 Make sure you run this from the root of your project');
         process.exit(1);
     }
-    
+
     const folders = fs.readdirSync(PROJECTS_DIR, { withFileTypes: true })
         .filter(dirent => dirent.isDirectory())
         .map(dirent => dirent.name);
-    
+
     console.log(`📁 Found ${folders.length} folders to scan...\n`);
-    
+
     folders.forEach(folder => {
         const folderPath = path.join(PROJECTS_DIR, folder);
         const files = fs.readdirSync(folderPath);
-        
+
         // Get all image files (excluding description file)
-        const images = files.filter(file => 
+        const images = files.filter(file =>
             /\.(jpg|jpeg|png|gif|webp)$/i.test(file) &&
             !file.startsWith('zzz_')
         ).sort(); // Sort alphabetically
-        
+
         // Use folder name directly as project name
         let projectName = folder;
-        
+
         projects[folder] = {
             name: projectName,
             location: "Calamba, Laguna",
             folder: folder,
             images: images
         };
-        
+
         console.log(`✓ ${projectName}: ${images.length} image${images.length !== 1 ? 's' : ''}`);
     });
-    
+
     return projects;
 }
 
@@ -62,13 +62,13 @@ function scanProjects() {
  */
 function generateFile() {
     console.log('🔨 Generating properties.js...\n');
-    
+
     const projects = scanProjects();
-    
+
     // Format the projects object with proper indentation
     const projectsJson = JSON.stringify(projects, null, 8)
         .replace(/"([^"]+)":/g, '"$1":'); // Keep quotes for folder keys
-    
+
     const fileContent = `/**
  * AUTO-GENERATED PROPERTY CONFIG
  * ==============================
@@ -174,15 +174,15 @@ window.PROPERTY_LOADER = window.PROPERTY_DATA;
  * =============================================
  */
 `;
-    
+
     // Ensure output directory exists
     const outputDir = path.dirname(OUTPUT_FILE);
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
-    
+
     fs.writeFileSync(OUTPUT_FILE, fileContent);
-    
+
     console.log(`\n✅ Generated ${OUTPUT_FILE}`);
     console.log(`📦 Total projects: ${Object.keys(projects).length}`);
     console.log(`\n🚀 Ready to commit and push!`);

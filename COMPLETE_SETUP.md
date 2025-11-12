@@ -164,11 +164,11 @@ If you see a spinning wheel forever, it means:
 1. Make sure `properties.js` is at: `/static/js/properties.js`
 2. Check that `projects-auto.html` has this line:
    ```html
-   <script src="/static/js/properties.js"></script>
+   <script src="/static/js/properties.js?v=123"></script>
    ```
 3. Check that `property.html` has this line:
    ```html
-   <script src="/static/js/properties.js"></script>
+   <script src="/static/js/properties.js?v=123"></script>
    ```
 
 ---
