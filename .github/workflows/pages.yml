@@ -1,0 +1,96 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Step 1: Generate property data (only if images changed)
+  generate:
+    runs-on: ubuntu-latest
+    outputs:
+      images_changed: ${{ steps.check_images.outputs.changed }}
+    
+    steps:
+    - name: 📥 Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2  # Need previous commit to compare
+        
+    - name: 🔍 Check if images changed
+      id: check_images
+      run: |
+        if git diff --name-only HEAD~1 HEAD | grep -qE 'static/images/(projects|partners)/'; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "📸 Images changed - will generate data files"
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "ℹ️ No image changes - skipping generation"
+        fi
+        
+    - name: 🟢 Setup Node.js
+      if: steps.check_images.outputs.changed == 'true'
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: 🔨 Generate property and partner data
+      if: steps.check_images.outputs.changed == 'true'
+      run: |
+        echo "🏠 Generating properties.js..."
+        node generate-properties.js
+        echo "🤝 Generating partners.js..."
+        node generate-partners.js
+        
+    - name: 📤 Commit generated files
+      if: steps.check_images.outputs.changed == 'true'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add static/js/properties.js static/js/partners.js
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "🤖 Update generated data files"
+          git push
+        fi
+
+  # Step 2: Deploy to GitHub Pages (always runs, but after generation if needed)
+  deploy:
+    needs: generate
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: 📥 Checkout latest code
+        uses: actions/checkout@v4
+        with:
+          ref: main  # Get the latest including any commits from generate job
+          
+      - name: ⚙️ Setup Pages
+        uses: actions/configure-pages@v5
+        
+      - name: 📦 Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+          
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
+      - name: ✅ Deployment complete
+        run: echo "✅ Site deployed successfully!"
