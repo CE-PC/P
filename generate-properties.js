@@ -41,14 +41,8 @@ function scanProjects() {
             !file.startsWith('zzz_')
         ).sort(); // Sort alphabetically
         
-        // Use folder name as project name (with smart formatting)
-        let projectName = folder
-            // Replace hyphens and underscores with spaces
-            .replace(/[-_]/g, ' ')
-            // Capitalize first letter of each word
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-            .join(' ');
+        // Use folder name directly as project name
+        let projectName = folder;
         
         projects[folder] = {
             name: projectName,

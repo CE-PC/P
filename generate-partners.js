@@ -13,35 +13,6 @@ const PARTNERS_DIR = './static/images/partners';
 const OUTPUT_FILE = './static/js/partners.js';
 
 /**
- * Load custom titles from titles.txt if it exists
- */
-function loadCustomTitles() {
-    const titlesFile = path.join(PARTNERS_DIR, 'titles.txt');
-    const customTitles = {};
-    
-    if (fs.existsSync(titlesFile)) {
-        console.log('📝 Found titles.txt - using custom titles\n');
-        const content = fs.readFileSync(titlesFile, 'utf8');
-        
-        content.split('\n').forEach(line => {
-            line = line.trim();
-            if (line && !line.startsWith('#')) {
-                const parts = line.split('|');
-                if (parts.length === 2) {
-                    const filename = parts[0].trim();
-                    const title = parts[1].trim();
-                    customTitles[filename] = title;
-                }
-            }
-        });
-        
-        console.log(`✓ Loaded ${Object.keys(customTitles).length} custom titles\n`);
-    }
-    
-    return customTitles;
-}
-
-/**
  * Scan all images in partners directory
  */
 function scanPartners() {
@@ -52,47 +23,21 @@ function scanPartners() {
         process.exit(1);
     }
     
-    // Load custom titles if available
-    const customTitles = loadCustomTitles();
-    
     const files = fs.readdirSync(PARTNERS_DIR);
     
     // Get all image files
     const images = files.filter(file => 
-        /\.(jpg|jpeg|png|gif|webp)$/i.test(file) &&
-        file !== 'titles.txt'
+        /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
     ).sort(); // Sort alphabetically
     
     console.log(`📁 Found ${images.length} partner images\n`);
     
-    // Generate partner objects with smart titles
+    // Generate partner objects - filename (without extension) as title
     const partners = images.map(filename => {
-        let title;
+        // Use filename without extension as title
+        const title = filename.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
         
-        // Use custom title if available
-        if (customTitles[filename]) {
-            title = customTitles[filename];
-            console.log(`✓ ${filename} → "${title}" (custom)`);
-        } else {
-            // Auto-generate title from filename
-            title = filename
-                .replace(/\.(jpg|jpeg|png|gif|webp)$/i, '') // Remove extension
-                .replace(/image[_-]?\d+/i, '') // Remove "image_123" pattern
-                .replace(/[_-]/g, ' ') // Replace underscores/hyphens with spaces
-                .trim();
-            
-            // If empty after cleanup, use filename without extension
-            if (!title) {
-                title = filename.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
-            }
-            
-            // Capitalize first letter of each word
-            title = title.split(' ')
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                .join(' ');
-            
-            console.log(`✓ ${filename} → "${title}" (auto)`);
-        }
+        console.log(`✓ ${filename} → "${title}"`);
         
         return {
             filename: filename,
@@ -135,31 +80,16 @@ window.PARTNERS_DATA = {
  * HOW TO ADD NEW PARTNERS
  * =============================================
  * 
- * OPTION 1: Descriptive Filenames (Recommended)
- * ----------------------------------------------
- * Name your files descriptively:
- *   amaia-land.jpg → "Amaia Land"
- *   crown-asia.png → "Crown Asia"
- *   partner-name.jpeg → "Partner Name"
- * 
- * OPTION 2: Custom Titles File
- * -----------------------------
- * Create: /static/images/partners/titles.txt
- * 
- * Format (one per line):
- * image_146.jpeg | Amaia Land
- * image_148.jpeg | Community Event
- * partner-logo.png | Partner Name
- * 
- * (Lines starting with # are ignored as comments)
- * 
  * Step 1: Add images to folder
  * -----------------------------
  * /static/images/partners/
- *   ├── image_146.jpeg
- *   ├── new_partner.jpg
- *   ├── another_partner.png
- *   └── titles.txt  (optional)
+ *   ├── amaia-land.jpeg
+ *   ├── crown-asia.png
+ *   └── partner-name.jpg
+ * 
+ * The filename (without extension) becomes the title:
+ *   amaia-land.jpeg → Title: "amaia-land"
+ *   crown-asia.png → Title: "crown-asia"
  * 
  * Step 2: Run the generator
  * -------------------------
