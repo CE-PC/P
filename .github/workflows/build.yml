@@ -1,62 +1,44 @@
-name: Auto-Generate Property Data
+name: Generate Property Data
 
 on:
   push:
-    branches: [ main, master ]  # Triggers on push to main or master
+    branches: [ main, master ]
     paths:
       - 'static/images/projects/**'
       - 'static/images/partners/**'
-      - 'generate-properties.js'
-      - 'generate-partners.js'
-  workflow_dispatch:  # Allows manual trigger from Actions tab
+  workflow_dispatch:
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write  # Allow pushing changes back
+      contents: write
     
     steps:
-    - name: 📥 Checkout code
+    - name: 📥 Checkout
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0  # Fetch all history
         
     - name: 🟢 Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
         
-    - name: 🔨 Generate property data
+    - name: 🔨 Generate files
       run: |
-        echo "🏠 Generating properties.js..."
         node generate-properties.js
-        
-    - name: 🤝 Generate partners data
-      run: |
-        echo "🤝 Generating partners.js..."
         node generate-partners.js
         
-    - name: 🔍 Check for changes
-      id: verify_diff
+    - name: 📤 Commit changes
       run: |
-        git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
-        
-    - name: 📤 Commit and push if changed
-      if: steps.verify_diff.outputs.changed == 'true'
-      run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "actions@github.com"
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git add static/js/properties.js static/js/partners.js
-        git commit -m "🤖 Auto-generate property and partner data [skip ci]"
-        git push
-        
-    - name: ✅ Success
-      if: steps.verify_diff.outputs.changed == 'true'
-      run: echo "✅ Property data updated and pushed!"
-      
-    - name: ℹ️ No changes
-      if: steps.verify_diff.outputs.changed != 'true'
-      run: echo "ℹ️ No changes detected"
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "🤖 Update generated data files"
+          git push
+        fi
