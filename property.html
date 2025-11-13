@@ -312,6 +312,19 @@
                                     style="font-size: 1.1rem; color: #666;"></div>
                             </div>
                         </div>
+                        <!-- Inquiry Form Section -->
+                        <div class="property-details mt-4">
+                            <h4 style="color: #c8102e; margin-bottom: 1rem;">
+                                <i class="fas fa-clipboard-list"></i> Request Property Information
+                            </h4>
+                            <p style="color: #666; margin-bottom: 1rem; text-align: center;">
+                                Interested in this property? Fill out our inquiry form and we'll get back to you soon.
+                            </p>
+                            <button onclick="openInquiryForm()" class="btn btn-block"
+                                style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); color: white; padding: 12px; font-weight: 600; border-radius: 8px;">
+                                <i class="fas fa-file-alt"></i> Submit Inquiry Form
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Right Column: Features & Contact -->
@@ -552,6 +565,28 @@
                     btn.innerHTML = '<i class="fas fa-link"></i>';
                 }, 2000);
             });
+        }
+
+        function openInquiryForm() {
+            // Get current property data from the page
+            const propertyName = document.getElementById('property-title').textContent;
+            const propertyLocation = document.getElementById('property-location').textContent.replace('📍 ', '').trim();
+            const propertyCategory = document.getElementById('property-category').textContent;
+            const propertyUrl = window.location.href;
+
+            // Your Google Form URL
+            const formBaseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdW4qEGG5YwfKj3twGaxF41T5xg0Me5WY3G6b147UL4ujrOsg/viewform';
+
+            // Your entry IDs from Google Forms
+            const params = new URLSearchParams({
+                'entry.384175351': propertyName,       // Property Name
+                'entry.1764803982': propertyLocation,  // Property Location
+                'entry.142418475': propertyCategory,   // Property Category
+                'entry.19700063': propertyUrl          // Property Listing URL
+            });
+
+            // Open the form in a new tab
+            window.open(`${formBaseUrl}?${params.toString()}`, '_blank');
         }
 
         // Update active thumbnail when carousel changes
