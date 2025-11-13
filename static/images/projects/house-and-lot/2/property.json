@@ -20,5 +20,10 @@
     "description": "• School\n• Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
     "location": "Block 37 Lot 7-14 Expressive Gallery, Madison South Batino, Calamba City",
     "price": "₱5,500,000.00",
-    "status": "CLEAN CCT COMPLETE"
+    "status": "CLEAN CCT COMPLETE",
+    "statusOptions": [
+        "available",
+        "reserved",
+        "sold"
+    ]
 }
