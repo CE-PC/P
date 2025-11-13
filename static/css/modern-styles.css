@@ -19,11 +19,13 @@ body {
     background-color: var(--light-bg);
     color: var(--dark-text);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* Smooth scroll */
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* Header & Navigation */
@@ -41,24 +43,48 @@ header {
 }
 
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.0rem;
     font-weight: 700;
     color: var(--accent-yellow) !important;
     transition: transform 0.3s ease;
+    padding-left: 0.75rem;
+    /* add some breathing room on the left */
 }
 
 .navbar-brand:hover {
     transform: scale(1.05);
 }
 
-.nav-link {
-    color: var(--accent-yellow) !important;
-    font-weight: 500;
+/* .nav-link {
     padding: 0.5rem 1rem !important;
     margin: 0 0.25rem;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+} */
+
+.nav-link {
+    display: flex;
+    color: var(--accent-yellow) !important;
+    /* icon + text on one line */
+    align-items: center;
+    /* vertically center them */
+    gap: 0.4rem;
+    /* small space between icon and text */
+    padding: 0.4rem 0.75rem !important;
+    /* reduce padding */
+    line-height: 0.5;
+    /* tighter line height */
+    /* font-weight: 500; */
+    /* border-radius: 4px; */
+
+
 }
+
+.nav-link i {
+    font-size: 1rem;
+    /* slightly smaller icon */
+}
+
 
 .nav-link:hover {
     background-color: rgba(243, 239, 17, 0.1);
@@ -584,6 +610,16 @@ footer {
     .lightbox-nav {
         padding: 0.5rem;
         font-size: 1.5rem;
+    }
+
+    .navbar-brand {
+        padding-left: 1rem;
+        /* slightly more on mobile */
+    }
+
+    .nav-link {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.95rem;
     }
 
     .section-title {

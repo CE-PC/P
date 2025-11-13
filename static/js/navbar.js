@@ -1,15 +1,3 @@
-/**
- * NAVBAR COMPONENT
- * ================
- * Reusable navigation bar for all pages
- * 
- * Usage: Add this script to your HTML:
- * <script src="/static/js/navbar.js"></script>
- * 
- * Then add this where you want the navbar:
- * <div id="navbar-container"></div>
- */
-
 (function () {
     // Define navigation items
     const navItems = [
@@ -23,7 +11,6 @@
         { href: '/contact.html', icon: 'fas fa-envelope', text: 'Contact', page: 'contact' }
     ];
 
-    // Get current page from URL
     function getCurrentPage() {
         const path = window.location.pathname;
         if (path === '/' || path.endsWith('index.html')) return 'index';
@@ -31,7 +18,6 @@
         return page || 'index';
     }
 
-    // Generate navbar HTML
     function generateNavbar() {
         const currentPage = getCurrentPage();
 
@@ -68,17 +54,34 @@
         `;
     }
 
-    // Insert navbar when DOM is ready
     function insertNavbar() {
         const container = document.getElementById('navbar-container');
         if (container) {
             container.innerHTML = generateNavbar();
+            checkNavbarOverflow(); // check immediately after insertion
+            window.addEventListener('resize', checkNavbarOverflow); // check on resize
         } else {
             console.warn('Navbar container not found. Add <div id="navbar-container"></div> to your HTML.');
         }
     }
 
-    // Auto-insert if document is ready, otherwise wait
+    // **New function to collapse navbar if items overflow**
+    function checkNavbarOverflow() {
+        const navbar = document.querySelector('.navbar');
+        const navCollapse = document.querySelector('.navbar-collapse');
+        const navItems = document.querySelector('.navbar-nav');
+
+        if (!navbar || !navCollapse || !navItems) return;
+
+        // If items overflow the container width
+        if (navItems.scrollWidth > navbar.clientWidth) {
+            navbar.classList.add('collapsed-dynamic');
+        } else {
+            navbar.classList.remove('collapsed-dynamic');
+        }
+    }
+
+    // Auto-insert if document is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', insertNavbar);
     } else {
