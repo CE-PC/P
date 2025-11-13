@@ -11,6 +11,7 @@ const path = require('path');
 
 const PROJECTS_DIR = './static/images/projects';
 const OUTPUT_FILE = './static/js/properties.js';
+const DEFAULT_LOCATION = "Calamba, Laguna, Philippines"; // Default location with Philippines for better geocoding
 
 /**
  * Scan all categories and their projects
@@ -53,7 +54,7 @@ function scanProjects() {
 
             projectsByCategory[category][folder] = {
                 name: folder,
-                location: "Calamba, Laguna", // default, overridden by property.json
+                location: DEFAULT_LOCATION, // Use default location
                 category: category,
                 folder: folder,
                 images: images
@@ -103,6 +104,7 @@ function generateFile() {
 
 window.PROPERTY_DATA = {
     basePath: "/static/images/projects/",
+    defaultLocation: "${DEFAULT_LOCATION}",
     categories: ${JSON.stringify(categoriesMetadata, null, 4)},
     projectsByCategory: ${projectsJson},
 
@@ -119,7 +121,7 @@ window.PROPERTY_DATA = {
 
         // Default values
         let description = null;
-        let location = project.location; // overridden by property.json if exists
+        let location = project.location || this.defaultLocation; // Use default if not set
         let status = null;               // e.g., "CLEAN CCT COMPLETE"
         let price = null;                // e.g., "₱5,500,000.00"
         let contact = [];                // optional contact info array
@@ -139,12 +141,15 @@ window.PROPERTY_DATA = {
             if (response.ok) {
                 const jsonData = await response.json();
 
-                // Override location if specified
+                // Override location if specified, otherwise use default
                 if (jsonData.location) {
                     location = jsonData.location;
-                    const locIndex = features.findIndex(f => f.icon === "fas fa-map-marker-alt");
-                    if (locIndex >= 0) features[locIndex].text = location;
+                } else {
+                    location = this.defaultLocation;
                 }
+                
+                const locIndex = features.findIndex(f => f.icon === "fas fa-map-marker-alt");
+                if (locIndex >= 0) features[locIndex].text = location;
 
                 // Override status, price, contact, other
                 if (jsonData.status) status = jsonData.status;
@@ -243,6 +248,7 @@ window.PROPERTY_LOADER = window.PROPERTY_DATA;
     console.log(`\n✅ Generated ${OUTPUT_FILE}`);
     console.log(`📦 Total projects: ${totalProjects}`);
     console.log(`📂 Categories: ${categories.length}`);
+    console.log(`📍 Default location: ${DEFAULT_LOCATION}`);
 }
 
 try {

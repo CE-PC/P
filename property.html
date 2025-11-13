@@ -13,16 +13,73 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Custom Styles -->
     <link rel="stylesheet" href="/static/css/modern-styles.css">
     <!-- Favicon -->
     <link rel="icon" href="/static/images/icon.jpg" type="image/x-icon">
 
     <style>
+        /* LAYOUT IMPROVEMENTS */
         .property-container {
             padding: 40px 0;
         }
 
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #c8102e;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+        }
+
+        /* Price Card - NEW: Prominent pricing display */
+        .price-highlight {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+        }
+
+        .price-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-status {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Property Header */
         .property-header {
             margin-bottom: 30px;
         }
@@ -72,23 +129,27 @@
             margin-right: 8px;
         }
 
+        /* Gallery - IMPROVED: Better spacing */
         .property-gallery {
-            margin-bottom: 40px;
+            margin-bottom: 2rem;
         }
 
-        .main-image {
-            width: 100%;
+        .carousel-inner {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .carousel-item img {
             height: 500px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
             cursor: pointer;
         }
 
         .thumbnail-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
+            gap: 0.75rem;
+            margin-top: 1rem;
         }
 
         .thumbnail {
@@ -110,108 +171,233 @@
             border-color: #c8102e;
         }
 
-        .property-details {
+        /* Section Cards */
+        .section-card {
             background: white;
-            padding: 30px;
+            padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
         }
 
-        .property-feature {
+        .section-card h3 {
+            color: #c8102e;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .property-feature:last-child {
-            border-bottom: none;
-        }
-
-        .property-feature i {
+            gap: 0.75rem;
             font-size: 1.5rem;
-            color: #c8102e;
-            margin-right: 1rem;
-            min-width: 30px;
         }
 
+        /* Features Grid - IMPROVED: Better for sidebar */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            background: #fff5f7;
+            transform: translateX(4px);
+        }
+
+        .feature-item i {
+            font-size: 1.25rem;
+            color: #c8102e;
+            min-width: 24px;
+        }
+
+        .feature-item span {
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        /* Description */
         .description-text {
             color: #666;
             line-height: 1.8;
             white-space: pre-wrap;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
-        .contact-section {
-            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-            padding: 30px;
+        /* Map Container */
+        #property-map {
+            height: 400px;
             border-radius: 12px;
-            text-align: center;
-            color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
-        .cta-section {
-            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-            border-radius: 12px;
-            padding: 2rem;
-            color: white;
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .contact-buttons {
+        .map-loading {
+            height: 400px;
             display: flex;
-            gap: 15px;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
+            background: #f5f5f5;
+            border-radius: 12px;
+            color: #666;
+        }
+
+        /* Contact Section - IMPROVED: Grid layout */
+        .contact-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-section h3 {
+            color: #c8102e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-btn {
-            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            text-align: center;
         }
 
-        .contact-btn-primary {
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            color: white;
+        }
+
+        .btn-messenger {
+            background: #0084FF;
+            color: white;
+        }
+
+        .btn-messenger:hover {
+            background: #0073e6;
+            color: white;
+        }
+
+        .btn-email {
+            background: #a77846;
+            color: white;
+        }
+
+        .btn-email:hover {
+            background: #8a5f38;
+            color: white;
+        }
+
+        .btn-phone {
             background: #c8102e;
             color: white;
         }
 
-        .contact-btn-primary:hover {
+        .btn-phone:hover {
             background: #a00d25;
             color: white;
-            text-decoration: none;
         }
 
-        .contact-btn-secondary {
-            background: white;
-            color: #c8102e;
-            border: 2px solid #c8102e;
-        }
-
-        .contact-btn-secondary:hover {
-            background: #c8102e;
+        .btn-inquiry {
+            background: #2a2a33;
             color: white;
+        }
+
+        .btn-inquiry:hover {
+            background: #1a1a20;
+            color: white;
+        }
+
+        /* Share Section - IMPROVED: Inline with icons */
+        .share-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-top: 2rem;
+        }
+
+        .share-section h4 {
+            color: #c8102e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             text-decoration: none;
         }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
+        .share-facebook {
+            background: #1877f2;
+            color: white;
         }
 
-        .carousel-indicators {
-            bottom: -50px;
+        .share-twitter {
+            background: #1DA1F2;
+            color: white;
         }
 
-        .carousel-indicators li {
-            background-color: #c8102e;
+        .share-copy {
+            background: #666;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
 
         .loading {
@@ -246,12 +432,23 @@
             margin-bottom: 20px;
         }
 
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .property-title {
                 font-size: 2rem;
             }
 
-            .main-image {
+            .carousel-item img {
                 height: 300px;
             }
 
@@ -259,12 +456,20 @@
                 grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
 
-            .contact-buttons {
+            .price-amount {
+                font-size: 2rem;
+            }
+
+            #property-map {
+                height: 300px;
+            }
+
+            .share-buttons {
                 flex-direction: column;
             }
 
-            .contact-btn {
-                width: 100%;
+            .share-btn {
+                min-width: 100%;
             }
         }
     </style>
@@ -287,6 +492,7 @@
                     <i class="fas fa-arrow-left"></i> Back to Projects
                 </a>
 
+                <!-- Property Header -->
                 <div class="property-header">
                     <div class="property-category" id="property-category"></div>
                     <h1 class="section-title" id="property-title">Property Name</h1>
@@ -295,100 +501,121 @@
                     </div>
                 </div>
 
+                <!-- NEW: Price Highlight at Top -->
+                <div class="price-highlight" id="price-section" style="display: none;">
+                    <div class="price-label">Asking Price</div>
+                    <div class="price-amount" id="property-price">₱5,500,000.00</div>
+                    <div class="price-status" id="property-status">CLEAN CCT COMPLETE</div>
+                </div>
+
                 <div class="row">
-                    <!-- Left Column: Images & Description -->
+                    <!-- Left Column: Gallery, Description, Map -->
                     <div class="col-lg-8 mb-4">
-                        <!-- Gallery (Carousel will be injected here) -->
+                        <!-- Gallery -->
                         <div class="property-gallery">
-                            <!-- Carousel will be injected by JavaScript -->
+                            <!-- Carousel injected by JavaScript -->
                         </div>
 
                         <!-- Description -->
                         <div id="description-section" style="display: none;">
-                            <div class="property-details">
-                                <h3 style="color: #c8102e; margin-bottom: 1.5rem;">
-                                    <i class="fas fa-info-circle"></i> Property Description
+                            <div class="section-card">
+                                <h3>
+                                    <i class="fas fa-info-circle"></i>
+                                    Property Description
                                 </h3>
-                                <div class="description-text" id="property-description"
-                                    style="font-size: 1.1rem; color: #666;"></div>
+                                <div class="description-text" id="property-description"></div>
                             </div>
                         </div>
-                        <!-- Inquiry Form Section -->
-                        <div class="property-details mt-4">
-                            <h4 style="color: #c8102e; margin-bottom: 1rem;">
-                                <i class="fas fa-clipboard-list"></i> Request Property Information
-                            </h4>
-                            <p style="color: #666; margin-bottom: 1rem; text-align: center;">
-                                Interested in this property? Fill out our inquiry form and we'll get back to you soon.
-                            </p>
-                            <button onclick="openInquiryForm()" class="btn btn-block"
-                                style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); color: white; padding: 12px; font-weight: 600; border-radius: 8px;">
-                                <i class="fas fa-file-alt"></i> Submit Inquiry Form
-                            </button>
+
+                        <!-- Map Section -->
+                        <div class="section-card">
+                            <h3>
+                                <i class="fas fa-map-marked-alt"></i>
+                                Property Location
+                            </h3>
+                            <div id="map-container">
+                                <div class="map-loading">
+                                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #c8102e;"></i>
+                                    <span style="margin-left: 10px;">Loading map...</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Right Column: Features & Contact -->
+                    <!-- Right Column: Features, Contact & Share -->
                     <div class="col-lg-4">
-                        <!-- Features -->
-                        <div class="property-details">
-                            <h3 style="color: #c8102e; margin-bottom: 1.5rem;">
-                                <i class="fas fa-list"></i> Property Features
+                        <!-- Property Features Section - MOVED TO SIDEBAR -->
+                        <div class="section-card">
+                            <h3>
+                                <i class="fas fa-list"></i>
+                                Property Features
                             </h3>
-                            <div id="features-grid">
+                            <div class="features-grid" id="features-grid">
                                 <!-- Features populated by JavaScript -->
                             </div>
                         </div>
 
                         <!-- Contact Section -->
-                        <div class="cta-section">
-                            <h3 class="mb-3">Interested in This Property?</h3>
-                            <p class="mb-4">Contact us today for more information and schedule a viewing.</p>
+                        <div class="contact-section">
+                            <h3>
+                                <i class="fas fa-phone"></i>
+                                Contact Agent
+                            </h3>
+                            <p style="color: #666; margin-bottom: 1.5rem; text-align: center;">
+                                Interested in this property? Get in touch with us today!
+                            </p>
 
-                            <a href="https://wa.me/639770549679" target="_blank" class="contact-link whatsapp mb-2"
-                                style="display: block; background-color: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                                <i class="fab fa-whatsapp"></i> WhatsApp Us
-                            </a>
+                            <div class="contact-grid">
+                                <a href="#" id="whatsapp-link" target="_blank" class="contact-btn btn-whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                    WhatsApp
+                                </a>
 
-                            <a href="mailto:cepc.development@gmail.com" class="contact-link mb-2"
-                                style="display: block; background-color: white; color: #c8102e; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                                <i class="fas fa-envelope"></i> Email Us
-                            </a>
+                                <a href="#" id="messenger-link" target="_blank" class="contact-btn btn-messenger">
+                                    <i class="fab fa-facebook-messenger"></i>
+                                    Messenger
+                                </a>
 
-                            <a href="https://m.me/expressivesrealty.lynmanguiat" target="_blank"
-                                class="contact-link mb-2"
-                                style="display: block; background-color: #0084FF; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                                <i class="fab fa-facebook-messenger"></i> Send Message
-                            </a>
+                                <a href="mailto:cepc.development@gmail.com" class="contact-btn btn-email">
+                                    <i class="fas fa-envelope"></i>
+                                    Email
+                                </a>
 
-                            <a href="tel:+639770549679" class="contact-link mb-2"
-                                style="display: block; background-color: #c8102e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                                <i class="fas fa-phone"></i> 0977-054-9679
-                            </a>
+                                <a href="tel:+639770549679" class="contact-btn btn-phone">
+                                    <i class="fas fa-phone"></i>
+                                    0977-054-9679
+                                </a>
 
-                            <a href="tel:+639276154651" class="contact-link mb-2"
-                                style="display: block; background-color: #c8102e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                                <i class="fas fa-phone"></i> 0927-615-4651 GLOBE
-                            </a>
+                                <a href="tel:+639276154651" class="contact-btn btn-phone">
+                                    <i class="fas fa-phone"></i>
+                                    0927-615-4651
+                                </a>
+
+                                <button onclick="openInquiryForm()" class="contact-btn btn-inquiry">
+                                    <i class="fas fa-clipboard-list"></i>
+                                    Submit Inquiry
+                                </button>
+                            </div>
                         </div>
 
                         <!-- Share Section -->
-                        <div class="property-details mt-4">
-                            <h4 style="color: #c8102e; margin-bottom: 1rem;">
-                                <i class="fas fa-share-alt"></i> Share This Property
+                        <div class="share-section">
+                            <h4>
+                                <i class="fas fa-share-alt"></i>
+                                Share Property
                             </h4>
-                            <div style="display: flex; gap: 0.5rem; justify-content: center;">
-                                <a href="#" id="share-facebook" target="_blank" class="btn"
-                                    style="background-color: #1877f2; color: white; flex: 1;">
+                            <div class="share-buttons">
+                                <a href="#" id="share-facebook" target="_blank" class="share-btn share-facebook">
                                     <i class="fab fa-facebook"></i>
+                                    Facebook
                                 </a>
-                                <a href="#" id="share-twitter" target="_blank" class="btn"
-                                    style="background-color: #1DA1F2; color: white; flex: 1;">
+                                <a href="#" id="share-twitter" target="_blank" class="share-btn share-twitter">
                                     <i class="fab fa-twitter"></i>
+                                    Twitter
                                 </a>
-                                <button onclick="copyLink()" class="btn"
-                                    style="background-color: #666; color: white; flex: 1;" id="copy-btn">
+                                <button onclick="copyLink()" class="share-btn share-copy" id="copy-btn">
                                     <i class="fas fa-link"></i>
+                                    Copy Link
                                 </button>
                             </div>
                         </div>
@@ -401,7 +628,7 @@
                 <i class="fas fa-exclamation-circle"></i>
                 <h3>Property Not Found</h3>
                 <p>The property you're looking for doesn't exist or has been removed.</p>
-                <a href="/projects.html" class="contact-btn contact-btn-primary" style="margin-top: 20px;">
+                <a href="/projects.html" class="contact-btn btn-phone" style="margin-top: 20px; display: inline-flex;">
                     <i class="fas fa-arrow-left"></i> Back to Projects
                 </a>
             </div>
@@ -414,18 +641,77 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="/static/js/enhanced-modal.js"></script>
-
-    <!-- Load Properties Data -->
-    <script src="/static/js/properties.js?v=1763066853818"></script>
+    <script src="/static/js/properties.js?v=1763062872226"></script>
 
     <script>
+        let propertyMap = null;
+
+        async function initializeMap(address, propertyName) {
+            const mapContainer = document.getElementById('map-container');
+
+            try {
+                const geocodeUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`;
+
+                const response = await fetch(geocodeUrl, {
+                    headers: { 'User-Agent': 'CalambaExpressiveProperties/1.0' }
+                });
+
+                const data = await response.json();
+                let lat, lon;
+
+                if (data && data.length > 0) {
+                    lat = parseFloat(data[0].lat);
+                    lon = parseFloat(data[0].lon);
+                } else {
+                    lat = 14.2117;
+                    lon = 121.1653;
+                }
+
+                mapContainer.innerHTML = '<div id="property-map"></div>';
+                propertyMap = L.map('property-map').setView([lat, lon], 15);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(propertyMap);
+
+                const customIcon = L.divIcon({
+                    className: 'custom-marker',
+                    html: '<i class="fas fa-map-marker-alt" style="font-size: 40px; color: #c8102e;"></i>',
+                    iconSize: [40, 40],
+                    iconAnchor: [20, 40],
+                    popupAnchor: [0, -40]
+                });
+
+                const marker = L.marker([lat, lon], { icon: customIcon }).addTo(propertyMap);
+
+                marker.bindPopup(`
+                    <div style="min-width: 200px;">
+                        <div style="font-weight: 700; color: #c8102e; margin-bottom: 5px;">${propertyName}</div>
+                        <div style="color: #666; font-size: 13px;">
+                            <i class="fas fa-map-marker-alt" style="color: #c8102e;"></i> ${address}
+                        </div>
+                    </div>
+                `).openPopup();
+
+            } catch (error) {
+                console.error('Error initializing map:', error);
+                mapContainer.innerHTML = `
+                    <div class="map-loading" style="background: #ffe6e6; color: #c8102e;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span style="margin-left: 10px;">Unable to load map.</span>
+                    </div>
+                `;
+            }
+        }
+
         async function loadProperty() {
             const loading = document.getElementById('loading');
             const content = document.getElementById('property-content');
             const errorMessage = document.getElementById('error-message');
 
-            // Get category and ID from URL
             const urlParams = new URLSearchParams(window.location.search);
             const category = urlParams.get('category');
             const id = urlParams.get('id');
@@ -437,19 +723,15 @@
             }
 
             try {
-                // Get property data
                 const property = await window.PROPERTY_DATA.getProperty(category, id);
 
-                if (!property) {
-                    throw new Error('Property not found');
-                }
+                if (!property) throw new Error('Property not found');
 
-                // Update page title
                 document.title = `${property.name} - Calamba Expressive Properties`;
 
-                // Build carousel HTML
+                // Carousel
                 const carouselHTML = `
-                    <div id="propertyCarousel" class="carousel slide mb-4" data-ride="carousel">
+                    <div id="propertyCarousel" class="carousel slide mb-3" data-ride="carousel">
                         <ol class="carousel-indicators">
                             ${property.images.map((img, i) => `
                                 <li data-target="#propertyCarousel" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>
@@ -459,7 +741,6 @@
                             ${property.images.map((img, i) => `
                                 <div class="carousel-item ${i === 0 ? 'active' : ''}">
                                     <img src="${img}" class="d-block w-100" alt="${property.name} - Image ${i + 1}" 
-                                         style="height: 500px; object-fit: cover; border-radius: 12px; cursor: pointer;"
                                          onclick="openFullscreen(this)">
                                 </div>
                             `).join('')}
@@ -473,54 +754,38 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-
-                    <!-- Thumbnail Gallery -->
-                    <div class="row">
+                    <div class="thumbnail-grid">
                         ${property.images.map((img, i) => `
-                            <div class="col-4 col-md-3 mb-3">
-                                <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
-                                     alt="Thumbnail ${i + 1}"
-                                     onclick="changeSlide(${i})">
-                            </div>
+                            <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
+                                 alt="Thumbnail ${i + 1}" onclick="changeSlide(${i})">
                         `).join('')}
                     </div>
                 `;
 
-                // Replace old gallery with carousel
                 document.querySelector('.property-gallery').innerHTML = carouselHTML;
 
-                // Populate header info
+                // Header
                 document.getElementById('property-category').textContent = property.categoryName;
                 document.getElementById('property-title').textContent = property.name;
                 document.getElementById('property-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${property.location}`;
 
-                // // Populate description if available
-                // if (property.description) {
-                //     document.getElementById('description-section').style.display = 'block';
-                //     document.getElementById('property-description').textContent = property.description;
-                // }
-                // Populate description if available
-                if (property.description) {
-                    document.getElementById('description-section').style.display = 'block';
-                    const descElement = document.getElementById('property-description');
-
-                    // Check if description contains HTML tags
-                    const hasHTMLTags = /<[^>]+>/.test(property.description);
-
-                    if (hasHTMLTags) {
-                        // Render as HTML
-                        descElement.innerHTML = property.description;
-                    } else {
-                        // Render as plain text
-                        descElement.textContent = property.description;
+                // Price and Status
+                if (property.price || property.status) {
+                    const priceSection = document.getElementById('price-section');
+                    priceSection.style.display = 'block';
+                    if (property.price) {
+                        document.getElementById('property-price').textContent = property.price;
+                    }
+                    if (property.status) {
+                        document.getElementById('property-status').textContent = property.status;
                     }
                 }
 
-                // Populate features
+                // Features
                 const featuresGrid = document.getElementById('features-grid');
                 property.features.forEach(feature => {
                     const featureItem = document.createElement('div');
-                    featureItem.className = 'property-feature';
+                    featureItem.className = 'feature-item';
                     featureItem.innerHTML = `
                         <i class="${feature.icon}"></i>
                         <span>${feature.text}</span>
@@ -528,15 +793,30 @@
                     featuresGrid.appendChild(featureItem);
                 });
 
-                // Setup share links
+                // Description
+                if (property.description) {
+                    document.getElementById('description-section').style.display = 'block';
+                    const descElement = document.getElementById('property-description');
+                    const hasHTMLTags = /<[^>]+>/.test(property.description);
+                    if (hasHTMLTags) {
+                        descElement.innerHTML = property.description;
+                    } else {
+                        descElement.textContent = property.description;
+                    }
+                }
+
+                // Share links
                 const propertyUrl = encodeURIComponent(window.location.href);
                 const propertyName = encodeURIComponent(property.name);
                 document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${propertyUrl}`;
                 document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${propertyUrl}&text=${propertyName}`;
 
-                // Show content
                 loading.style.display = 'none';
                 content.style.display = 'block';
+
+                setTimeout(() => {
+                    initializeMap(property.location, property.name);
+                }, 300);
 
             } catch (error) {
                 console.error('Error loading property:', error);
@@ -561,36 +841,32 @@
         function copyLink() {
             navigator.clipboard.writeText(window.location.href).then(() => {
                 const btn = document.getElementById('copy-btn');
-                btn.innerHTML = '<i class="fas fa-check"></i>';
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
                 setTimeout(() => {
-                    btn.innerHTML = '<i class="fas fa-link"></i>';
+                    btn.innerHTML = originalHTML;
                 }, 2000);
             });
         }
 
         function openInquiryForm() {
-            // Get current property data from the page
             const propertyName = document.getElementById('property-title').textContent;
-            const propertyLocation = document.getElementById('property-location').textContent.replace('📍 ', '').trim();
+            const propertyLocation = document.getElementById('property-location').textContent.replace(/📍|<i[^>]*>.*?<\/i>/g, '').trim();
             const propertyCategory = document.getElementById('property-category').textContent;
             const propertyUrl = window.location.href;
 
-            // Your Google Form URL
             const formBaseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdW4qEGG5YwfKj3twGaxF41T5xg0Me5WY3G6b147UL4ujrOsg/viewform';
 
-            // Your entry IDs from Google Forms
             const params = new URLSearchParams({
-                'entry.384175351': propertyName,       // Property Name
-                'entry.1764803982': propertyLocation,  // Property Location
-                'entry.142418475': propertyCategory,   // Property Category
-                'entry.19700063': propertyUrl          // Property Listing URL
+                'entry.384175351': propertyName,
+                'entry.1764803982': propertyLocation,
+                'entry.142418475': propertyCategory,
+                'entry.19700063': propertyUrl
             });
 
-            // Open the form in a new tab
             window.open(`${formBaseUrl}?${params.toString()}`, '_blank');
         }
 
-        // Update active thumbnail when carousel changes
         $(document).ready(function () {
             $('#propertyCarousel').on('slid.bs.carousel', function (e) {
                 const index = $(e.relatedTarget).index();
