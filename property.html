@@ -117,50 +117,46 @@
             margin-bottom: 30px;
         }
 
-        .detail-section {
-            margin-bottom: 30px;
-        }
-
-        .detail-section h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2a2a33;
-            margin-bottom: 20px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-item {
+        .property-feature {
             display: flex;
             align-items: center;
-            gap: 12px;
-            color: #69707f;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
         }
 
-        .feature-item i {
+        .property-feature:last-child {
+            border-bottom: none;
+        }
+
+        .property-feature i {
+            font-size: 1.5rem;
             color: #c8102e;
-            font-size: 1.2rem;
+            margin-right: 1rem;
+            min-width: 30px;
         }
 
         .description-text {
-            color: #69707f;
+            color: #666;
             line-height: 1.8;
             white-space: pre-wrap;
+            font-size: 1.1rem;
         }
 
         .contact-section {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             padding: 30px;
             border-radius: 12px;
             text-align: center;
+            color: white;
         }
 
-        .contact-section h3 {
-            margin-bottom: 20px;
+        .cta-section {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            margin-top: 2rem;
         }
 
         .contact-buttons {
@@ -202,6 +198,19 @@
             background: #c8102e;
             color: white;
             text-decoration: none;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+
+        .carousel-indicators {
+            bottom: -50px;
+        }
+
+        .carousel-indicators li {
+            background-color: #c8102e;
         }
 
         .loading {
@@ -279,48 +288,96 @@
 
                 <div class="property-header">
                     <div class="property-category" id="property-category"></div>
-                    <h1 class="property-title" id="property-title">Property Name</h1>
+                    <h1 class="section-title" id="property-title">Property Name</h1>
                     <div class="property-location" id="property-location">
                         <i class="fas fa-map-marker-alt"></i> Location
                     </div>
                 </div>
 
-                <!-- Gallery -->
-                <div class="property-gallery">
-                    <img id="main-image" class="main-image" src="" alt="Property Image" onclick="openFullscreen(this)">
-                    <div id="thumbnail-grid" class="thumbnail-grid">
-                        <!-- Thumbnails populated by JavaScript -->
-                    </div>
-                </div>
+                <div class="row">
+                    <!-- Left Column: Images & Description -->
+                    <div class="col-lg-8 mb-4">
+                        <!-- Gallery (Carousel will be injected here) -->
+                        <div class="property-gallery">
+                            <!-- Carousel will be injected by JavaScript -->
+                        </div>
 
-                <!-- Details -->
-                <div class="property-details">
-                    <!-- Description -->
-                    <div class="detail-section" id="description-section" style="display: none;">
-                        <h3>Description</h3>
-                        <div class="description-text" id="property-description"></div>
-                    </div>
-
-                    <!-- Features -->
-                    <div class="detail-section">
-                        <h3>Property Features</h3>
-                        <div class="features-grid" id="features-grid">
-                            <!-- Features populated by JavaScript -->
+                        <!-- Description -->
+                        <div id="description-section" style="display: none;">
+                            <div class="property-details">
+                                <h3 style="color: #c8102e; margin-bottom: 1.5rem;">
+                                    <i class="fas fa-info-circle"></i> Property Description
+                                </h3>
+                                <div class="description-text" id="property-description"
+                                    style="font-size: 1.1rem; color: #666;"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Contact Section -->
-                <div class="contact-section">
-                    <h3>Interested in this property?</h3>
-                    <p style="color: #69707f; margin-bottom: 25px;">Contact us today to schedule a viewing or get more information</p>
-                    <div class="contact-buttons">
-                        <a href="tel:+639123456789" class="contact-btn contact-btn-primary">
-                            <i class="fas fa-phone"></i> Call Us
-                        </a>
-                        <a href="mailto:info@calambaexpressive.com" class="contact-btn contact-btn-secondary">
-                            <i class="fas fa-envelope"></i> Email Us
-                        </a>
+                    <!-- Right Column: Features & Contact -->
+                    <div class="col-lg-4">
+                        <!-- Features -->
+                        <div class="property-details">
+                            <h3 style="color: #c8102e; margin-bottom: 1.5rem;">
+                                <i class="fas fa-list"></i> Property Features
+                            </h3>
+                            <div id="features-grid">
+                                <!-- Features populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Contact Section -->
+                        <div class="cta-section">
+                            <h3 class="mb-3">Interested in This Property?</h3>
+                            <p class="mb-4">Contact us today for more information and schedule a viewing.</p>
+
+                            <a href="https://wa.me/639770549679" target="_blank" class="contact-link whatsapp mb-2"
+                                style="display: block; background-color: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Us
+                            </a>
+
+                            <a href="mailto:cepc.development@gmail.com" class="contact-link mb-2"
+                                style="display: block; background-color: white; color: #c8102e; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                                <i class="fas fa-envelope"></i> Email Us
+                            </a>
+
+                            <a href="https://m.me/expressivesrealty.lynmanguiat" target="_blank"
+                                class="contact-link mb-2"
+                                style="display: block; background-color: #0084FF; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                                <i class="fab fa-facebook-messenger"></i> Send Message
+                            </a>
+
+                            <a href="tel:+639770549679" class="contact-link mb-2"
+                                style="display: block; background-color: #c8102e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                                <i class="fas fa-phone"></i> 0977-054-9679
+                            </a>
+
+                            <a href="tel:+639276154651" class="contact-link mb-2"
+                                style="display: block; background-color: #c8102e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                                <i class="fas fa-phone"></i> 0927-615-4651 GLOBE
+                            </a>
+                        </div>
+
+                        <!-- Share Section -->
+                        <div class="property-details mt-4">
+                            <h4 style="color: #c8102e; margin-bottom: 1rem;">
+                                <i class="fas fa-share-alt"></i> Share This Property
+                            </h4>
+                            <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                <a href="#" id="share-facebook" target="_blank" class="btn"
+                                    style="background-color: #1877f2; color: white; flex: 1;">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="#" id="share-twitter" target="_blank" class="btn"
+                                    style="background-color: #1DA1F2; color: white; flex: 1;">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <button onclick="copyLink()" class="btn"
+                                    style="background-color: #666; color: white; flex: 1;" id="copy-btn">
+                                    <i class="fas fa-link"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -376,26 +433,52 @@
                 // Update page title
                 document.title = `${property.name} - Calamba Expressive Properties`;
 
-                // Populate content
+                // Build carousel HTML
+                const carouselHTML = `
+                    <div id="propertyCarousel" class="carousel slide mb-4" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            ${property.images.map((img, i) => `
+                                <li data-target="#propertyCarousel" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>
+                            `).join('')}
+                        </ol>
+                        <div class="carousel-inner">
+                            ${property.images.map((img, i) => `
+                                <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                                    <img src="${img}" class="d-block w-100" alt="${property.name} - Image ${i + 1}" 
+                                         style="height: 500px; object-fit: cover; border-radius: 12px; cursor: pointer;"
+                                         onclick="openFullscreen(this)">
+                                </div>
+                            `).join('')}
+                        </div>
+                        <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                    <!-- Thumbnail Gallery -->
+                    <div class="row">
+                        ${property.images.map((img, i) => `
+                            <div class="col-4 col-md-3 mb-3">
+                                <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
+                                     alt="Thumbnail ${i + 1}"
+                                     onclick="changeSlide(${i})">
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                // Replace old gallery with carousel
+                document.querySelector('.property-gallery').innerHTML = carouselHTML;
+
+                // Populate header info
                 document.getElementById('property-category').textContent = property.categoryName;
                 document.getElementById('property-title').textContent = property.name;
                 document.getElementById('property-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${property.location}`;
-
-                // Set main image
-                const mainImage = document.getElementById('main-image');
-                mainImage.src = property.images[0];
-                mainImage.alt = property.name;
-
-                // Populate thumbnails
-                const thumbnailGrid = document.getElementById('thumbnail-grid');
-                property.images.forEach((image, index) => {
-                    const thumbnail = document.createElement('img');
-                    thumbnail.src = image;
-                    thumbnail.alt = `${property.name} - Photo ${index + 1}`;
-                    thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
-                    thumbnail.onclick = () => changeMainImage(image, thumbnail);
-                    thumbnailGrid.appendChild(thumbnail);
-                });
 
                 // Populate description if available
                 if (property.description) {
@@ -407,13 +490,19 @@
                 const featuresGrid = document.getElementById('features-grid');
                 property.features.forEach(feature => {
                     const featureItem = document.createElement('div');
-                    featureItem.className = 'feature-item';
+                    featureItem.className = 'property-feature';
                     featureItem.innerHTML = `
                         <i class="${feature.icon}"></i>
                         <span>${feature.text}</span>
                     `;
                     featuresGrid.appendChild(featureItem);
                 });
+
+                // Setup share links
+                const propertyUrl = encodeURIComponent(window.location.href);
+                const propertyName = encodeURIComponent(property.name);
+                document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${propertyUrl}`;
+                document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${propertyUrl}&text=${propertyName}`;
 
                 // Show content
                 loading.style.display = 'none';
@@ -426,15 +515,11 @@
             }
         }
 
-        function changeMainImage(imageSrc, thumbnail) {
-            const mainImage = document.getElementById('main-image');
-            mainImage.src = imageSrc;
-
-            // Update active thumbnail
-            document.querySelectorAll('.thumbnail').forEach(thumb => {
-                thumb.classList.remove('active');
+        function changeSlide(index) {
+            $('#propertyCarousel').carousel(index);
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
             });
-            thumbnail.classList.add('active');
         }
 
         function openFullscreen(img) {
@@ -442,6 +527,26 @@
                 window.createImageModal(img.src);
             }
         }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-link"></i>';
+                }, 2000);
+            });
+        }
+
+        // Update active thumbnail when carousel changes
+        $(document).ready(function () {
+            $('#propertyCarousel').on('slid.bs.carousel', function (e) {
+                const index = $(e.relatedTarget).index();
+                document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+            });
+        });
 
         document.addEventListener('DOMContentLoaded', loadProperty);
     </script>
