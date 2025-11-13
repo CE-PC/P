@@ -87,11 +87,113 @@
             gap: 15px;
             color: #69707f;
             font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(200, 16, 46, 0.95);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filters-container {
+            max-width: 100%;
+            margin: 0 auto 20px;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid #dadce0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            margin-bottom: 20px;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-tab {
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            color: #5f6368;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            transition: all 0.2s;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            font-weight: 500;
+        }
+
+        .category-tab:hover {
+            color: #202124;
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .category-tab.active {
+            color: #c8102e;
+            border-bottom-color: #c8102e;
+        }
+
+        .more-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .more-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+
+        .more-dropdown-content.show {
+            display: block;
+        }
+
+        .more-dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #5f6368;
+            transition: background 0.2s;
+        }
+
+        .more-dropdown-item:hover {
+            background: #f8f9fa;
+        }
+
+        .more-dropdown-item:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .more-dropdown-item:last-child {
+            border-radius: 0 0 8px 8px;
         }
 
         .search-container {
             max-width: 600px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
+            position: relative;
         }
 
         .search-input {
@@ -100,10 +202,6 @@
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 1rem;
-        }
-
-        .search-container {
-            position: relative;
         }
 
         .search-icon {
@@ -115,20 +213,28 @@
             font-size: 1.2rem;
         }
 
+        .stats-bar {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #69707f;
+            font-size: 0.95rem;
+        }
+
+        .stats-bar strong {
+            color: #c8102e;
+        }
+
         .loading {
             position: fixed;
-            /* stay centered even on scroll */
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
-            /* stack spinner and text vertically */
             align-items: center;
             justify-content: center;
             text-align: center;
             z-index: 9999;
-            /* stay above all other content */
         }
 
         .loading i {
@@ -148,6 +254,34 @@
                 transform: rotate(360deg);
             }
         }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #69707f;
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .filters-container {
+                flex-direction: column;
+            }
+
+            .category-tabs {
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+        }
     </style>
 </head>
 
@@ -159,11 +293,27 @@
             <h1 class="section-title text-center">Our Projects</h1>
             <p class="section-subtitle text-center">Explore our portfolio of quality properties in Calamba, Laguna</p>
 
-            <!-- Search -->
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" id="searchInput" placeholder="Search projects..."
-                    onkeyup="filterProjects()">
+            <!-- Filters -->
+            <div class="filters-container">
+                <!-- Category Tabs -->
+                <div class="category-tabs" id="categoryTabs">
+                    <button class="category-tab active" data-category="all" onclick="selectCategory('all')">
+                        All
+                    </button>
+                    <!-- More tabs will be added by JavaScript -->
+                </div>
+
+                <!-- Search -->
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search projects..."
+                        onkeyup="filterProjects()">
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div id="stats-bar" class="stats-bar" style="display: none;">
+                Showing <strong id="visible-count">0</strong> of <strong id="total-count">0</strong> properties
             </div>
 
             <!-- Loading -->
@@ -175,6 +325,13 @@
             <!-- Projects Grid -->
             <div id="projects-grid" class="projects-grid" style="display: none;">
                 <!-- Cards populated by JavaScript -->
+            </div>
+
+            <!-- No Results -->
+            <div id="no-results" class="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No properties found</h3>
+                <p>Try adjusting your filters or search terms</p>
             </div>
         </div>
     </main>
@@ -192,64 +349,175 @@
 
     <script>
         let allCards = [];
+        let currentCategory = 'all';
+        const MAX_VISIBLE_TABS = 4;
+
+        function selectCategory(category) {
+            currentCategory = category;
+
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.more-dropdown-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            const activeTab = document.querySelector(`[data-category="${category}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+
+            filterProjects();
+        }
+
+        function toggleMoreDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('moreDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (event) {
+            const dropdown = document.getElementById('moreDropdown');
+            if (dropdown && !event.target.closest('.more-dropdown')) {
+                dropdown.classList.remove('show');
+            }
+        });
 
         function loadProjects() {
             const grid = document.getElementById('projects-grid');
             const loading = document.getElementById('loading');
-            const projects = window.PROPERTY_DATA.projects;
+            const categoryTabs = document.getElementById('categoryTabs');
+            const categories = window.PROPERTY_DATA.categories || [];
+            const projectsByCategory = window.PROPERTY_DATA.projectsByCategory;
+
+            // Create tabs
+            const visibleCategories = categories.slice(0, MAX_VISIBLE_TABS);
+            const moreCategories = categories.slice(MAX_VISIBLE_TABS);
+
+            // Add visible tabs
+            visibleCategories.forEach(category => {
+                const tab = document.createElement('button');
+                tab.className = 'category-tab';
+                tab.setAttribute('data-category', category.id);
+                tab.textContent = category.name;
+                tab.onclick = () => selectCategory(category.id);
+                categoryTabs.appendChild(tab);
+            });
+
+            // Add "More" dropdown if needed
+            if (moreCategories.length > 0) {
+                const moreDropdown = document.createElement('div');
+                moreDropdown.className = 'more-dropdown';
+                moreDropdown.innerHTML = `
+                    <button class="category-tab" onclick="toggleMoreDropdown(event)">
+                        More <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 4px;"></i>
+                    </button>
+                    <div class="more-dropdown-content" id="moreDropdown">
+                        ${moreCategories.map(cat => `
+                            <div class="more-dropdown-item" data-category="${cat.id}" onclick="selectCategory('${cat.id}')">
+                                ${cat.name}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                categoryTabs.appendChild(moreDropdown);
+            }
 
             setTimeout(() => {
                 loading.style.display = 'none';
                 grid.style.display = 'grid';
+                document.getElementById('stats-bar').style.display = 'block';
 
-                for (let id in projects) {
-                    const project = projects[id];
-                    if (!project.images || project.images.length === 0) continue;
+                let totalProjects = 0;
 
-                    const firstImage = window.PROPERTY_DATA.basePath + project.folder + '/' + project.images[0];
+                // Loop through each category
+                for (let category in projectsByCategory) {
+                    const projects = projectsByCategory[category];
+                    const categoryName = window.PROPERTY_DATA.getCategoryName(category);
 
-                    const card = document.createElement('div');
-                    card.className = 'project-card';
-                    card.setAttribute('data-name', project.name.toLowerCase());
-                    card.setAttribute('data-location', project.location.toLowerCase());
-                    card.onclick = () => window.location.href = `/property.html?id=${id}`;
+                    // Loop through each project in the category
+                    for (let id in projects) {
+                        const project = projects[id];
+                        if (!project.images || project.images.length === 0) continue;
 
-                    card.innerHTML = `
-                        <div class="project-image-wrapper">
-                            <img src="${firstImage}" alt="${project.name}" class="project-image">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-title">${project.name}</div>
-                            <div class="project-location">
-                                <i class="fas fa-map-marker-alt"></i> ${project.location}
+                        const firstImage = window.PROPERTY_DATA.basePath + category + '/' + project.folder + '/' + project.images[0];
+
+                        const card = document.createElement('div');
+                        card.className = 'project-card';
+                        card.setAttribute('data-name', project.name.toLowerCase());
+                        card.setAttribute('data-location', project.location.toLowerCase());
+                        card.setAttribute('data-category', category);
+                        card.onclick = () => window.location.href = `/property.html?category=${category}&id=${id}`;
+
+                        card.innerHTML = `
+                            <div class="project-image-wrapper">
+                                <img src="${firstImage}" alt="${project.name}" class="project-image">
+                                <div class="category-badge">${categoryName}</div>
                             </div>
-                            <div class="project-meta">
-                                <span><i class="fas fa-images"></i> ${project.images.length} photos</span>
+                            <div class="project-content">
+                                <div class="project-title">${project.name}</div>
+                                <div class="project-location">
+                                    <i class="fas fa-map-marker-alt"></i> ${project.location}
+                                </div>
+                                <div class="project-meta">
+                                    <span><i class="fas fa-images"></i> ${project.images.length} photo${project.images.length !== 1 ? 's' : ''}</span>
+                                </div>
                             </div>
-                        </div>
-                    `;
+                        `;
 
-                    grid.appendChild(card);
-                    allCards.push(card);
+                        grid.appendChild(card);
+                        allCards.push(card);
+                        totalProjects++;
+                    }
                 }
 
-                console.log(`✅ Loaded ${Object.keys(projects).length} projects`);
+                updateStats();
+                console.log(`✅ Loaded ${totalProjects} projects across ${Object.keys(projectsByCategory).length} categories`);
             }, 500);
         }
 
         function filterProjects() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
 
+            let visibleCount = 0;
+
             allCards.forEach(card => {
                 const name = card.getAttribute('data-name');
                 const location = card.getAttribute('data-location');
+                const category = card.getAttribute('data-category');
 
-                if (name.includes(searchInput) || location.includes(searchInput)) {
+                const matchesSearch = name.includes(searchInput) || location.includes(searchInput);
+                const matchesCategory = currentCategory === 'all' || category === currentCategory;
+
+                if (matchesSearch && matchesCategory) {
                     card.style.display = 'block';
+                    visibleCount++;
                 } else {
                     card.style.display = 'none';
                 }
             });
+
+            // Show/hide no results message
+            const noResults = document.getElementById('no-results');
+            const grid = document.getElementById('projects-grid');
+
+            if (visibleCount === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                grid.style.display = 'grid';
+                noResults.style.display = 'none';
+            }
+
+            updateStats();
+        }
+
+        function updateStats() {
+            const visibleCards = allCards.filter(card => card.style.display !== 'none');
+            document.getElementById('visible-count').textContent = visibleCards.length;
+            document.getElementById('total-count').textContent = allCards.length;
         }
 
         document.addEventListener('DOMContentLoaded', loadProjects);

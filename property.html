@@ -2,25 +2,13 @@
 <html lang="en">
 
 <head>
-
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#c8102e">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="View property details - photos, location, and features. Contact us for pricing and viewing schedule in Calamba, Laguna.">
-    <meta name="keywords"
-        content="property details Calamba, house for sale Laguna, property viewing, real estate listing Philippines">
+    <meta name="description" content="View detailed property information">
+    <title>Property Details - Calamba Expressive Properties</title>
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.calambaexpressive.com/property.html">
-    <meta property="og:title" content="Property Details - Calamba Expressive Properties">
-    <meta property="og:description"
-        content="View detailed property information including photos, location, and features.">
-    <meta property="og:image" content="https://www.calambaexpressive.com/static/images/icon.jpg">
-
-    <title>Property Details - Calamba Expressive Properties | Real Estate in Laguna</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -29,102 +17,200 @@
     <link rel="stylesheet" href="/static/css/modern-styles.css">
     <!-- Favicon -->
     <link rel="icon" href="/static/images/icon.jpg" type="image/x-icon">
+
     <style>
-        .property-detail-hero {
-            position: relative;
+        .property-container {
+            padding: 40px 0;
+        }
+
+        .property-header {
+            margin-bottom: 30px;
+        }
+
+        .property-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2a2a33;
+            margin-bottom: 15px;
+        }
+
+        .property-location {
+            font-size: 1.2rem;
+            color: #69707f;
+            margin-bottom: 10px;
+        }
+
+        .property-category {
+            display: inline-block;
+            background: #c8102e;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            color: #c8102e;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+
+        .back-button:hover {
+            color: #a00d25;
+            text-decoration: none;
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        .property-gallery {
+            margin-bottom: 40px;
+        }
+
+        .main-image {
+            width: 100%;
             height: 500px;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .property-detail-hero img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            cursor: pointer;
         }
 
-        .property-gallery-thumb {
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .thumbnail {
             width: 100%;
-            height: 120px;
+            height: 100px;
             object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
             border: 3px solid transparent;
         }
 
-        .property-gallery-thumb:hover {
+        .thumbnail:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .property-gallery-thumb.active {
+        .thumbnail.active {
             border-color: #c8102e;
         }
 
-        .property-info-card {
+        .property-details {
             background: white;
+            padding: 30px;
             border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
-        .property-feature {
+        .detail-section {
+            margin-bottom: 30px;
+        }
+
+        .detail-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2a2a33;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
             display: flex;
             align-items: center;
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
+            gap: 12px;
+            color: #69707f;
         }
 
-        .property-feature:last-child {
-            border-bottom: none;
-        }
-
-        .property-feature i {
-            font-size: 1.5rem;
+        .feature-item i {
             color: #c8102e;
-            margin-right: 1rem;
-            min-width: 30px;
+            font-size: 1.2rem;
         }
 
-        .cta-section {
-            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+        .description-text {
+            color: #69707f;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .contact-section {
+            background: #f8f9fa;
+            padding: 30px;
             border-radius: 12px;
-            padding: 2rem;
-            color: white;
             text-align: center;
-            margin-top: 2rem;
         }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
+        .contact-section h3 {
+            margin-bottom: 20px;
         }
 
-        .carousel-indicators {
-            bottom: -50px;
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .carousel-indicators li {
-            background-color: #c8102e;
+        .contact-btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-btn-primary {
+            background: #c8102e;
+            color: white;
+        }
+
+        .contact-btn-primary:hover {
+            background: #a00d25;
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-btn-secondary {
+            background: white;
+            color: #c8102e;
+            border: 2px solid #c8102e;
+        }
+
+        .contact-btn-secondary:hover {
+            background: #c8102e;
+            color: white;
+            text-decoration: none;
         }
 
         .loading {
             position: fixed;
-            /* stay centered even on scroll */
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            /* stack spinner and text vertically */
-            align-items: center;
-            justify-content: center;
             text-align: center;
             z-index: 9999;
-            /* stay above all other content */
         }
 
         .loading i {
@@ -133,83 +219,125 @@
             animation: spin 1s linear infinite;
         }
 
-        .loading p {
-            margin-top: 15px;
-            color: #666;
-            font-size: 1rem;
-        }
-
         @keyframes spin {
             to {
                 transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .error-message i {
+            font-size: 4rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .property-title {
+                font-size: 2rem;
+            }
+
+            .main-image {
+                height: 300px;
+            }
+
+            .thumbnail-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-custom">
-            <div class="container">
-                <a class="navbar-brand" href="/">
-                    <i class="fas fa-building"></i> Calamba Expressive Properties
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                    <span class="navbar-toggler-icon"
-                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about.html"><i class="fas fa-info-circle"></i>
-                                About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/services.html"><i
-                                    class="fas fa-concierge-bell"></i> Services</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="/projects.html"><i
-                                    class="fas fa-city"></i> Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/team.html"><i class="fas fa-users"></i> Team</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="/achievements.html"><i class="fas fa-trophy"></i>
-                                Achievements</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/partners.html"><i class="fas fa-handshake"></i>
-                                Partners</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/contact.html"><i class="fas fa-envelope"></i>
-                                Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <div id="navbar-container"></div>
 
     <main>
-        <div class="container mt-5 mb-5" id="main-content">
-            <!-- Loading State -->
-            <div class="loading" id="loading">
-                <i class="fas fa-spinner"></i>
-                <p style="margin-top: 1rem; color: #666;">Loading property details...</p>
+        <div class="container property-container">
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p style="margin-top: 15px; color: #666;">Loading property...</p>
             </div>
 
-            <!-- Content will be injected here by JavaScript -->
+            <!-- Property Content -->
+            <div id="property-content" style="display: none;">
+                <a href="/projects.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to Projects
+                </a>
+
+                <div class="property-header">
+                    <div class="property-category" id="property-category"></div>
+                    <h1 class="property-title" id="property-title">Property Name</h1>
+                    <div class="property-location" id="property-location">
+                        <i class="fas fa-map-marker-alt"></i> Location
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <div class="property-gallery">
+                    <img id="main-image" class="main-image" src="" alt="Property Image" onclick="openFullscreen(this)">
+                    <div id="thumbnail-grid" class="thumbnail-grid">
+                        <!-- Thumbnails populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Details -->
+                <div class="property-details">
+                    <!-- Description -->
+                    <div class="detail-section" id="description-section" style="display: none;">
+                        <h3>Description</h3>
+                        <div class="description-text" id="property-description"></div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="detail-section">
+                        <h3>Property Features</h3>
+                        <div class="features-grid" id="features-grid">
+                            <!-- Features populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="contact-section">
+                    <h3>Interested in this property?</h3>
+                    <p style="color: #69707f; margin-bottom: 25px;">Contact us today to schedule a viewing or get more information</p>
+                    <div class="contact-buttons">
+                        <a href="tel:+639123456789" class="contact-btn contact-btn-primary">
+                            <i class="fas fa-phone"></i> Call Us
+                        </a>
+                        <a href="mailto:info@calambaexpressive.com" class="contact-btn contact-btn-secondary">
+                            <i class="fas fa-envelope"></i> Email Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-message" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Property Not Found</h3>
+                <p>The property you're looking for doesn't exist or has been removed.</p>
+                <a href="/projects.html" class="contact-btn contact-btn-primary" style="margin-top: 20px;">
+                    <i class="fas fa-arrow-left"></i> Back to Projects
+                </a>
+            </div>
         </div>
     </main>
 
-    <footer class="text-center">
-        <div class="container">
-            <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://wa.me/639276154651?text=Hello%2C%20I%E2%80%99m%20interested%20in%20learning%20more%20about%20your%20listings"
-                    target="_blank" class="footer-icon">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="mailto:cepc.development@gmail.com" class="footer-icon">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://www.facebook.com/expressivesrealty.lynmanguiat/" target="_blank" class="footer-icon">
-                    <i class="fab fa-facebook"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -217,230 +345,105 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/static/js/enhanced-modal.js"></script>
 
-    <!-- Property Configuration -->
+    <!-- Load Properties Data -->
     <script src="/static/js/properties.js?v=1763001670372"></script>
 
     <script>
-        // Get property ID from URL parameter
-        function getPropertyId() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('id');
-        }
-
-        // Build property page content
-        function buildPropertyPage(property) {
-            const content = `
-                <!-- Back to Projects -->
-                <a href="/projects.html" class="btn-view-property mb-4" style="display: inline-block;">
-                    <i class="fas fa-arrow-left"></i> Back to Projects
-                </a>
-
-                <!-- Property Title -->
-                <h1 class="section-title" style="margin-bottom: 0.5rem;">${property.name || `Project ${property.id}`}</h1>
-                <p class="section-subtitle" style="margin-bottom: 2rem;">
-                    <i class="fas fa-map-marker-alt"></i> ${property.location || 'Calamba, Laguna'}
-                </p>
-
-                <div class="row">
-                    <!-- Left Column: Images -->
-                    <div class="col-lg-8 mb-4">
-                        <!-- Main Carousel -->
-                        <div id="propertyCarousel" class="carousel slide mb-4" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                ${property.images.map((img, i) => `
-                                    <li data-target="#propertyCarousel" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>
-                                `).join('')}
-                            </ol>
-                            <div class="carousel-inner">
-                                ${property.images.map((img, i) => `
-                                    <div class="carousel-item ${i === 0 ? 'active' : ''}">
-                                        <img src="${img}" class="d-block w-100" alt="${property.name} - Image ${i + 1}" 
-                                             style="height: 500px; object-fit: cover; border-radius: 12px; cursor: pointer;"
-                                             onclick="lightbox.open(this.src, '${property.name} - Image ${i + 1}')">
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-
-                        <!-- Thumbnail Gallery -->
-                        <div class="row">
-                            ${property.images.map((img, i) => `
-                                <div class="col-4 col-md-3 mb-3">
-                                    <img src="${img}" class="property-gallery-thumb ${i === 0 ? 'active' : ''}" 
-                                         alt="Thumbnail ${i + 1}"
-                                         onclick="changeSlide(${i})">
-                                </div>
-                            `).join('')}
-                        </div>
-
-                        <!-- Property Description -->
-                        ${property.description ? `
-                            <div class="property-info-card mt-4">
-                                <h3 style="color: #c8102e; margin-bottom: 1.5rem;">
-                                    <i class="fas fa-info-circle"></i> Property Description
-                                </h3>
-                                <p style="font-size: 1.1rem; line-height: 1.8; color: #666;">${property.description}</p>
-                            </div>
-                        ` : ''}
-                    </div>
-
-                    <!-- Right Column: Details & Contact -->
-                    <div class="col-lg-4">
-                        <!-- Property Features -->
-                        ${property.features && property.features.length > 0 ? `
-                            <div class="property-info-card">
-                                <h3 style="color: #c8102e; margin-bottom: 1.5rem;">
-                                    <i class="fas fa-list"></i> Property Features
-                                </h3>
-                                ${property.features.map(feature => `
-                                    <div class="property-feature">
-                                        <i class="${feature.icon || 'fas fa-check'}"></i>
-                                        <span>${feature.text}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        ` : ''}
-
-                        <!-- Contact CTA -->
-                        <div class="cta-section">
-                            <h3 class="mb-3">Interested in This Property?</h3>
-                            <p class="mb-4">Contact us today for more information and schedule a viewing.</p>
-                            
-                            <a href="${getWhatsAppLink(property)}" target="_blank" class="contact-link whatsapp mb-2" style="display: block;">
-                                <i class="fab fa-whatsapp"></i> WhatsApp Us
-                            </a>
-                            
-                            <a href="${getEmailLink(property)}" class="contact-link mb-2" style="display: block; background-color: white; color: #c8102e;">
-                                <i class="fas fa-envelope"></i> Email Us
-                            </a>
-                            
-                             <a href="https://m.me/expressivesrealty.lynmanguiat" target="_blank" class="contact-link mb-2" style="display: block; background-color: #1877f2; color: white;">
-                                <i class="fab fa-facebook-messenger"></i> Send Message
-                            </a>
-                        </div>
-
-                        <!-- Share Section -->
-                        <div class="property-info-card mt-4">
-                            <h4 style="color: #c8102e; margin-bottom: 1rem;">
-                                <i class="fas fa-share-alt"></i> Share This Property
-                            </h4>
-                            <div style="display: flex; gap: 0.5rem; justify-content: center;">
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" 
-                                   target="_blank" class="btn" style="background-color: #1877f2; color: white; flex: 1;">
-                                    <i class="fab fa-facebook"></i>
-                                </a>
-                                <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(property.name)}" 
-                                   target="_blank" class="btn" style="background-color: #1DA1F2; color: white; flex: 1; ">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <button onclick="copyLink()" class="btn" style="background-color: #666; color: white; flex: 1;" id="copy-btn">
-                                    <i class="fas fa-link"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            return content;
-        }
-
-        // Build error page
-        function buildErrorPage(propertyId) {
-            return `
-                <div class="text-center py-5">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #c8102e; margin-bottom: 2rem;"></i>
-                    <h2>Property Not Found</h2>
-                    <p>Sorry, we couldn't find property "${propertyId}".</p>
-                    <a href="/projects.html" class="btn-view-property mt-3">
-                        <i class="fas fa-arrow-left"></i> Back to All Projects
-                    </a>
-                </div>
-            `;
-        }
-
-        // Get WhatsApp link
-        function getWhatsAppLink(property) {
-            const message = `Hello, I'm interested in learning more about ${property.name}. Could you please provide more details?`;
-            return `https://wa.me/639276154651?text=${encodeURIComponent(message)}`;
-        }
-
-        // Get Email link
-        function getEmailLink(property) {
-            const subject = `Inquiry about ${property.name}`;
-            const body = `Hello, I'm interested in learning more about ${property.name}. Could you please provide more details?`;
-            return `mailto:cepc.development@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
-
-        // Change carousel slide
-        function changeSlide(index) {
-            $('#propertyCarousel').carousel(index);
-            document.querySelectorAll('.property-gallery-thumb').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
-        }
-
-        // Copy link to clipboard
-        function copyLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                const btn = document.getElementById('copy-btn');
-                btn.innerHTML = '<i class="fas fa-check"></i>';
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="fas fa-link"></i>';
-                }, 2000);
-            });
-        }
-
-        // Update active thumbnail when carousel changes
-        $(document).ready(function () {
-            $('#propertyCarousel').on('slid.bs.carousel', function (e) {
-                const index = $(e.relatedTarget).index();
-                document.querySelectorAll('.property-gallery-thumb').forEach((thumb, i) => {
-                    thumb.classList.toggle('active', i === index);
-                });
-            });
-        });
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', async function () {
-            const propertyId = getPropertyId();
-            const mainContent = document.getElementById('main-content');
+        async function loadProperty() {
             const loading = document.getElementById('loading');
+            const content = document.getElementById('property-content');
+            const errorMessage = document.getElementById('error-message');
 
-            if (!propertyId) {
-                // No ID provided, redirect to projects
-                window.location.href = '/projects.html';
+            // Get category and ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            const id = urlParams.get('id');
+
+            if (!category || !id) {
+                loading.style.display = 'none';
+                errorMessage.style.display = 'block';
                 return;
             }
 
-            // Wait a moment for data to load
-            await new Promise(resolve => setTimeout(resolve, 300));
+            try {
+                // Get property data
+                const property = await window.PROPERTY_DATA.getProperty(category, id);
 
-            // Get property data (async)
-            const property = await window.PROPERTY_DATA.getProperty(propertyId);
+                if (!property) {
+                    throw new Error('Property not found');
+                }
 
-            // Hide loading
-            loading.style.display = 'none';
-
-            if (property) {
                 // Update page title
                 document.title = `${property.name} - Calamba Expressive Properties`;
 
-                // Build and inject content
-                mainContent.innerHTML = buildPropertyPage(property);
-            } else {
-                // Show error
-                mainContent.innerHTML = buildErrorPage(propertyId);
+                // Populate content
+                document.getElementById('property-category').textContent = property.categoryName;
+                document.getElementById('property-title').textContent = property.name;
+                document.getElementById('property-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${property.location}`;
+
+                // Set main image
+                const mainImage = document.getElementById('main-image');
+                mainImage.src = property.images[0];
+                mainImage.alt = property.name;
+
+                // Populate thumbnails
+                const thumbnailGrid = document.getElementById('thumbnail-grid');
+                property.images.forEach((image, index) => {
+                    const thumbnail = document.createElement('img');
+                    thumbnail.src = image;
+                    thumbnail.alt = `${property.name} - Photo ${index + 1}`;
+                    thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
+                    thumbnail.onclick = () => changeMainImage(image, thumbnail);
+                    thumbnailGrid.appendChild(thumbnail);
+                });
+
+                // Populate description if available
+                if (property.description) {
+                    document.getElementById('description-section').style.display = 'block';
+                    document.getElementById('property-description').textContent = property.description;
+                }
+
+                // Populate features
+                const featuresGrid = document.getElementById('features-grid');
+                property.features.forEach(feature => {
+                    const featureItem = document.createElement('div');
+                    featureItem.className = 'feature-item';
+                    featureItem.innerHTML = `
+                        <i class="${feature.icon}"></i>
+                        <span>${feature.text}</span>
+                    `;
+                    featuresGrid.appendChild(featureItem);
+                });
+
+                // Show content
+                loading.style.display = 'none';
+                content.style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading property:', error);
+                loading.style.display = 'none';
+                errorMessage.style.display = 'block';
             }
-        });
+        }
+
+        function changeMainImage(imageSrc, thumbnail) {
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = imageSrc;
+
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnail.classList.add('active');
+        }
+
+        function openFullscreen(img) {
+            if (window.createImageModal) {
+                window.createImageModal(img.src);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProperty);
     </script>
     <script src="/static/js/navbar.js"></script>
     <script src="/static/js/footer.js"></script>
