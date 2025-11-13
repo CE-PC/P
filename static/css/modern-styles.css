@@ -8,6 +8,7 @@
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -20,12 +21,29 @@ body {
     color: var(--dark-text);
     line-height: 1.6;
     overflow-x: hidden;
+
+    /* ADD THIS */
+    padding: 1rem;
+    /* space around the whole page */
+    margin: 0 auto;
+    /* center content */
+    max-width: 1400px;
+    /* optional, keeps content from stretching too wide */
 }
+
 
 /* Smooth scroll */
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+}
+
+/* Container wrapper */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 /* Header & Navigation */
@@ -43,48 +61,29 @@ header {
 }
 
 .navbar-brand {
-    font-size: 1.0rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--accent-yellow) !important;
     transition: transform 0.3s ease;
     padding-left: 0.75rem;
-    /* add some breathing room on the left */
 }
 
 .navbar-brand:hover {
     transform: scale(1.05);
 }
 
-/* .nav-link {
-    padding: 0.5rem 1rem !important;
-    margin: 0 0.25rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-} */
-
 .nav-link {
     display: flex;
     color: var(--accent-yellow) !important;
-    /* icon + text on one line */
     align-items: center;
-    /* vertically center them */
     gap: 0.4rem;
-    /* small space between icon and text */
     padding: 0.4rem 0.75rem !important;
-    /* reduce padding */
     line-height: 0.5;
-    /* tighter line height */
-    /* font-weight: 500; */
-    /* border-radius: 4px; */
-
-
 }
 
 .nav-link i {
     font-size: 1rem;
-    /* slightly smaller icon */
 }
-
 
 .nav-link:hover {
     background-color: rgba(243, 239, 17, 0.1);
@@ -104,31 +103,34 @@ header {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(243, 239, 17)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-
 /* Main Layout */
 main {
     min-height: calc(100vh - 200px);
     padding: 2rem 0;
 }
 
+/* Sections spacing */
+section {
+    margin-bottom: 2rem;
+}
+
 /* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%);
     color: white;
-    padding: 4rem 0;
+    padding: 4rem 1rem;
     text-align: center;
-    margin: -2rem 0 2rem 0;
 }
 
 .hero-section h1 {
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 6vw, 3rem);
     font-weight: 700;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-section p {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 4vw, 1.25rem);
     margin-bottom: 2rem;
 }
 
@@ -139,7 +141,6 @@ main {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -151,8 +152,9 @@ main {
 
 .property-card-img {
     width: 100%;
-    height: 250px;
-    object-fit: contain;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
     transition: transform 0.3s ease;
 }
 
@@ -197,7 +199,6 @@ main {
     background-color: #a00d25;
     transform: translateY(-2px);
     color: white;
-    text-decoration: none;
 }
 
 /* Grid Layout */
@@ -205,7 +206,6 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
-    padding: 2rem 0;
 }
 
 /* Image Gallery */
@@ -213,7 +213,6 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
-    padding: 2rem 0;
 }
 
 .gallery-item {
@@ -272,7 +271,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 100px;
+    padding: 60px 20px;
 }
 
 .lightbox-img {
@@ -297,9 +296,9 @@ main {
 .lightbox-close {
     position: absolute;
     top: 20px;
-    right: 40px;
+    right: 20px;
     color: white;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -316,13 +315,13 @@ main {
     transform: translateY(-50%);
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
-    padding: 1rem;
-    font-size: 2rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
     border: none;
+    border-radius: 4px;
     transition: background-color 0.3s ease;
     z-index: 2001;
-    border-radius: 4px;
 }
 
 .lightbox-nav:hover {
@@ -330,11 +329,11 @@ main {
 }
 
 .lightbox-prev {
-    left: 20px;
+    left: 10px;
 }
 
 .lightbox-next {
-    right: 20px;
+    right: 10px;
 }
 
 .lightbox-caption {
@@ -343,11 +342,11 @@ main {
     left: 50%;
     transform: translateX(-50%);
     color: white;
-    font-size: 1.25rem;
+    font-size: 1rem;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 1rem 2rem;
-    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
 }
 
 .lightbox-counter {
@@ -355,9 +354,9 @@ main {
     top: 20px;
     left: 20px;
     color: white;
-    font-size: 1rem;
+    font-size: 0.9rem;
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 4px;
 }
 
@@ -366,7 +365,6 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    padding: 2rem 0;
 }
 
 .team-member {
@@ -384,8 +382,8 @@ main {
 }
 
 .team-img {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
@@ -410,7 +408,6 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    padding: 2rem 0;
 }
 
 .service-card {
@@ -446,7 +443,6 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 2rem 0;
 }
 
 .contact-card {
@@ -480,8 +476,6 @@ main {
 .contact-link:hover {
     background-color: #a00d25;
     transform: translateY(-2px);
-    color: white;
-    text-decoration: none;
 }
 
 .contact-link.whatsapp {
@@ -504,9 +498,8 @@ main {
 footer {
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%);
     color: var(--accent-yellow);
-    padding: 2rem 0;
+    padding: 2rem 1rem;
     text-align: center;
-    margin-top: 3rem;
 }
 
 .footer-links {
@@ -534,9 +527,9 @@ footer {
     transform: scale(1.1);
 }
 
-/* Sections */
+/* Section Titles */
 .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     font-weight: 700;
     color: var(--primary-red);
     text-align: center;
@@ -551,7 +544,7 @@ footer {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
+    width: 80px;
     height: 4px;
     background-color: var(--accent-yellow);
     border-radius: 2px;
@@ -560,7 +553,7 @@ footer {
 .section-subtitle {
     text-align: center;
     color: #666;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
     margin-bottom: 2rem;
 }
 
@@ -585,52 +578,6 @@ footer {
 .search-input:focus {
     outline: none;
     border-color: var(--primary-red);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-
-    .properties-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1rem;
-    }
-
-    .lightbox-content {
-        padding: 60px 20px;
-    }
-
-    .lightbox-nav {
-        padding: 0.5rem;
-        font-size: 1.5rem;
-    }
-
-    .navbar-brand {
-        padding-left: 1rem;
-        /* slightly more on mobile */
-    }
-
-    .nav-link {
-        padding: 0.3rem 0.6rem !important;
-        font-size: 0.95rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .team-grid,
-    .services-grid,
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Animations */
@@ -683,4 +630,47 @@ footer {
 .back-to-top:hover {
     transform: translateY(-5px);
     background-color: #a00d25;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+
+    .properties-grid,
+    .gallery-grid,
+    .team-grid,
+    .services-grid,
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    .hero-section h1 {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+    }
+
+    .hero-section p {
+        font-size: clamp(0.9rem, 4vw, 1.1rem);
+    }
+
+    .lightbox-content {
+        padding: 60px 20px;
+    }
+
+    .lightbox-nav {
+        padding: 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    .navbar-brand {
+        padding-left: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.95rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.25rem, 6vw, 2rem);
+    }
 }
