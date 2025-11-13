@@ -22,6 +22,10 @@ window.PROPERTY_DATA = {
     {
         "id": "house-only",
         "name": "House Only"
+    },
+    {
+        "id": "lot-only",
+        "name": "Lot Only"
     }
 ],
     projectsByCategory: {
@@ -187,7 +191,8 @@ window.PROPERTY_DATA = {
                                 "image_127.jpeg"
                         ]
                 }
-        }
+        },
+        "lot-only": {}
 },
 
     /**
