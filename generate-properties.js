@@ -12,14 +12,6 @@ const path = require('path');
 const PROJECTS_DIR = './static/images/projects';
 const OUTPUT_FILE = './static/js/properties.js';
 
-// Define your categories
-const CATEGORIES = [
-    'house-and-lot',
-    'lot-only',
-    'commercial-space',
-    'commercial-lot'
-];
-
 /**
  * Scan all categories and their projects
  */
@@ -34,17 +26,16 @@ function scanProjects() {
         process.exit(1);
     }
 
-    console.log(`🔍 Scanning categories...\n`);
+    // Auto-detect categories from actual folders
+    const categories = fs.readdirSync(PROJECTS_DIR, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name)
+        .sort();
 
-    CATEGORIES.forEach(category => {
+    console.log(`🔍 Found ${categories.length} categories: ${categories.join(', ')}\n`);
+
+    categories.forEach(category => {
         const categoryPath = path.join(PROJECTS_DIR, category);
-        
-        // Skip if category folder doesn't exist
-        if (!fs.existsSync(categoryPath)) {
-            console.log(`⚠️  Category folder not found: ${category} (skipping)`);
-            projectsByCategory[category] = {};
-            return;
-        }
 
         const folders = fs.readdirSync(categoryPath, { withFileTypes: true })
             .filter(dirent => dirent.isDirectory())
@@ -82,7 +73,7 @@ function scanProjects() {
         console.log('');
     });
 
-    return { projectsByCategory, totalProjects };
+    return { projectsByCategory, totalProjects, categories };
 }
 
 /**
@@ -101,14 +92,14 @@ function formatCategoryName(category) {
 function generateFile() {
     console.log('🔨 Generating properties.js...\n');
 
-    const { projectsByCategory, totalProjects } = scanProjects();
+    const { projectsByCategory, totalProjects, categories } = scanProjects();
 
     // Format the projects object with proper indentation
     const projectsJson = JSON.stringify(projectsByCategory, null, 8)
         .replace(/"([^"]+)":/g, '"$1":');
 
     // Generate category metadata
-    const categoriesMetadata = CATEGORIES.map(cat => ({
+    const categoriesMetadata = categories.map(cat => ({
         id: cat,
         name: formatCategoryName(cat)
     }));
@@ -245,11 +236,14 @@ window.PROPERTY_LOADER = window.PROPERTY_DATA;
  *   ├── photo3.jpg
  *   └── zzz_description.txt  (optional)
  * 
- * Available categories:
+ * Categories are AUTO-DETECTED from your folder structure!
+ * Just create any category folder you want:
  * - house-and-lot
+ * - house-only
  * - lot-only
  * - commercial-space
  * - commercial-lot
+ * - Or any other name!
  * 
  * Step 2: Run the generator
  * -------------------------
@@ -274,7 +268,7 @@ window.PROPERTY_LOADER = window.PROPERTY_DATA;
 
     console.log(`\n✅ Generated ${OUTPUT_FILE}`);
     console.log(`📦 Total projects: ${totalProjects}`);
-    console.log(`📂 Categories: ${CATEGORIES.length}`);
+    console.log(`📂 Categories: ${categories.length}`);
     console.log(`\n🚀 Ready to commit and push!`);
 }
 

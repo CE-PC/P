@@ -113,14 +113,8 @@
             display: flex;
             gap: 0;
             border-bottom: 1px solid #dadce0;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+            flex-wrap: wrap;
             margin-bottom: 20px;
-        }
-
-        .category-tabs::-webkit-scrollbar {
-            display: none;
         }
 
         .category-tab {
@@ -146,48 +140,6 @@
         .category-tab.active {
             color: #c8102e;
             border-bottom-color: #c8102e;
-        }
-
-        .more-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .more-dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 200px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-            margin-top: 5px;
-        }
-
-        .more-dropdown-content.show {
-            display: block;
-        }
-
-        .more-dropdown-item {
-            padding: 12px 16px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            color: #5f6368;
-            transition: background 0.2s;
-        }
-
-        .more-dropdown-item:hover {
-            background: #f8f9fa;
-        }
-
-        .more-dropdown-item:first-child {
-            border-radius: 8px 8px 0 0;
-        }
-
-        .more-dropdown-item:last-child {
-            border-radius: 0 0 8px 8px;
         }
 
         .search-container {
@@ -350,7 +302,6 @@
     <script>
         let allCards = [];
         let currentCategory = 'all';
-        const MAX_VISIBLE_TABS = 4;
 
         function selectCategory(category) {
             currentCategory = category;
@@ -359,31 +310,14 @@
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-            document.querySelectorAll('.more-dropdown-item').forEach(item => {
-                item.classList.remove('active');
-            });
 
-            const activeTab = document.querySelector(`[data-category="${category}"]`);
+            const activeTab = document.querySelector(`.category-tab[data-category="${category}"]`);
             if (activeTab) {
                 activeTab.classList.add('active');
             }
 
             filterProjects();
         }
-
-        function toggleMoreDropdown(event) {
-            event.stopPropagation();
-            const dropdown = document.getElementById('moreDropdown');
-            dropdown.classList.toggle('show');
-        }
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function (event) {
-            const dropdown = document.getElementById('moreDropdown');
-            if (dropdown && !event.target.closest('.more-dropdown')) {
-                dropdown.classList.remove('show');
-            }
-        });
 
         function loadProjects() {
             const grid = document.getElementById('projects-grid');
@@ -392,12 +326,8 @@
             const categories = window.PROPERTY_DATA.categories || [];
             const projectsByCategory = window.PROPERTY_DATA.projectsByCategory;
 
-            // Create tabs
-            const visibleCategories = categories.slice(0, MAX_VISIBLE_TABS);
-            const moreCategories = categories.slice(MAX_VISIBLE_TABS);
-
-            // Add visible tabs
-            visibleCategories.forEach(category => {
+            // Add all category tabs
+            categories.forEach(category => {
                 const tab = document.createElement('button');
                 tab.className = 'category-tab';
                 tab.setAttribute('data-category', category.id);
@@ -405,25 +335,6 @@
                 tab.onclick = () => selectCategory(category.id);
                 categoryTabs.appendChild(tab);
             });
-
-            // Add "More" dropdown if needed
-            if (moreCategories.length > 0) {
-                const moreDropdown = document.createElement('div');
-                moreDropdown.className = 'more-dropdown';
-                moreDropdown.innerHTML = `
-                    <button class="category-tab" onclick="toggleMoreDropdown(event)">
-                        More <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 4px;"></i>
-                    </button>
-                    <div class="more-dropdown-content" id="moreDropdown">
-                        ${moreCategories.map(cat => `
-                            <div class="more-dropdown-item" data-category="${cat.id}" onclick="selectCategory('${cat.id}')">
-                                ${cat.name}
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-                categoryTabs.appendChild(moreDropdown);
-            }
 
             setTimeout(() => {
                 loading.style.display = 'none';
