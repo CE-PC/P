@@ -480,10 +480,26 @@
                 document.getElementById('property-title').textContent = property.name;
                 document.getElementById('property-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${property.location}`;
 
+                // // Populate description if available
+                // if (property.description) {
+                //     document.getElementById('description-section').style.display = 'block';
+                //     document.getElementById('property-description').textContent = property.description;
+                // }
                 // Populate description if available
                 if (property.description) {
                     document.getElementById('description-section').style.display = 'block';
-                    document.getElementById('property-description').textContent = property.description;
+                    const descElement = document.getElementById('property-description');
+
+                    // Check if description contains HTML tags
+                    const hasHTMLTags = /<[^>]+>/.test(property.description);
+
+                    if (hasHTMLTags) {
+                        // Render as HTML
+                        descElement.innerHTML = property.description;
+                    } else {
+                        // Render as plain text
+                        descElement.textContent = property.description;
+                    }
                 }
 
                 // Populate features
