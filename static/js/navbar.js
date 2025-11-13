@@ -10,7 +10,7 @@
  * <div id="navbar-container"></div>
  */
 
-(function() {
+(function () {
     // Define navigation items
     const navItems = [
         { href: '/', icon: 'fas fa-home', text: 'Home', page: 'index' },
@@ -34,7 +34,7 @@
     // Generate navbar HTML
     function generateNavbar() {
         const currentPage = getCurrentPage();
-        
+
         const navItemsHTML = navItems.map(item => {
             const isActive = item.page === currentPage ? 'active' : '';
             return `
@@ -54,9 +54,8 @@
                             <i class="fas fa-building"></i> Calamba Expressive Properties
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"
-                                style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2730%27 height=%2730%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba(243, 239, 17, 1)%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ml-auto">
