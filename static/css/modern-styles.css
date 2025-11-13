@@ -15,6 +15,18 @@
     box-sizing: border-box;
 }
 
+
+/* Main Layout */
+main {
+    min-height: calc(100vh - 200px);
+    padding: 2rem;
+
+    /* ADD THIS */
+    padding: 1rem;
+    /* space around the whole page */
+    margin: 0 auto;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--light-bg);
@@ -22,14 +34,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 
-    /* ADD THIS */
-    padding: 1rem;
-    /* space around the whole page */
-    margin: 0 auto;
-    /* center content */
-    max-width: 1400px;
-    /* optional, keeps content from stretching too wide */
 }
+
+
 
 
 /* Smooth scroll */
@@ -103,11 +110,7 @@ header {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(243, 239, 17)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Main Layout */
-main {
-    min-height: calc(100vh - 200px);
-    padding: 2rem 0;
-}
+
 
 /* Sections spacing */
 section {
