@@ -929,3 +929,11 @@ footer {
         width: calc(100% - 1rem);
     }
 }
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
