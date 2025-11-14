@@ -54,11 +54,51 @@
         `;
     }
 
+    function setupNavbarCloseBehavior() {
+        const navbarCollapse = document.getElementById('navbarNav');
+        const navbar = document.querySelector('.navbar');
+
+        if (!navbarCollapse || !navbar) return;
+
+        // Close navbar when clicking outside
+        document.addEventListener('click', function (event) {
+            const isClickInsideNavbar = navbar.contains(event.target);
+            const isNavbarExpanded = navbarCollapse.classList.contains('show');
+
+            if (!isClickInsideNavbar && isNavbarExpanded) {
+                // Use Bootstrap's collapse method to close
+                $(navbarCollapse).collapse('hide');
+            }
+        });
+
+        // Close navbar when clicking on any nav link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                // Close the navbar after a short delay to allow navigation
+                setTimeout(() => {
+                    $(navbarCollapse).collapse('hide');
+                }, 100);
+            });
+        });
+
+        // Also close when clicking the brand logo
+        const navbarBrand = document.querySelector('.navbar-brand');
+        if (navbarBrand) {
+            navbarBrand.addEventListener('click', function () {
+                setTimeout(() => {
+                    $(navbarCollapse).collapse('hide');
+                }, 100);
+            });
+        }
+    }
+
     function insertNavbar() {
         const container = document.getElementById('navbar-container');
         if (container) {
             container.innerHTML = generateNavbar();
             checkNavbarOverflow(); // check immediately after insertion
+            setupNavbarCloseBehavior(); // setup close behavior
             window.addEventListener('resize', checkNavbarOverflow); // check on resize
         } else {
             console.warn('Navbar container not found. Add <div id="navbar-container"></div> to your HTML.');
