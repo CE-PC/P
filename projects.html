@@ -176,35 +176,110 @@
             color: #c8102e;
         }
 
-        .loading {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 9999;
+        /* ============================================
+           SKELETON LOADING STYLES
+           ============================================ */
+
+        .skeleton-wrapper {
+            display: block;
         }
 
-        .loading i {
-            font-size: 4rem;
-            color: #c8102e;
-            animation: spin 1s linear infinite;
+        .skeleton {
+            background: #e0e0e0;
+            background-image: linear-gradient(90deg,
+                    #e0e0e0 0px,
+                    #f0f0f0 40px,
+                    #e0e0e0 80px);
+            background-size: 400px 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
         }
 
-        .loading p {
-            margin-top: 15px;
-            color: #666;
-            font-size: 1rem;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
+        @keyframes shimmer {
+            0% {
+                background-position: -400px 0;
             }
+
+            100% {
+                background-position: 400px 0;
+            }
+        }
+
+        .skeleton-header {
+            height: 50px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .skeleton-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .skeleton-tab {
+            height: 40px;
+            width: 80px;
+            border-radius: 4px;
+        }
+
+        .skeleton-search {
+            height: 50px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skeleton-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .skeleton-image {
+            width: 100%;
+            height: 220px;
+        }
+
+        .skeleton-content {
+            padding: 20px;
+        }
+
+        .skeleton-title {
+            height: 28px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            width: 80%;
+        }
+
+        .skeleton-location {
+            height: 20px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            width: 60%;
+        }
+
+        .skeleton-meta {
+            height: 18px;
+            border-radius: 4px;
+            width: 40%;
+        }
+
+        .skeleton-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            height: 28px;
+            width: 80px;
+            border-radius: 20px;
+        }
+
+        .loading {
+            display: none;
+            /* Hide old loading spinner */
         }
 
         .no-results {
@@ -233,6 +308,11 @@
                 overflow-x: auto;
                 padding-bottom: 5px;
             }
+
+            .skeleton-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
         }
     </style>
 </head>
@@ -245,8 +325,20 @@
             <h1 class="section-title text-center">Our Projects</h1>
             <p class="section-subtitle text-center">Explore our portfolio of quality properties in Calamba, Laguna</p>
 
-            <!-- Filters -->
-            <div class="filters-container">
+            <!-- Skeleton Loading for Filters -->
+            <div id="skeleton-filters" class="filters-container skeleton-wrapper">
+                <div class="skeleton-tabs">
+                    <div class="skeleton skeleton-tab"></div>
+                    <div class="skeleton skeleton-tab"></div>
+                    <div class="skeleton skeleton-tab"></div>
+                    <div class="skeleton skeleton-tab"></div>
+                    <div class="skeleton skeleton-tab"></div>
+                </div>
+                <div class="skeleton skeleton-search"></div>
+            </div>
+
+            <!-- Actual Filters -->
+            <div class="filters-container" id="actual-filters" style="display: none;">
                 <!-- Category Tabs -->
                 <div class="category-tabs" id="categoryTabs">
                     <button class="category-tab active" data-category="all" onclick="selectCategory('all')">
@@ -268,13 +360,78 @@
                 Showing <strong id="visible-count">0</strong> of <strong id="total-count">0</strong> properties
             </div>
 
-            <!-- Loading -->
-            <div id="loading" class="loading">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p style="margin-top: 15px; color: #666;">Loading projects...</p>
+            <!-- Skeleton Loading for Projects Grid -->
+            <div id="skeleton-grid" class="projects-grid skeleton-wrapper">
+                <!-- Generate 6 skeleton cards -->
+                <div class="skeleton-card">
+                    <div class="project-image-wrapper">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-content">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-location"></div>
+                        <div class="skeleton skeleton-meta"></div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="project-image-wrapper">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-content">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-location"></div>
+                        <div class="skeleton skeleton-meta"></div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="project-image-wrapper">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-content">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-location"></div>
+                        <div class="skeleton skeleton-meta"></div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="project-image-wrapper">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-content">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-location"></div>
+                        <div class="skeleton skeleton-meta"></div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="project-image-wrapper">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-content">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-location"></div>
+                        <div class="skeleton skeleton-meta"></div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="project-image-wrapper">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-content">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-location"></div>
+                        <div class="skeleton skeleton-meta"></div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Projects Grid -->
+            <!-- Actual Projects Grid -->
             <div id="projects-grid" class="projects-grid" style="display: none;">
                 <!-- Cards populated by JavaScript -->
             </div>
@@ -321,7 +478,9 @@
 
         function loadProjects() {
             const grid = document.getElementById('projects-grid');
-            const loading = document.getElementById('loading');
+            const skeletonGrid = document.getElementById('skeleton-grid');
+            const skeletonFilters = document.getElementById('skeleton-filters');
+            const actualFilters = document.getElementById('actual-filters');
             const categoryTabs = document.getElementById('categoryTabs');
             const categories = window.PROPERTY_DATA.categories || [];
             const projectsByCategory = window.PROPERTY_DATA.projectsByCategory;
@@ -336,9 +495,15 @@
                 categoryTabs.appendChild(tab);
             });
 
+            // Simulate loading delay to show skeleton
             setTimeout(() => {
-                loading.style.display = 'none';
+                // Hide skeletons
+                skeletonGrid.style.display = 'none';
+                skeletonFilters.style.display = 'none';
+
+                // Show actual content
                 grid.style.display = 'grid';
+                actualFilters.style.display = 'block';
                 document.getElementById('stats-bar').style.display = 'block';
 
                 let totalProjects = 0;
@@ -386,7 +551,7 @@
 
                 updateStats();
                 console.log(`✅ Loaded ${totalProjects} projects across ${Object.keys(projectsByCategory).length} categories`);
-            }, 500);
+            }, 800); // 800ms delay to show skeleton loading
         }
 
         function filterProjects() {

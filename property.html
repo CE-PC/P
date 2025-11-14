@@ -52,7 +52,6 @@
             background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             color: white;
             padding: 1rem 2rem;
-            /* Reduced from 2rem to 1rem vertical padding */
             border-radius: 12px;
             text-align: center;
             margin-bottom: 2rem;
@@ -61,20 +60,16 @@
 
         .price-label {
             font-size: 0.75rem;
-            /* Slightly smaller */
             opacity: 0.9;
             margin-bottom: 0.25rem;
-            /* Reduced from 0.5rem */
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .price-amount {
             font-size: 2rem;
-            /* Reduced from 2.5rem */
             font-weight: 700;
             margin-bottom: 0.25rem;
-            /* Reduced from 0.5rem */
             line-height: 1.2;
         }
 
@@ -82,10 +77,8 @@
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
             padding: 0.35rem 0.75rem;
-            /* Reduced padding */
             border-radius: 20px;
             font-size: 0.8rem;
-            /* Slightly smaller */
             font-weight: 600;
             margin-top: 0.25rem;
         }
@@ -247,6 +240,18 @@
             height: 400px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+            /* Keep map layer below navbar */
+            position: relative;
+        }
+
+        /* Ensure all Leaflet controls stay below navbar */
+        .leaflet-control-container {
+            z-index: 500 !important;
+        }
+
+        .leaflet-pane {
+            z-index: 400 !important;
         }
 
         .map-loading {
@@ -411,25 +416,144 @@
             cursor: pointer;
         }
 
-        .loading {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 9999;
+        /* ============================================
+           SKELETON LOADING STYLES
+           ============================================ */
+
+        .skeleton {
+            background: #e0e0e0;
+            background-image: linear-gradient(90deg,
+                    #e0e0e0 0px,
+                    #f0f0f0 40px,
+                    #e0e0e0 80px);
+            background-size: 400px 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+            border-radius: 8px;
         }
 
-        .loading i {
-            font-size: 4rem;
-            color: #c8102e;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
+        @keyframes shimmer {
+            0% {
+                background-position: -400px 0;
             }
+
+            100% {
+                background-position: 400px 0;
+            }
+        }
+
+        /* Skeleton for header */
+        .skeleton-back-btn {
+            width: 150px;
+            height: 20px;
+            margin-bottom: 20px;
+        }
+
+        .skeleton-category-badge {
+            width: 100px;
+            height: 32px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+        }
+
+        .skeleton-title {
+            height: 48px;
+            margin-bottom: 15px;
+        }
+
+        .skeleton-location {
+            height: 28px;
+            margin-bottom: 30px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Skeleton for price section */
+        .skeleton-price-card {
+            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .skeleton-price-label {
+            height: 14px;
+            width: 100px;
+            margin: 0 auto 10px;
+        }
+
+        .skeleton-price-amount {
+            height: 40px;
+            width: 250px;
+            margin: 0 auto 10px;
+        }
+
+        .skeleton-price-status {
+            height: 28px;
+            width: 180px;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+
+        /* Skeleton for gallery */
+        .skeleton-carousel {
+            height: 500px;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .skeleton-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .skeleton-thumbnail {
+            height: 100px;
+            border-radius: 8px;
+        }
+
+        /* Skeleton for section cards */
+        .skeleton-section-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .skeleton-section-title {
+            height: 32px;
+            width: 250px;
+            margin-bottom: 1.5rem;
+        }
+
+        .skeleton-text-line {
+            height: 20px;
+            margin-bottom: 12px;
+        }
+
+        .skeleton-text-line.short {
+            width: 70%;
+        }
+
+        /* Skeleton for features */
+        .skeleton-feature {
+            height: 60px;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Skeleton for contact buttons */
+        .skeleton-contact-btn {
+            height: 56px;
+            border-radius: 8px;
+        }
+
+        .loading {
+            display: none;
+            /* Hide old loading spinner */
         }
 
         .error-message {
@@ -455,6 +579,8 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            z-index: 500;
+            /* Keep below navbar (1000) */
         }
 
         .leaflet-control-recenter:hover {
@@ -477,7 +603,6 @@
             transform: scale(0.95);
         }
 
-        /* Optional: Tooltip for recenter button */
         .leaflet-control-recenter::before {
             content: attr(title);
             position: absolute;
@@ -518,7 +643,15 @@
                 height: 300px;
             }
 
+            .skeleton-carousel {
+                height: 300px;
+            }
+
             .thumbnail-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+
+            .skeleton-thumbnails {
                 grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
 
@@ -547,19 +680,16 @@
                 font-size: 20px;
             }
 
-            /* Hide tooltip on mobile */
             .leaflet-control-recenter::before {
                 display: none;
             }
 
-            price-highlight {
+            .price-highlight {
                 padding: 0.75rem 1.5rem;
-                /* Even more compact on mobile */
             }
 
             .price-amount {
                 font-size: 1.75rem;
-                /* Smaller on mobile */
             }
 
             .price-label {
@@ -570,6 +700,10 @@
                 font-size: 0.75rem;
                 padding: 0.3rem 0.6rem;
             }
+
+            .skeleton-location {
+                width: 80%;
+            }
         }
     </style>
 </head>
@@ -579,13 +713,76 @@
 
     <main>
         <div class="container property-container">
-            <!-- Loading -->
-            <div id="loading" class="loading">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p style="margin-top: 15px; color: #666;">Loading property...</p>
+            <!-- Skeleton Loading -->
+            <div id="skeleton-content">
+                <div class="skeleton skeleton-back-btn"></div>
+
+                <div class="property-header">
+                    <div class="skeleton skeleton-category-badge"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-location"></div>
+                </div>
+
+                <div class="skeleton-price-card">
+                    <div class="skeleton skeleton-price-label"></div>
+                    <div class="skeleton skeleton-price-amount"></div>
+                    <div class="skeleton skeleton-price-status"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <!-- Skeleton Gallery -->
+                        <div class="skeleton skeleton-carousel"></div>
+                        <div class="skeleton-thumbnails">
+                            <div class="skeleton skeleton-thumbnail"></div>
+                            <div class="skeleton skeleton-thumbnail"></div>
+                            <div class="skeleton skeleton-thumbnail"></div>
+                            <div class="skeleton skeleton-thumbnail"></div>
+                            <div class="skeleton skeleton-thumbnail"></div>
+                        </div>
+
+                        <!-- Skeleton Description -->
+                        <div class="skeleton-section-card">
+                            <div class="skeleton skeleton-section-title"></div>
+                            <div class="skeleton skeleton-text-line"></div>
+                            <div class="skeleton skeleton-text-line"></div>
+                            <div class="skeleton skeleton-text-line short"></div>
+                        </div>
+
+                        <!-- Skeleton Map -->
+                        <div class="skeleton-section-card">
+                            <div class="skeleton skeleton-section-title"></div>
+                            <div class="skeleton" style="height: 400px; border-radius: 12px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <!-- Skeleton Features -->
+                        <div class="skeleton-section-card">
+                            <div class="skeleton skeleton-section-title"></div>
+                            <div class="skeleton skeleton-feature"></div>
+                            <div class="skeleton skeleton-feature"></div>
+                            <div class="skeleton skeleton-feature"></div>
+                            <div class="skeleton skeleton-feature"></div>
+                        </div>
+
+                        <!-- Skeleton Contact -->
+                        <div class="skeleton-section-card">
+                            <div class="skeleton skeleton-section-title"></div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <div class="skeleton skeleton-text-line"></div>
+                            </div>
+                            <div style="display: grid; gap: 1rem;">
+                                <div class="skeleton skeleton-contact-btn"></div>
+                                <div class="skeleton skeleton-contact-btn"></div>
+                                <div class="skeleton skeleton-contact-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Property Content -->
+            <!-- Actual Property Content -->
             <div id="property-content" style="display: none;">
                 <a href="/projects.html" class="back-button">
                     <i class="fas fa-arrow-left"></i> Back to Projects
@@ -600,7 +797,7 @@
                     </div>
                 </div>
 
-                <!-- NEW: Price Highlight at Top -->
+                <!-- Price Highlight at Top -->
                 <div class="price-highlight" id="price-section" style="display: none;">
                     <div class="price-label">Asking Price</div>
                     <div class="price-amount" id="property-price">₱5,500,000.00</div>
@@ -643,7 +840,7 @@
 
                     <!-- Right Column: Features, Contact & Share -->
                     <div class="col-lg-4">
-                        <!-- Property Features Section - MOVED TO SIDEBAR -->
+                        <!-- Property Features Section -->
                         <div class="section-card">
                             <h3>
                                 <i class="fas fa-list"></i>
@@ -746,25 +943,20 @@
 
     <script>
         let propertyMap = null;
-        let currentProperty = null; // Store current property globally
+        let currentProperty = null;
 
-        // Get WhatsApp link with property details
         function getWhatsAppLink(property) {
             const message = `Hello! I'm interested in learning more about *${property.name}*.\n\nLocation: ${property.location}\n\nCould you please provide more details about this property?`;
-            const phoneNumber = '639276154651'; // Change to your WhatsApp number
+            const phoneNumber = '639276154651';
             return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         }
 
-        // Get Facebook Messenger link
         function getMessengerLink(property) {
-            // For Facebook Messenger, you need your Facebook Page ID
-            // Replace 'YOUR_PAGE_ID' with your actual Facebook Page ID
             const pageId = '103618938300166';
             const message = `Hello! I'm interested in learning more about ${property.name}. Location: ${property.location}. Could you please provide more details?`;
             return `https://m.me/${pageId}?text=${encodeURIComponent(message)}`;
         }
 
-        // Get Email link with property details
         function getEmailLink(property) {
             const subject = `Inquiry about ${property.name}`;
             const body = `Hello,\n\nI'm interested in learning more about the following property:\n\nProperty: ${property.name}\nLocation: ${property.location}\n${property.price ? `Price: ${property.price}\n` : ''}${property.status ? `Status: ${property.status}\n` : ''}\nProperty URL: ${window.location.href}\n\nCould you please provide more details?\n\nThank you!`;
@@ -788,12 +980,10 @@
                     lat = parseFloat(data[0].lat);
                     lon = parseFloat(data[0].lon);
                 } else {
-                    // Default to Calamba, Laguna coordinates
                     lat = 14.2117;
                     lon = 121.1653;
                 }
 
-                // Store coordinates globally for recenter function
                 window.propertyCoordinates = { lat, lon };
 
                 mapContainer.innerHTML = '<div id="property-map"></div>';
@@ -804,7 +994,6 @@
                     maxZoom: 19
                 }).addTo(propertyMap);
 
-                // Custom marker icon
                 const customIcon = L.divIcon({
                     className: 'custom-marker',
                     html: '<i class="fas fa-map-marker-alt" style="font-size: 40px; color: #c8102e;"></i>',
@@ -816,35 +1005,28 @@
                 const marker = L.marker([lat, lon], { icon: customIcon }).addTo(propertyMap);
 
                 marker.bindPopup(`
-            <div style="min-width: 200px;">
-                <div style="font-weight: 700; color: #c8102e; margin-bottom: 5px;">${propertyName}</div>
-                <div style="color: #666; font-size: 13px;">
-                    <i class="fas fa-map-marker-alt" style="color: #c8102e;"></i> ${address}
-                </div>
-            </div>
-        `).openPopup();
+                    <div style="min-width: 200px;">
+                        <div style="font-weight: 700; color: #c8102e; margin-bottom: 5px;">${propertyName}</div>
+                        <div style="color: #666; font-size: 13px;">
+                            <i class="fas fa-map-marker-alt" style="color: #c8102e;"></i> ${address}
+                        </div>
+                    </div>
+                `).openPopup();
 
-                // ✨ ADD RECENTER BUTTON CONTROL
                 addRecenterControl(propertyMap, lat, lon);
 
             } catch (error) {
                 console.error('Error initializing map:', error);
                 mapContainer.innerHTML = `
-            <div class="map-loading" style="background: #ffe6e6; color: #c8102e;">
-                <i class="fas fa-exclamation-triangle"></i>
-                <span style="margin-left: 10px;">Unable to load map.</span>
-            </div>
-        `;
+                    <div class="map-loading" style="background: #ffe6e6; color: #c8102e;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span style="margin-left: 10px;">Unable to load map.</span>
+                    </div>
+                `;
             }
         }
 
-        // ============================================
-        // NEW FUNCTION: Add recenter control to map
-        // Add this AFTER the initializeMap function
-        // ============================================
-
         function addRecenterControl(map, lat, lon) {
-            // Create custom Leaflet control for recentering
             L.Control.Recenter = L.Control.extend({
                 onAdd: function (map) {
                     const btn = L.DomUtil.create('div', 'leaflet-control-recenter');
@@ -854,37 +1036,30 @@
                     btn.onclick = function (e) {
                         e.preventDefault();
                         e.stopPropagation();
-
-                        // Smoothly pan and zoom back to property location
                         map.setView([lat, lon], 15, {
                             animate: true,
                             duration: 0.5
                         });
                     };
 
-                    // Prevent map interactions when clicking button
                     L.DomEvent.disableClickPropagation(btn);
                     L.DomEvent.disableScrollPropagation(btn);
 
                     return btn;
                 },
 
-                onRemove: function (map) {
-                    // Cleanup if needed
-                }
+                onRemove: function (map) { }
             });
 
-            // Create factory function
             L.control.recenter = function (opts) {
                 return new L.Control.Recenter(opts);
             }
 
-            // Add control to bottom-right corner of map
             L.control.recenter({ position: 'bottomright' }).addTo(map);
         }
 
         async function loadProperty() {
-            const loading = document.getElementById('loading');
+            const skeletonContent = document.getElementById('skeleton-content');
             const content = document.getElementById('property-content');
             const errorMessage = document.getElementById('error-message');
 
@@ -893,7 +1068,7 @@
             const id = urlParams.get('id');
 
             if (!category || !id) {
-                loading.style.display = 'none';
+                skeletonContent.style.display = 'none';
                 errorMessage.style.display = 'block';
                 return;
             }
@@ -903,108 +1078,115 @@
 
                 if (!property) throw new Error('Property not found');
 
-                // Store property globally for contact functions
                 currentProperty = property;
 
                 document.title = `${property.name} - Calamba Expressive Properties`;
 
-                // Carousel
-                const carouselHTML = `
-                    <div id="propertyCarousel" class="carousel slide mb-3" data-ride="carousel">
-                        <ol class="carousel-indicators">
+                // Simulate loading delay to show skeleton
+                setTimeout(() => {
+                    // Hide skeleton
+                    skeletonContent.style.display = 'none';
+
+                    // Show actual content
+                    content.style.display = 'block';
+
+                    // Carousel
+                    const carouselHTML = `
+                        <div id="propertyCarousel" class="carousel slide mb-3" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                ${property.images.map((img, i) => `
+                                    <li data-target="#propertyCarousel" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>
+                                `).join('')}
+                            </ol>
+                            <div class="carousel-inner">
+                                ${property.images.map((img, i) => `
+                                    <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                                        <img src="${img}" class="d-block w-100" alt="${property.name} - Image ${i + 1}" 
+                                             onclick="openFullscreen(this)">
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <div class="thumbnail-grid">
                             ${property.images.map((img, i) => `
-                                <li data-target="#propertyCarousel" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>
-                            `).join('')}
-                        </ol>
-                        <div class="carousel-inner">
-                            ${property.images.map((img, i) => `
-                                <div class="carousel-item ${i === 0 ? 'active' : ''}">
-                                    <img src="${img}" class="d-block w-100" alt="${property.name} - Image ${i + 1}" 
-                                         onclick="openFullscreen(this)">
-                                </div>
+                                <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
+                                     alt="Thumbnail ${i + 1}" onclick="changeSlide(${i})">
                             `).join('')}
                         </div>
-                        <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                    <div class="thumbnail-grid">
-                        ${property.images.map((img, i) => `
-                            <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
-                                 alt="Thumbnail ${i + 1}" onclick="changeSlide(${i})">
-                        `).join('')}
-                    </div>
-                `;
-
-                document.querySelector('.property-gallery').innerHTML = carouselHTML;
-
-                // Header
-                document.getElementById('property-category').textContent = property.categoryName;
-                document.getElementById('property-title').textContent = property.name;
-                document.getElementById('property-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${property.location}`;
-
-                // Price and Status
-                if (property.price || property.status) {
-                    const priceSection = document.getElementById('price-section');
-                    priceSection.style.display = 'block';
-                    if (property.price) {
-                        document.getElementById('property-price').textContent = property.price;
-                    }
-                    if (property.status) {
-                        document.getElementById('property-status').textContent = property.status;
-                    }
-                }
-
-                // Features
-                const featuresGrid = document.getElementById('features-grid');
-                property.features.forEach(feature => {
-                    const featureItem = document.createElement('div');
-                    featureItem.className = 'feature-item';
-                    featureItem.innerHTML = `
-                        <i class="${feature.icon}"></i>
-                        <span>${feature.text}</span>
                     `;
-                    featuresGrid.appendChild(featureItem);
-                });
 
-                // Description
-                if (property.description) {
-                    document.getElementById('description-section').style.display = 'block';
-                    const descElement = document.getElementById('property-description');
-                    const hasHTMLTags = /<[^>]+>/.test(property.description);
-                    if (hasHTMLTags) {
-                        descElement.innerHTML = property.description;
-                    } else {
-                        descElement.textContent = property.description;
+                    document.querySelector('.property-gallery').innerHTML = carouselHTML;
+
+                    // Header
+                    document.getElementById('property-category').textContent = property.categoryName;
+                    document.getElementById('property-title').textContent = property.name;
+                    document.getElementById('property-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${property.location}`;
+
+                    // Price and Status
+                    if (property.price || property.status) {
+                        const priceSection = document.getElementById('price-section');
+                        priceSection.style.display = 'block';
+                        if (property.price) {
+                            document.getElementById('property-price').textContent = property.price;
+                        }
+                        if (property.status) {
+                            document.getElementById('property-status').textContent = property.status;
+                        }
                     }
-                }
 
-                // Update contact links with property information
-                document.getElementById('whatsapp-link').href = getWhatsAppLink(property);
-                document.getElementById('messenger-link').href = getMessengerLink(property);
-                document.getElementById('email-link').href = getEmailLink(property);
+                    // Features
+                    const featuresGrid = document.getElementById('features-grid');
+                    property.features.forEach(feature => {
+                        const featureItem = document.createElement('div');
+                        featureItem.className = 'feature-item';
+                        featureItem.innerHTML = `
+                            <i class="${feature.icon}"></i>
+                            <span>${feature.text}</span>
+                        `;
+                        featuresGrid.appendChild(featureItem);
+                    });
 
-                // Share links
-                const propertyUrl = encodeURIComponent(window.location.href);
-                const propertyName = encodeURIComponent(property.name);
-                document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${propertyUrl}`;
-                document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${propertyUrl}&text=${propertyName}`;
+                    // Description
+                    if (property.description) {
+                        document.getElementById('description-section').style.display = 'block';
+                        const descElement = document.getElementById('property-description');
+                        const hasHTMLTags = /<[^>]+>/.test(property.description);
+                        if (hasHTMLTags) {
+                            descElement.innerHTML = property.description;
+                        } else {
+                            descElement.textContent = property.description;
+                        }
+                    }
 
-                loading.style.display = 'none';
-                content.style.display = 'block';
+                    // Update contact links
+                    document.getElementById('whatsapp-link').href = getWhatsAppLink(property);
+                    document.getElementById('messenger-link').href = getMessengerLink(property);
+                    document.getElementById('email-link').href = getEmailLink(property);
 
-                setTimeout(() => {
-                    initializeMap(property.location, property.name);
-                }, 300);
+                    // Share links
+                    const propertyUrl = encodeURIComponent(window.location.href);
+                    const propertyName = encodeURIComponent(property.name);
+                    document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${propertyUrl}`;
+                    document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${propertyUrl}&text=${propertyName}`;
+
+                    // Initialize map
+                    setTimeout(() => {
+                        initializeMap(property.location, property.name);
+                    }, 300);
+
+                }, 1000); // 1 second delay to show skeleton
 
             } catch (error) {
                 console.error('Error loading property:', error);
-                loading.style.display = 'none';
+                skeletonContent.style.display = 'none';
                 errorMessage.style.display = 'block';
             }
         }
