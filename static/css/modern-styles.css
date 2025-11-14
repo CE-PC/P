@@ -904,12 +904,11 @@ footer {
         position: absolute;
         top: 100%;
         left: 0;
-        right: 0;
         background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         border-radius: 0 0 12px 12px;
         margin-top: 0;
-        z-index: 9999 !important;
+        z-index: 1000;
     }
 
     .navbar-collapse.show {

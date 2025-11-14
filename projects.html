@@ -72,8 +72,11 @@
         .project-title {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #2a2a33;
             margin-bottom: 10px;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .project-location {
@@ -542,7 +545,7 @@
                                 <div class="category-badge">${categoryName}</div>
                             </div>
                             <div class="project-content">
-                                <div class="project-title">${project.name}</div>
+                                <strong class="project-title">${project.name}</strong>
                                 <div class="project-location">
                                     <i class="fas fa-map-marker-alt"></i> ${project.location}
                                 </div>
