@@ -542,20 +542,21 @@
                         card.onclick = () => window.location.href = `/property.html?category=${category}&id=${id}`;
 
                         card.innerHTML = `
-                    <div class="project-image-wrapper">
-                        <img src="${firstImage}" alt="${fullProperty.name}" class="project-image">
-                        <div class="category-badge">${categoryName}</div>
-                    </div>
-                    <div class="project-content">
-                        <strong class="project-title">${fullProperty.name}</strong>
-                        <div class="project-location">
-                            <i class="fas fa-map-marker-alt"></i> ${fullProperty.location}
+                        <div class="project-image-wrapper">
+                            <img src="${firstImage}" alt="${fullProperty.name}" class="project-image">
+                            <div class="category-badge">${categoryName}</div>
                         </div>
-                        <div class="project-meta">
-                            <span><i class="fas fa-images"></i> ${fullProperty.images.length} photo${fullProperty.images.length !== 1 ? 's' : ''}</span>
+                        <div class="project-content">
+                            <strong class="project-title">${fullProperty.name}</strong>
+                            <div class="project-location">
+                                <i class="fas fa-map-marker-alt"></i> ${fullProperty.location}
+                            </div>
+                            <div class="project-meta">
+                                
+                                ${fullProperty.price ? `<span><i class="fas fa-tag"></i> ${fullProperty.price}</span>` : ''}
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
 
                         grid.appendChild(card);
                         allCards.push(card);
