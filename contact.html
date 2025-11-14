@@ -30,6 +30,99 @@
     <link rel="stylesheet" href="/static/css/modern-styles.css">
     <!-- Favicon -->
     <link rel="icon" href="/static/images/icon.jpg" type="image/x-icon">
+    <style>
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: white;
+        }
+
+        .contact-icon .fa-facebook-messenger {
+            background: linear-gradient(135deg, #0084FF 0%, #0063CC 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .contact-icon .fa-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .contact-icon .fa-envelope {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .contact-icon .fa-clock {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .contact-icon .fa-map-marker-alt {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+
+        .contact-card p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .contact-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: white !important;
+        }
+
+        .contact-link.whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+
+        .contact-link.email {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+        }
+    </style>
 </head>
 
 <body>
@@ -38,8 +131,9 @@
 
     <main>
         <div class="container mt-5">
-            <h1 class="section-title">Get In Touch</h1>
-            <p class="section-subtitle">We're here to help you find your perfect property</p>
+            <h1 class="section-title">Ready to Find Your Dream Property?</h1>
+            <p class="section-subtitle">Contact us today and let our experienced team guide you through your real estate
+                journey.</p>
 
 
 
@@ -110,8 +204,8 @@
                             </p>
                             <div class="mb-2">
                                 <a href="https://www.facebook.com/expressivesrealty.lynmanguiat/" target="_blank"
-                                    rel="noopener noreferrer" class="btn btn-light btn-lg"
-                                    style="font-weight: bold; padding: 12px 28px; border-radius: 10px; font-size: 1rem;">
+                                    rel="noopener noreferrer" class="contact-link"
+                                    style="font-weight: bold; padding: 12px 28px; border-radius: 10px; font-size: 1rem; background: linear-gradient(135deg, #0084FF 0%, #0063CC 100%);">
                                     <i class="fab fa-facebook"></i> Visit Our Facebook Page
                                 </a>
                             </div>
@@ -149,35 +243,6 @@
                             Serving Calamba and surrounding areas<br>
                             Philippines
                         </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Contact Form Area -->
-            <div class="row mb-5 mx-auto">
-                <div class=" col-lg-10 mx-auto">
-                    <div class="p-5 text-center fade-in"
-                        style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); border-radius: 12px; color: white; animation-delay: 0.7s;">
-                        <h2 class="mb-3">Ready to Find Your Dream Property?</h2>
-                        <p style="font-size: 1.1rem;" class="mb-4">
-                            Contact us today and let our experienced team guide you through your real estate
-                            journey.
-                            Whether you're buying, selling, or renting, we're here to help!
-                        </p>
-                        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;">
-                            <a href="https://wa.me/639276154651?text=Hello%2C%20I%E2%80%99m%20interested%20in%20learning%20more%20about%20your%20listings%20Could%20you%20please%20provide%20more%20details%3F"
-                                target="_blank" class="contact-link whatsapp">
-                                <i class="fab fa-whatsapp"></i> WhatsApp Us
-                            </a>
-                            <a href="https://m.me/103618938300166?text=Hello!%20I'm%20interested%20in%20learning%20more%20about%20Calamba%20Expressive%20Properties.%20Could%20you%20please%20provide%20more%20details%3F"
-                                target="_blank" class="contact-link"
-                                style="background: linear-gradient(135deg, #0084FF 0%, #0063CC 100%);">
-                                <i class="fab fa-facebook-messenger"></i> Send Message
-                            </a>
-                            <a href="mailto:cepc.development@gmail.com" class="contact-link email">
-                                <i class="fas fa-envelope"></i> Send Email
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
