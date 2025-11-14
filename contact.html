@@ -93,6 +93,16 @@
             border-radius: 50%;
         }
 
+        .contact-icon .fa-clipboard-list {
+            background: linear-gradient(135deg, #2a2a33 0%, #1a1a20 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
 
         .contact-card h3 {
             font-size: 1.5rem;
@@ -223,9 +233,9 @@
                 </div>
             </div>
 
-            <!-- Office Hours & Location -->
+            <!-- Office Hours, Submit Inquiry & Location -->
             <div class="row mt-5 mb-5">
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-4 mb-4">
                     <div class="contact-card" style="animation-delay: 0.5s;">
                         <div class="contact-icon">
                             <i class="fas fa-clock"></i>
@@ -238,7 +248,22 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4">
+
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-card" style="animation-delay: 0.55s;">
+                        <div class="contact-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>Submit an Inquiry</h3>
+                        <p>Fill out our form for detailed assistance</p>
+                        <button onclick="openInquiryForm()" class="contact-link"
+                            style="background: linear-gradient(135deg, #2a2a33 0%, #1a1a20 100%); border: none; cursor: pointer; width: auto; display: inline-flex; margin: 0 auto;">
+                            <i class="fas fa-clipboard-list"></i> Submit Inquiry
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
                     <div class="contact-card" style="animation-delay: 0.6s;">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
@@ -263,6 +288,21 @@
     <script src="/static/js/enhanced-modal.js"></script>
     <script src="/static/js/navbar.js"></script>
     <script src="/static/js/footer.js"></script>
+
+    <script>
+        function openInquiryForm() {
+            const formBaseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdW4qEGG5YwfKj3twGaxF41T5xg0Me5WY3G6b147UL4ujrOsg/viewform';
+
+            const params = new URLSearchParams({
+                'entry.384175351': 'General Inquiry - All Properties',
+                'entry.1764803982': 'Calamba, Laguna, Philippines',
+                'entry.142418475': 'General Inquiry',
+                'entry.19700063': window.location.origin
+            });
+
+            window.open(`${formBaseUrl}?${params.toString()}`, '_blank');
+        }
+    </script>
 </body>
 
 </html>
