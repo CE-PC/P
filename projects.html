@@ -94,6 +94,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
+
             background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%);
             color: white;
             padding: 6px 12px;
@@ -138,8 +139,13 @@
         }
 
         .category-tab.active {
-            color: #c8102e;
-            border-bottom-color: #c8102e;
+            color: transparent;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(135deg, #c8102e 0%, #a77846 100%) 1;
         }
 
         .search-container {
@@ -173,7 +179,10 @@
         }
 
         .stats-bar strong {
-            color: #c8102e;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* ============================================
