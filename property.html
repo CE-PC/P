@@ -576,7 +576,7 @@
                                     Messenger
                                 </a>
 
-                                <a href="mailto:cepc.development@gmail.com" class="contact-btn btn-email">
+                                <a href="#" id="email-link" class="contact-btn btn-email">
                                     <i class="fas fa-envelope"></i>
                                     Email
                                 </a>
@@ -647,6 +647,30 @@
 
     <script>
         let propertyMap = null;
+        let currentProperty = null; // Store current property globally
+
+        // Get WhatsApp link with property details
+        function getWhatsAppLink(property) {
+            const message = `Hello! I'm interested in learning more about *${property.name}*.\n\nLocation: ${property.location}\n\nCould you please provide more details about this property?`;
+            const phoneNumber = '639276154651'; // Change to your WhatsApp number
+            return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        }
+
+        // Get Facebook Messenger link
+        function getMessengerLink(property) {
+            // For Facebook Messenger, you need your Facebook Page ID
+            // Replace 'YOUR_PAGE_ID' with your actual Facebook Page ID
+            const pageId = '103618938300166';
+            const message = `Hello! I'm interested in learning more about ${property.name}. Location: ${property.location}. Could you please provide more details?`;
+            return `https://m.me/${pageId}?text=${encodeURIComponent(message)}`;
+        }
+
+        // Get Email link with property details
+        function getEmailLink(property) {
+            const subject = `Inquiry about ${property.name}`;
+            const body = `Hello,\n\nI'm interested in learning more about the following property:\n\nProperty: ${property.name}\nLocation: ${property.location}\n${property.price ? `Price: ${property.price}\n` : ''}${property.status ? `Status: ${property.status}\n` : ''}\nProperty URL: ${window.location.href}\n\nCould you please provide more details?\n\nThank you!`;
+            return `mailto:cepc.development@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
 
         async function initializeMap(address, propertyName) {
             const mapContainer = document.getElementById('map-container');
@@ -727,6 +751,9 @@
 
                 if (!property) throw new Error('Property not found');
 
+                // Store property globally for contact functions
+                currentProperty = property;
+
                 document.title = `${property.name} - Calamba Expressive Properties`;
 
                 // Carousel
@@ -804,6 +831,11 @@
                         descElement.textContent = property.description;
                     }
                 }
+
+                // Update contact links with property information
+                document.getElementById('whatsapp-link').href = getWhatsAppLink(property);
+                document.getElementById('messenger-link').href = getMessengerLink(property);
+                document.getElementById('email-link').href = getEmailLink(property);
 
                 // Share links
                 const propertyUrl = encodeURIComponent(window.location.href);

@@ -32,9 +32,9 @@ class LightboxGallery {
     attachEventListeners() {
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (!document.getElementById('lightbox-modal').style.display || 
-                document.getElementById('lightbox-modal').style.display === 'none') return;
-            
+            const modal = document.getElementById('lightbox-modal');
+            if (!modal || !modal.style.display || modal.style.display === 'none') return;
+
             if (e.key === 'ArrowLeft') this.prev();
             if (e.key === 'ArrowRight') this.next();
             if (e.key === 'Escape') this.close();
@@ -56,7 +56,7 @@ class LightboxGallery {
         const modal = document.getElementById('lightbox-modal');
         const img = document.getElementById('lightbox-img');
         const captionEl = document.getElementById('lightbox-caption');
-        
+
         if (imageArray) {
             this.images = imageArray;
             this.currentIndex = this.images.findIndex(img => img.src === src);
@@ -102,7 +102,7 @@ class LightboxGallery {
         const img = document.getElementById('lightbox-img');
         const captionEl = document.getElementById('lightbox-caption');
         const current = this.images[this.currentIndex];
-        
+
         img.style.opacity = '0';
         setTimeout(() => {
             img.src = current.src;
@@ -114,7 +114,9 @@ class LightboxGallery {
 
     updateCounter() {
         const counter = document.getElementById('lightbox-counter');
-        counter.textContent = `${this.currentIndex + 1} / ${this.images.length}`;
+        if (counter) {
+            counter.textContent = `${this.currentIndex + 1} / ${this.images.length}`;
+        }
     }
 }
 
@@ -136,7 +138,7 @@ function initSearchFilter() {
         properties.forEach(property => {
             const title = property.querySelector('.property-card-title, .gallery-overlay')?.textContent.toLowerCase() || '';
             const text = property.querySelector('.property-card-text')?.textContent.toLowerCase() || '';
-            
+
             if (title.includes(searchTerm) || text.includes(searchTerm)) {
                 property.style.display = '';
                 property.classList.add('fade-in');
@@ -169,12 +171,15 @@ function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href === '#') return;
-            
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (href === '#' || href === '#!') return;
+
+            // Don't prevent default for external links or special cases
+            if (href.startsWith('#') && href.length > 1) {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         });
     });
@@ -201,22 +206,26 @@ function initScrollAnimations() {
     });
 }
 
-// WhatsApp link handler
+// WhatsApp link handler - Updated to not use querySelector on URLs
 function initWhatsAppLinks() {
     const phoneNumber = "639276154651";
     const message = "Hello, I'm interested in learning more about your listings. Could you please provide more details?";
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    document.querySelectorAll('#whatsappLink, .whatsapp-link').forEach(link => {
-        link.href = whatsappLink;
+    // Find all WhatsApp links by their ID or class
+    const whatsappElements = document.querySelectorAll('#whatsappLink, .whatsapp-link');
+    whatsappElements.forEach(link => {
+        if (link && link.tagName === 'A') {
+            link.href = whatsappLink;
+        }
     });
 }
 
 // Image lazy loading
 function initLazyLoading() {
     const images = document.querySelectorAll('img[data-src]');
-    
+
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -239,11 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initWhatsAppLinks();
     initLazyLoading();
-    
+
     // Add click handlers for gallery items
     document.querySelectorAll('.gallery-item img').forEach(img => {
         img.addEventListener('click', () => {
-            lightbox.open(img.src, img.alt);
+            if (lightbox) {
+                lightbox.open(img.src, img.alt);
+            }
         });
     });
 
@@ -251,7 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.property-card-img').forEach(img => {
         img.addEventListener('click', (e) => {
             e.preventDefault();
-            lightbox.open(img.src, img.alt);
+            if (lightbox) {
+                lightbox.open(img.src, img.alt);
+            }
         });
     });
 });
