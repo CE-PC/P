@@ -488,7 +488,7 @@
             filterProjects();
         }
 
-        function loadProjects() {
+        async function loadProjects() {
             const grid = document.getElementById('projects-grid');
             const skeletonGrid = document.getElementById('skeleton-grid');
             const skeletonFilters = document.getElementById('skeleton-filters');
@@ -508,7 +508,7 @@
             });
 
             // Simulate loading delay to show skeleton
-            setTimeout(() => {
+            setTimeout(async () => {
                 // Hide skeletons
                 skeletonGrid.style.display = 'none';
                 skeletonFilters.style.display = 'none';
@@ -530,30 +530,32 @@
                         const project = projects[id];
                         if (!project.images || project.images.length === 0) continue;
 
-                        const firstImage = window.PROPERTY_DATA.basePath + category + '/' + project.folder + '/' + project.images[0];
+                        // Get full property data with correct location
+                        const fullProperty = await window.PROPERTY_DATA.getProperty(category, id);
+                        const firstImage = fullProperty.images[0];
 
                         const card = document.createElement('div');
                         card.className = 'project-card';
-                        card.setAttribute('data-name', project.name.toLowerCase());
-                        card.setAttribute('data-location', project.location.toLowerCase());
+                        card.setAttribute('data-name', fullProperty.name.toLowerCase());
+                        card.setAttribute('data-location', fullProperty.location.toLowerCase());
                         card.setAttribute('data-category', category);
                         card.onclick = () => window.location.href = `/property.html?category=${category}&id=${id}`;
 
                         card.innerHTML = `
-                            <div class="project-image-wrapper">
-                                <img src="${firstImage}" alt="${project.name}" class="project-image">
-                                <div class="category-badge">${categoryName}</div>
-                            </div>
-                            <div class="project-content">
-                                <strong class="project-title">${project.name}</strong>
-                                <div class="project-location">
-                                    <i class="fas fa-map-marker-alt"></i> ${project.location}
-                                </div>
-                                <div class="project-meta">
-                                    <span><i class="fas fa-images"></i> ${project.images.length} photo${project.images.length !== 1 ? 's' : ''}</span>
-                                </div>
-                            </div>
-                        `;
+                    <div class="project-image-wrapper">
+                        <img src="${firstImage}" alt="${fullProperty.name}" class="project-image">
+                        <div class="category-badge">${categoryName}</div>
+                    </div>
+                    <div class="project-content">
+                        <strong class="project-title">${fullProperty.name}</strong>
+                        <div class="project-location">
+                            <i class="fas fa-map-marker-alt"></i> ${fullProperty.location}
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-images"></i> ${fullProperty.images.length} photo${fullProperty.images.length !== 1 ? 's' : ''}</span>
+                        </div>
+                    </div>
+                `;
 
                         grid.appendChild(card);
                         allCards.push(card);
@@ -563,7 +565,7 @@
 
                 updateStats();
                 console.log(`✅ Loaded ${totalProjects} projects across ${Object.keys(projectsByCategory).length} categories`);
-            }, 800); // 800ms delay to show skeleton loading
+            }, 800);
         }
 
         function filterProjects() {
