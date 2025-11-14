@@ -45,7 +45,7 @@
                         </a>
                         
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav ml-auto">
+                            <ul class="navbar-nav">
                                 ${navItemsHTML}
                             </ul>
                         </div>

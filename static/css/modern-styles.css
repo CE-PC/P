@@ -489,14 +489,10 @@ main {
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    /* Reduced gap */
     padding: 0.5rem 0.8rem !important;
-    /* Reduced padding */
-    margin: 0 0.2rem;
     border-radius: 12px;
     font-weight: 500;
     font-size: 0.9rem;
-    /* Add this line */
     color: rgba(255, 255, 255, 0.9) !important;
     transition: all 0.3s ease;
     position: relative;
