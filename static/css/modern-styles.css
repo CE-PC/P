@@ -59,6 +59,7 @@ header {
     box-shadow: 0 8px 32px rgba(200, 16, 46, 0.3);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    /* position: fixed; */
 }
 
 .navbar-custom:hover {
@@ -165,7 +166,9 @@ header {
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(243, 239, 17)' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:rgb(255,255,255);stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:rgb(243,239,17);stop-opacity:1' /%3e%3c/linearGradient%3e%3c/defs%3e%3cpath stroke='url(%23grad)' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 24px;
+    height: 24px;
 }
 
 .navbar-collapse {
