@@ -2,12 +2,17 @@
 <html lang="en">
 
 <head>
-
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#c8102e">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Calamba Expressive Properties</title>
+
+    <!-- Bootstrap CSS - MUST be loaded before custom styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="/static/css/modern-styles.css">
 </head>
 
@@ -24,6 +29,14 @@
 
     <div id="footer-container"></div>
 
+    <!-- jQuery - MUST come first -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Popper.js - MUST come before Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Your custom scripts -->
     <script src="/static/js/navbar.js"></script>
     <script src="/static/js/footer.js"></script>
 </body>
