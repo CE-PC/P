@@ -28,6 +28,7 @@ body {
     color: var(--dark-text);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 10px;
 }
 
 /* Smooth scroll */
@@ -46,11 +47,12 @@ html {
 
 /* Header & Navigation - MODERN REDESIGN */
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    background: transparent;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .navbar-custom {
@@ -717,10 +719,10 @@ footer {
 /* Mobile Responsiveness */
 /* Mobile Responsiveness */
 @media (max-width: 991px) {
-    header {
+    /* header {
         position: sticky;
         top: 0;
-    }
+    } */
 
     .properties-grid,
     .gallery-grid,
