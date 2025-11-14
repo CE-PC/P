@@ -183,7 +183,7 @@ body {
 footer {
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%);
     color: white;
-    padding: 2rem 1rem;
+    padding: 1rem;
     text-align: center;
     margin-top: 2rem;
 }
@@ -202,15 +202,15 @@ footer {
 }
 
 .footer-icon:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+    /* background-color: rgba(255, 255, 255, 0.3); */
+    transform: scale(1.2);
 }
 
 .footer-links {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 
 /* Image Gallery */

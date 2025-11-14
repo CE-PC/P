@@ -31,20 +31,22 @@
         const emailLink = `mailto:${footerConfig.email}?subject=Inquiry%20about%20Calamba%20Expressive%20Properties&body=Hello,%20I%20am%20interested%20in%20learning%20more%20about%20your%20services.%20Please%20provide%20me%20with%20additional%20information.`;
 
         return `
-            <footer class="text-center">
+            <footer class="text-center" style="padding: 1rem;">
                 <div class="container">
-                    <p>&copy; ${footerConfig.year} ${footerConfig.companyName}. All rights reserved.</p>
-                    <div class="footer-links">
-                        <a href="${whatsappLink}" target="_blank" class="footer-icon" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="${emailLink}" class="footer-icon" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="${footerConfig.facebook}" target="_blank" class="footer-icon" title="Facebook">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </div>
+                    <p style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 0;">
+                        <span>&copy; ${footerConfig.year} ${footerConfig.companyName}. All rights reserved.</span>
+                        <span class="footer-links" style="display: inline-flex; gap: 10px; margin: 0;">
+                            <a href="${whatsappLink}" target="_blank" class="footer-icon" title="WhatsApp" style="color: white !important;">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="${emailLink}" class="footer-icon" title="Email" style="color: white !important;">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="${footerConfig.facebook}" target="_blank" class="footer-icon" title="Facebook" style="color: white !important;">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </span>
+                    </p>
                 </div>
             </footer>
         `;
