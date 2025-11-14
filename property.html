@@ -432,6 +432,63 @@
             margin-bottom: 20px;
         }
 
+        .leaflet-control-recenter {
+            background: white;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .leaflet-control-recenter:hover {
+            background: #c8102e;
+            border-color: #c8102e;
+        }
+
+        .leaflet-control-recenter:hover i {
+            color: white;
+        }
+
+        .leaflet-control-recenter i {
+            font-size: 18px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .leaflet-control-recenter:active {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            transform: scale(0.95);
+        }
+
+        /* Optional: Tooltip for recenter button */
+        .leaflet-control-recenter::before {
+            content: attr(title);
+            position: absolute;
+            right: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-weight: 500;
+        }
+
+        .leaflet-control-recenter:hover::before {
+            opacity: 1;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 992px) {
             .features-grid {
@@ -470,6 +527,20 @@
 
             .share-btn {
                 min-width: 100%;
+            }
+
+            .leaflet-control-recenter {
+                width: 40px;
+                height: 40px;
+            }
+
+            .leaflet-control-recenter i {
+                font-size: 20px;
+            }
+
+            /* Hide tooltip on mobile */
+            .leaflet-control-recenter::before {
+                display: none;
             }
         }
     </style>
@@ -689,9 +760,13 @@
                     lat = parseFloat(data[0].lat);
                     lon = parseFloat(data[0].lon);
                 } else {
+                    // Default to Calamba, Laguna coordinates
                     lat = 14.2117;
                     lon = 121.1653;
                 }
+
+                // Store coordinates globally for recenter function
+                window.propertyCoordinates = { lat, lon };
 
                 mapContainer.innerHTML = '<div id="property-map"></div>';
                 propertyMap = L.map('property-map').setView([lat, lon], 15);
@@ -701,6 +776,7 @@
                     maxZoom: 19
                 }).addTo(propertyMap);
 
+                // Custom marker icon
                 const customIcon = L.divIcon({
                     className: 'custom-marker',
                     html: '<i class="fas fa-map-marker-alt" style="font-size: 40px; color: #c8102e;"></i>',
@@ -712,23 +788,71 @@
                 const marker = L.marker([lat, lon], { icon: customIcon }).addTo(propertyMap);
 
                 marker.bindPopup(`
-                    <div style="min-width: 200px;">
-                        <div style="font-weight: 700; color: #c8102e; margin-bottom: 5px;">${propertyName}</div>
-                        <div style="color: #666; font-size: 13px;">
-                            <i class="fas fa-map-marker-alt" style="color: #c8102e;"></i> ${address}
-                        </div>
-                    </div>
-                `).openPopup();
+            <div style="min-width: 200px;">
+                <div style="font-weight: 700; color: #c8102e; margin-bottom: 5px;">${propertyName}</div>
+                <div style="color: #666; font-size: 13px;">
+                    <i class="fas fa-map-marker-alt" style="color: #c8102e;"></i> ${address}
+                </div>
+            </div>
+        `).openPopup();
+
+                // ✨ ADD RECENTER BUTTON CONTROL
+                addRecenterControl(propertyMap, lat, lon);
 
             } catch (error) {
                 console.error('Error initializing map:', error);
                 mapContainer.innerHTML = `
-                    <div class="map-loading" style="background: #ffe6e6; color: #c8102e;">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <span style="margin-left: 10px;">Unable to load map.</span>
-                    </div>
-                `;
+            <div class="map-loading" style="background: #ffe6e6; color: #c8102e;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span style="margin-left: 10px;">Unable to load map.</span>
+            </div>
+        `;
             }
+        }
+
+        // ============================================
+        // NEW FUNCTION: Add recenter control to map
+        // Add this AFTER the initializeMap function
+        // ============================================
+
+        function addRecenterControl(map, lat, lon) {
+            // Create custom Leaflet control for recentering
+            L.Control.Recenter = L.Control.extend({
+                onAdd: function (map) {
+                    const btn = L.DomUtil.create('div', 'leaflet-control-recenter');
+                    btn.innerHTML = '<i class="fas fa-crosshairs"></i>';
+                    btn.title = 'Return to Property Location';
+
+                    btn.onclick = function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Smoothly pan and zoom back to property location
+                        map.setView([lat, lon], 15, {
+                            animate: true,
+                            duration: 0.5
+                        });
+                    };
+
+                    // Prevent map interactions when clicking button
+                    L.DomEvent.disableClickPropagation(btn);
+                    L.DomEvent.disableScrollPropagation(btn);
+
+                    return btn;
+                },
+
+                onRemove: function (map) {
+                    // Cleanup if needed
+                }
+            });
+
+            // Create factory function
+            L.control.recenter = function (opts) {
+                return new L.Control.Recenter(opts);
+            }
+
+            // Add control to bottom-right corner of map
+            L.control.recenter({ position: 'bottomright' }).addTo(map);
         }
 
         async function loadProperty() {
