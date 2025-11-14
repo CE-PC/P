@@ -69,7 +69,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     padding-top: 10px;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
 }
 
 /* Button - View Property */
@@ -184,7 +184,7 @@ body {
 footer {
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%);
     color: white;
-    padding: 1rem;
+    padding: 0.6rem 1rem;
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -210,6 +210,12 @@ footer {
 .footer-icon:hover {
     /* background-color: rgba(255, 255, 255, 0.3); */
     transform: scale(1.2);
+}
+
+.footer-icon-small {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
 }
 
 .footer-links {
@@ -411,14 +417,16 @@ main {
 
 /* Navbar */
 .navbar-brand {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    /* Reduced from 1.1rem */
     font-weight: 700;
     background: linear-gradient(135deg, #fff 0%, var(--accent-yellow) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     transition: transform 0.3s ease, filter 0.3s ease;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
+    /* Reduced padding */
     border-radius: 12px;
 }
 
@@ -440,7 +448,7 @@ main {
 
 .navbar-custom {
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%) !important;
-    padding: 0.2rem;
+    padding: 0.1rem 0.5rem;
     box-shadow: 0 8px 32px rgba(200, 16, 46, 0.3);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
@@ -480,11 +488,15 @@ main {
 .nav-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1rem !important;
-    margin: 0 0.25rem;
+    gap: 0.4rem;
+    /* Reduced gap */
+    padding: 0.5rem 0.8rem !important;
+    /* Reduced padding */
+    margin: 0 0.2rem;
     border-radius: 12px;
     font-weight: 500;
+    font-size: 0.9rem;
+    /* Add this line */
     color: rgba(255, 255, 255, 0.9) !important;
     transition: all 0.3s ease;
     position: relative;
@@ -527,7 +539,8 @@ main {
 }
 
 .nav-link i {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    /* Reduced from 1.1rem */
     transition: transform 0.3s ease;
 }
 
