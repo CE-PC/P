@@ -69,6 +69,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     padding-top: 10px;
+    padding-bottom: 80px;
 }
 
 /* Button - View Property */
@@ -185,7 +186,12 @@ footer {
     color: white;
     padding: 1rem;
     text-align: center;
-    margin-top: 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .footer-icon {
