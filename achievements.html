@@ -30,20 +30,31 @@
     <link rel="icon" href="/static/images/icon.jpg" type="image/x-icon">
     <style>
         .achievements-hero {
-            background: linear-gradient(135deg, #c8102e 0%, #8b0a1f 100%);
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             color: white;
-            padding: 60px 0;
+            padding: 2rem 0.5rem;
             margin-bottom: 40px;
+            border-radius: 20px;
+            margin-top: 1rem;
+            text-align: center;
         }
 
         .achievements-hero h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .achievements-hero h1 i {
+            background: linear-gradient(135deg, #fff 0%, #f3ef11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .achievements-hero p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 4vw, 1.1rem);
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.8;
@@ -60,7 +71,7 @@
             width: 100%;
             height: 600px;
             object-fit: contain;
-            background: #000;
+            background: transparent;
             border-radius: 12px;
         }
 
@@ -160,7 +171,11 @@
             text-align: center;
             font-size: 1.5rem;
             font-weight: 600;
-            color: #2a2a33;
+            color: transparent;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin: 20px 0;
             min-height: 50px;
         }
@@ -175,6 +190,10 @@
 
         .keyboard-hint i {
             margin: 0 5px;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
@@ -184,22 +203,26 @@
 
     <main>
         <!-- Hero Section with Description -->
-        <div class="achievements-hero">
-            <div class="container text-center">
-                <h1><i class="fas fa-trophy"></i> Our Achievements & Awards</h1>
-                <p>
-                    Over the years, Calamba Expressive Properties Corporation has earned numerous accolades and
-                    recognitions
-                    for our dedication to excellence in real estate. These achievements reflect our commitment to
-                    providing
-                    exceptional service to our clients and maintaining the highest standards in the industry. From top
-                    broker
-                    awards to certificates of recognition from prestigious organizations, each honor represents the hard
-                    work
-                    and passion of our entire team.
-                </p>
+        <section class="container mt-5">
+            <div class="achievements-hero">
+                <div class="container text-center">
+                    <h1><i class="fas fa-trophy"></i> Our Achievements & Awards</h1>
+                    <p>
+                        Over the years, Calamba Expressive Properties Corporation has earned numerous accolades and
+                        recognitions
+                        for our dedication to excellence in real estate. These achievements reflect our commitment to
+                        providing
+                        exceptional service to our clients and maintaining the highest standards in the industry. From
+                        top
+                        broker
+                        awards to certificates of recognition from prestigious organizations, each honor represents the
+                        hard
+                        work
+                        and passion of our entire team.
+                    </p>
+                </div>
             </div>
-        </div>
+        </section>
 
         <div class="container">
             <!-- Achievement Title -->
