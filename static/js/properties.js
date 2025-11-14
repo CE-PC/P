@@ -6,6 +6,7 @@
 
 window.PROPERTY_DATA = {
     basePath: "/static/images/projects/",
+    defaultLocation: "Calamba, Laguna, Philippines",
     categories: [
     {
         "id": "commercial-lot",
@@ -28,7 +29,7 @@ window.PROPERTY_DATA = {
         "commercial-lot": {
                 "8": {
                         "name": "8",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "commercial-lot",
                         "folder": "8",
                         "images": [
@@ -39,7 +40,7 @@ window.PROPERTY_DATA = {
         "commercial-space": {
                 "7": {
                         "name": "7",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "commercial-space",
                         "folder": "7",
                         "images": [
@@ -48,7 +49,7 @@ window.PROPERTY_DATA = {
                 },
                 "9": {
                         "name": "9",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "commercial-space",
                         "folder": "9",
                         "images": [
@@ -57,7 +58,7 @@ window.PROPERTY_DATA = {
                 },
                 "10": {
                         "name": "10",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "commercial-space",
                         "folder": "10",
                         "images": [
@@ -68,7 +69,7 @@ window.PROPERTY_DATA = {
                 },
                 "11": {
                         "name": "11",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "commercial-space",
                         "folder": "11",
                         "images": [
@@ -80,7 +81,7 @@ window.PROPERTY_DATA = {
                 },
                 "12": {
                         "name": "12",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "commercial-space",
                         "folder": "12",
                         "images": [
@@ -94,7 +95,7 @@ window.PROPERTY_DATA = {
         "house-and-lot": {
                 "2": {
                         "name": "2",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
                         "folder": "2",
                         "images": [
@@ -104,7 +105,7 @@ window.PROPERTY_DATA = {
                 },
                 "5": {
                         "name": "5",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
                         "folder": "5",
                         "images": [
@@ -113,7 +114,7 @@ window.PROPERTY_DATA = {
                 },
                 "6": {
                         "name": "6",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
                         "folder": "6",
                         "images": [
@@ -122,14 +123,14 @@ window.PROPERTY_DATA = {
                 },
                 "13": {
                         "name": "13",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
                         "folder": "13",
                         "images": []
                 },
                 "Turn over Unit (Model House)": {
                         "name": "Turn over Unit (Model House)",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
                         "folder": "Turn over Unit (Model House)",
                         "images": [
@@ -146,7 +147,7 @@ window.PROPERTY_DATA = {
         "house-only": {
                 "1": {
                         "name": "1",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-only",
                         "folder": "1",
                         "images": [
@@ -159,7 +160,7 @@ window.PROPERTY_DATA = {
                 },
                 "3": {
                         "name": "3",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-only",
                         "folder": "3",
                         "images": [
@@ -168,7 +169,7 @@ window.PROPERTY_DATA = {
                 },
                 "4": {
                         "name": "4",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-only",
                         "folder": "4",
                         "images": [
@@ -180,7 +181,7 @@ window.PROPERTY_DATA = {
                 },
                 "14": {
                         "name": "14",
-                        "location": "Calamba, Laguna",
+                        "location": "Calamba, Laguna, Philippines",
                         "category": "house-only",
                         "folder": "14",
                         "images": [
@@ -203,7 +204,7 @@ window.PROPERTY_DATA = {
 
         // Default values
         let description = null;
-        let location = project.location; // overridden by property.json if exists
+        let location = project.location || this.defaultLocation; // Use default if not set
         let status = null;               // e.g., "CLEAN CCT COMPLETE"
         let price = null;                // e.g., "₱5,500,000.00"
         let contact = [];                // optional contact info array
@@ -223,12 +224,15 @@ window.PROPERTY_DATA = {
             if (response.ok) {
                 const jsonData = await response.json();
 
-                // Override location if specified
+                // Override location if specified, otherwise use default
                 if (jsonData.location) {
                     location = jsonData.location;
-                    const locIndex = features.findIndex(f => f.icon === "fas fa-map-marker-alt");
-                    if (locIndex >= 0) features[locIndex].text = location;
+                } else {
+                    location = this.defaultLocation;
                 }
+                
+                const locIndex = features.findIndex(f => f.icon === "fas fa-map-marker-alt");
+                if (locIndex >= 0) features[locIndex].text = location;
 
                 // Override status, price, contact, other
                 if (jsonData.status) status = jsonData.status;
