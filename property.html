@@ -47,11 +47,12 @@
             margin-top: 0.25rem;
         }
 
-        /* Price Card - NEW: Prominent pricing display */
+        /* Price Card - Compact version */
         .price-highlight {
             background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             color: white;
-            padding: 2rem;
+            padding: 1rem 2rem;
+            /* Reduced from 2rem to 1rem vertical padding */
             border-radius: 12px;
             text-align: center;
             margin-bottom: 2rem;
@@ -59,24 +60,34 @@
         }
 
         .price-label {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
+            /* Slightly smaller */
             opacity: 0.9;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            /* Reduced from 0.5rem */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .price-amount {
-            font-size: 2.5rem;
+            font-size: 2rem;
+            /* Reduced from 2.5rem */
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            /* Reduced from 0.5rem */
+            line-height: 1.2;
         }
 
         .price-status {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
+            padding: 0.35rem 0.75rem;
+            /* Reduced padding */
             border-radius: 20px;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
+            /* Slightly smaller */
             font-weight: 600;
+            margin-top: 0.25rem;
         }
 
         /* Property Header */
@@ -498,9 +509,7 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
-        }
 
-        @media (max-width: 768px) {
             .property-title {
                 font-size: 2rem;
             }
@@ -541,6 +550,25 @@
             /* Hide tooltip on mobile */
             .leaflet-control-recenter::before {
                 display: none;
+            }
+
+            price-highlight {
+                padding: 0.75rem 1.5rem;
+                /* Even more compact on mobile */
+            }
+
+            .price-amount {
+                font-size: 1.75rem;
+                /* Smaller on mobile */
+            }
+
+            .price-label {
+                font-size: 0.7rem;
+            }
+
+            .price-status {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
             }
         }
     </style>
