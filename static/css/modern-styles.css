@@ -456,6 +456,11 @@ section {
     text-align: center;
 }
 
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
 .contact-icon {
     font-size: 3rem;
     color: var(--primary-red);
