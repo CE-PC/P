@@ -23,6 +23,10 @@ window.PROPERTY_DATA = {
     {
         "id": "house-only",
         "name": "House Only"
+    },
+    {
+        "id": "lot-only",
+        "name": "Lot Only"
     }
 ],
     projectsByCategory: {
@@ -188,7 +192,8 @@ window.PROPERTY_DATA = {
                                 "image_127.jpeg"
                         ]
                 }
-        }
+        },
+        "lot-only": {}
 },
 
     /**
@@ -212,10 +217,10 @@ window.PROPERTY_DATA = {
 
         // Base features for all properties
         let features = [
-            { icon: "fas fa-home", text: "Residential Property" },        // type of property
+            { icon: "fas fa-building", text: this.getCategoryName(category) }, // category
+            // { icon: "fas fa-home", text: "Residential Property" },        // type of property
             { icon: "fas fa-map-marker-alt", text: location },            // location
-            { icon: "fas fa-tag", text: this.getCategoryName(category) }, // category
-            { icon: "fas fa-images", text: images.length + " Photo" + (images.length !== 1 ? "s" : "") } // images count
+            // { icon: "fas fa-images", text: images.length + " Photo" + (images.length !== 1 ? "s" : "") } // images count
         ];
 
         // Load property.json if exists
