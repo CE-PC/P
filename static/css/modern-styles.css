@@ -183,7 +183,7 @@ section {
 .hero-section {
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%);
     color: white;
-    padding: 4rem 1rem;
+    padding: 2rem 0.5rem;
     text-align: center;
     border-radius: 20px;
     margin-top: 1rem;
@@ -199,6 +199,12 @@ section {
 .hero-section p {
     font-size: clamp(1rem, 4vw, 1.25rem);
     margin-bottom: 2rem;
+}
+
+.hero-section:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+
 }
 
 /* Card Styles */
@@ -725,6 +731,12 @@ footer {
 
     .hero-section p {
         font-size: clamp(0.9rem, 4vw, 1.1rem);
+    }
+
+    .hero-section:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+
     }
 
     .lightbox-content {

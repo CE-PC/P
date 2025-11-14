@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+    <style>
+        .call-to-action:hover {
+            transform: translateY(-8px);
+        }
+    </style>
 
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#c8102e">
@@ -55,6 +60,7 @@
   "url": "https://www.calambaexpressive.com"
 }
 </script>
+
 </head>
 
 <body>
@@ -62,20 +68,24 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="container">
-                <h1 class="fade-in">Welcome to Calamba Expressive Properties</h1>
-                <p class="fade-in">Your trusted partner in real estate excellence</p>
-                <div class="mt-4">
-                    <a href="/projects.html" class="btn-view-property" style="margin: 0.5rem;">
-                        <i class="fas fa-search"></i> Browse Properties
-                    </a>
-                    <a href="/contact.html" class="btn-view-property"
-                        style="margin: 0.5rem; background-color: #a77846;">
-                        <i class="fas fa-phone"></i> Get in Touch
-                    </a>
+        <section class="container mt-5">
+            <section class="hero-section">
+                <div class="col-12 mx-auto">
+                    <div class="container">
+                        <h1 class="fade-in">Welcome to Calamba Expressive Properties</h1>
+                        <p class="fade-in">Your trusted partner in real estate excellence</p>
+                        <div class="mt-4">
+                            <a href="/projects.html" class="btn-view-property" style="margin: 0.5rem;">
+                                <i class="fas fa-search"></i> Browse Properties
+                            </a>
+                            <a href="/contact.html" class="btn-view-property"
+                                style="margin: 0.5rem; background-color: #a77846;">
+                                <i class="fas fa-phone"></i> Get in Touch
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </section>
 
         <!-- Featured Image -->
@@ -159,6 +169,7 @@
                     <p>Professional property development and construction services with proven expertise.</p>
                     <a href="/services.html" class="btn-view-property btn-sm mt-2">Our Projects</a>
                 </div>
+                <div></div>
 
                 <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-file-contract"></i></div>
@@ -170,9 +181,9 @@
         </section>
 
         <!-- Call to Action -->
-        <section class="container mt-5 mb-5">
+        <section class="container mt-5 mb-5 call-to-action">
             <div class="text-center p-5"
-                style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); border-radius: 12px; color: white;">
+                style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); border-radius: 1rem; color: white;">
                 <h2 class="mb-3">Ready to Find Your Perfect Property?</h2>
                 <p class="mb-4" style="font-size: 1.1rem;">Let our experienced team guide you through every step of your
                     real estate journey.</p>
