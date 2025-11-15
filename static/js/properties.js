@@ -23,6 +23,10 @@ window.PROPERTY_DATA = {
     {
         "id": "house-only",
         "name": "House Only"
+    },
+    {
+        "id": "lot-only",
+        "name": "Lot Only"
     }
 ],
     projectsByCategory: {
@@ -179,16 +183,17 @@ window.PROPERTY_DATA = {
                                 "image_98.jpeg"
                         ]
                 },
-                "14": {
-                        "name": "14",
+                "1400": {
+                        "name": "1400",
                         "location": "Calamba, Laguna, Philippines",
                         "category": "house-only",
-                        "folder": "14",
+                        "folder": "1400",
                         "images": [
                                 "image_127.jpeg"
                         ]
                 }
-        }
+        },
+        "lot-only": {}
 },
 
     /**

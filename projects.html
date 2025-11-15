@@ -341,12 +341,22 @@
 
     <main>
         <div class="container projects-container">
-            <h1 class="section-title text-center" style="color: transparent !important;">
-                <span
-                    style="display: inline-block; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Our
-                    Projects</span>
-            </h1>
-            <p class="section-subtitle text-center">Explore our portfolio of quality properties in Calamba, Laguna</p>
+            <!-- Skeleton Loading for Title -->
+            <div id="skeleton-title" class="skeleton-wrapper">
+                <div class="skeleton skeleton-header" style="max-width: 400px; margin: 0 auto 15px;"></div>
+                <div class="skeleton skeleton-header" style="max-width: 500px; height: 24px; margin: 0 auto;"></div>
+            </div>
+
+            <!-- Actual Title -->
+            <div id="actual-title" style="display: none;">
+                <h1 class="section-title text-center" style="color: transparent !important;">
+                    <span
+                        style="display: inline-block; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Our
+                        Projects</span>
+                </h1>
+                <p class="section-subtitle text-center">Explore our portfolio of quality properties in Calamba, Laguna
+                </p>
+            </div>
 
             <!-- Skeleton Loading for Filters -->
             <div id="skeleton-filters" class="filters-container skeleton-wrapper">
@@ -556,10 +566,12 @@
                 // Hide skeletons
                 skeletonGrid.style.display = 'none';
                 skeletonFilters.style.display = 'none';
+                document.getElementById('skeleton-title').style.display = 'none';
 
                 // Show actual content
                 grid.style.display = 'grid';
                 actualFilters.style.display = 'block';
+                document.getElementById('actual-title').style.display = 'block';
                 document.getElementById('stats-bar').style.display = 'block';
 
                 let totalProjects = 0;
