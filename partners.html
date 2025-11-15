@@ -77,15 +77,48 @@
             cursor: pointer;
         }
 
-        .thumbnail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 0.75rem;
+        /* Scrollable Thumbnail Container */
+        .thumbnail-container {
+            position: relative;
             margin-top: 1rem;
         }
 
+        .thumbnail-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #a77846 #f0f0f0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            border-radius: 4px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+        }
+
+        .thumbnail-grid {
+            display: flex;
+            gap: 0.75rem;
+            padding-bottom: 0.5rem;
+        }
+
         .thumbnail {
-            width: 100%;
+            min-width: 120px;
+            width: 120px;
             height: 100px;
             object-fit: cover;
             background: white;
@@ -93,6 +126,7 @@
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 3px solid transparent;
+            flex-shrink: 0;
         }
 
         .thumbnail:hover {
@@ -100,8 +134,50 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
+        /* Active thumbnail border with gradient */
         .thumbnail.active {
-            border-color: #c8102e;
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #c8102e 0%, #a77846 100%) border-box;
+            box-shadow: 0 0 8px rgba(200, 16, 46, 0.3);
+        }
+
+        /* Scroll Buttons */
+        .thumbnail-scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .thumbnail-scroll-btn:hover {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.5);
+        }
+
+        .thumbnail-scroll-btn.left {
+            left: 0;
+        }
+
+        .thumbnail-scroll-btn.right {
+            right: 0;
+        }
+
+        .thumbnail-scroll-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
 
         /* Section Cards */
@@ -124,6 +200,7 @@
             align-items: center;
             gap: 0.75rem;
             font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .section-card h3 i {
@@ -201,6 +278,7 @@
         .contact-section {
             background: white;
             padding: 2rem;
+            padding-bottom: 7.4rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
@@ -215,6 +293,15 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .contact-section h3 i {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .contact-grid {
@@ -444,8 +531,10 @@
                 grid-template-columns: 1fr;
             }
 
-            .thumbnail-grid {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            .thumbnail {
+                min-width: 80px;
+                width: 80px;
+                height: 70px;
             }
 
             .skeleton-thumbnails {
@@ -453,114 +542,20 @@
             }
         }
 
-        .thumbnail-container {
-            position: relative;
-            margin-top: 1rem;
-        }
-
-        .thumbnail-wrapper {
-            overflow-x: auto;
-            overflow-y: hidden;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #c8102e #f0f0f0;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .thumbnail-wrapper::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .thumbnail-wrapper::-webkit-scrollbar-track {
-            background: #f0f0f0;
-            border-radius: 4px;
-        }
-
-        .thumbnail-wrapper::-webkit-scrollbar-thumb {
+        .section-card h3 span {
             background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-            border-radius: 4px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
         }
 
-        .thumbnail-wrapper::-webkit-scrollbar-thumb:hover {
-            background: #c8102e;
-        }
-
-        .thumbnail-grid {
-            display: flex;
-            gap: 0.75rem;
-            padding-bottom: 0.5rem;
-        }
-
-        .thumbnail {
-            min-width: 120px;
-            width: 120px;
-            height: 100px;
-            object-fit: cover;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 3px solid transparent;
-            flex-shrink: 0;
-        }
-
-        .thumbnail:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .thumbnail.active {
-            border-color: #c8102e;
-        }
-
-        /* Optional: Add scroll buttons */
-        .thumbnail-scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(200, 16, 46, 0.9);
-            color: white;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .thumbnail-scroll-btn:hover {
-            background: rgba(200, 16, 46, 1);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .thumbnail-scroll-btn.left {
-            left: 0;
-        }
-
-        .thumbnail-scroll-btn.right {
-            right: 0;
-        }
-
-        .thumbnail-scroll-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        @media (max-width: 992px) {
-            .thumbnail {
-                min-width: 80px;
-                width: 80px;
-                height: 70px;
-            }
-        }
-
-        .contact-section {
-            padding-bottom: 7.4rem;
-            /* Increase until it matches left column */
+        .contact-section h3 span {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
         }
     </style>
 </head>
@@ -628,7 +623,9 @@
                 <!-- Header -->
                 <div class="partners-header">
                     <h1 class="partners-title">
-                        <i class="fas fa-handshake"></i> Our Partners & Investors
+                        <i class="fas fa-handshake"
+                            style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        Our Partners & Investors
                     </h1>
                     <p class="partners-subtitle">
                         Collaborating with industry leaders to deliver exceptional real estate opportunities
@@ -675,7 +672,7 @@
                         <div class="section-card">
                             <h3>
                                 <i class="fas fa-info-circle"></i>
-                                About Our Partnerships
+                                <span>About Our Partnerships</span>
                             </h3>
                             <div class="description-text">
                                 Calamba Expressive Properties Corporation is proud to collaborate with some of the most
@@ -699,11 +696,17 @@
                                 <div class="stat-label">Partners</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number"><i class="fas fa-star"></i></div>
+                                <div class="stat-number">
+                                    <i class="fas fa-star"
+                                        style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                                </div>
                                 <div class="stat-label">Excellence</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number"><i class="fas fa-award"></i></div>
+                                <div class="stat-number">
+                                    <i class="fas fa-award"
+                                        style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                                </div>
                                 <div class="stat-label">Quality</div>
                             </div>
                         </div>
@@ -742,7 +745,7 @@
                         <div class="contact-section">
                             <h3>
                                 <i class="fas fa-phone"></i>
-                                Get In Touch
+                                <span>Get In Touch</span>
                             </h3>
                             <p style="color: #666; margin-bottom: 1.5rem; text-align: center;">
                                 Interested in partnership opportunities? Contact us today!
