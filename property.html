@@ -165,12 +165,12 @@
             overflow-y: hidden;
             scroll-behavior: smooth;
             scrollbar-width: thin;
-            scrollbar-color: #c8102e #f0f0f0;
+            scrollbar-color: #a77846 #f0f0f0;
             -webkit-overflow-scrolling: touch;
         }
 
         .thumbnail-wrapper::-webkit-scrollbar {
-            height: 8px;
+            height: 10px;
         }
 
         .thumbnail-wrapper::-webkit-scrollbar-track {
@@ -184,7 +184,7 @@
         }
 
         .thumbnail-wrapper::-webkit-scrollbar-thumb:hover {
-            background: #c8102e;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
         }
 
         .thumbnail-grid {
@@ -210,8 +210,12 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
+        /* Active thumbnail border with gradient */
         .thumbnail.active {
-            border-color: #c8102e;
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #c8102e 0%, #a77846 100%) border-box;
+            box-shadow: 0 0 8px rgba(200, 16, 46, 0.3);
         }
 
         /* Scroll Buttons */
@@ -219,7 +223,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(200, 16, 46, 0.9);
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             color: white;
             border: none;
             width: 36px;
@@ -234,8 +238,9 @@
         }
 
         .thumbnail-scroll-btn:hover {
-            background: rgba(200, 16, 46, 1);
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.5);
         }
 
         .thumbnail-scroll-btn.left {
@@ -261,16 +266,12 @@
         }
 
         .section-card h3 {
-            color: transparent;
-            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
             font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .section-card h3 i {
@@ -278,6 +279,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .section-card h3 span {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
         }
 
         /* Features Grid - IMPROVED: Better for sidebar */
@@ -361,15 +370,12 @@
         }
 
         .contact-section h3 {
-            color: transparent;
-            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .contact-section h3 i {
@@ -377,6 +383,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .contact-section h3 span {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
         }
 
         .contact-grid {
@@ -465,15 +479,12 @@
         }
 
         .share-section h4 {
-            color: transparent;
-            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
         }
 
         .share-section h4 i {
@@ -481,6 +492,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .share-section h4 span {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
         }
 
         .share-buttons {
@@ -912,7 +931,7 @@
                             <div class="section-card">
                                 <h3>
                                     <i class="fas fa-info-circle"></i>
-                                    Property Description
+                                    <span>Property Description</span>
                                 </h3>
                                 <div class="description-text" id="property-description"></div>
                             </div>
@@ -922,7 +941,7 @@
                         <div class="section-card">
                             <h3>
                                 <i class="fas fa-map-marked-alt"></i>
-                                Property Location
+                                <span>Property Location</span>
                             </h3>
                             <div id="map-container">
                                 <div class="map-loading">
@@ -939,7 +958,7 @@
                         <div class="section-card">
                             <h3>
                                 <i class="fas fa-list"></i>
-                                Property Features
+                                <span>Property Features</span>
                             </h3>
                             <div class="features-grid" id="features-grid">
                                 <!-- Features populated by JavaScript -->
@@ -950,7 +969,7 @@
                         <div class="contact-section">
                             <h3>
                                 <i class="fas fa-phone"></i>
-                                Contact Agent
+                                <span>Contact Agent</span>
                             </h3>
                             <p style="color: #666; margin-bottom: 1.5rem; text-align: center;">
                                 Interested in this property? Get in touch with us today!
@@ -993,9 +1012,7 @@
                         <div class="share-section">
                             <h4>
                                 <i class="fas fa-share-alt"></i>
-                                <span
-                                    style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Share
-                                    Property</span>
+                                <span>Share Property</span>
                             </h4>
                             <div class="share-buttons">
                                 <a href="#" id="share-facebook" target="_blank" class="share-btn share-facebook">
