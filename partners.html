@@ -814,8 +814,8 @@
                     const carouselItem = document.createElement('div');
                     carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
                     carouselItem.innerHTML = `
-                <img src="${imagePath}" alt="${partner.title}" onclick="openLightbox('${imagePath}', '${partner.title}')">
-            `;
+                    <img src="${imagePath}" alt="${partner.title}" onclick="openLightbox('${imagePath}', '${partner.title}')">
+                `;
                     carouselInner.appendChild(carouselItem);
 
                     // Thumbnails
@@ -828,42 +828,50 @@
                     thumbnailGrid.appendChild(thumbnail);
                 });
 
-                // Initialize scroll buttons if needed
+                // Initialize scroll buttons
                 initThumbnailScroll();
 
                 console.log(`✅ Loaded ${partners.length} partners`);
             }, 800);
         }
 
-        // Add scroll functionality
         function initThumbnailScroll() {
-            const wrapper = document.querySelector('.thumbnail-wrapper');
             const leftBtn = document.querySelector('.thumbnail-scroll-btn.left');
             const rightBtn = document.querySelector('.thumbnail-scroll-btn.right');
 
-            if (!wrapper || !leftBtn || !rightBtn) return;
+            if (!leftBtn || !rightBtn) return;
 
-            const scrollAmount = 300;
+            // Get total number of slides
+            const totalSlides = document.querySelectorAll('.thumbnail').length;
+            let currentIndex = 0;
 
             leftBtn.addEventListener('click', () => {
-                wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                changeSlide(currentIndex);
             });
 
             rightBtn.addEventListener('click', () => {
-                wrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                currentIndex = (currentIndex + 1) % totalSlides;
+                changeSlide(currentIndex);
             });
 
-            // Update button states
-            wrapper.addEventListener('scroll', () => {
-                leftBtn.disabled = wrapper.scrollLeft <= 0;
-                rightBtn.disabled = wrapper.scrollLeft >= wrapper.scrollWidth - wrapper.clientWidth;
+            // Update current index when carousel changes
+            $('#partnerCarousel').on('slid.bs.carousel', function (e) {
+                currentIndex = $(e.relatedTarget).index();
             });
 
-            // Initial button state
-            leftBtn.disabled = true;
+            // Update button states (optional - always enabled for cycling)
+            updateButtonStates();
         }
 
-        // Update changeSlide to scroll active thumbnail into view
+        function updateButtonStates() {
+            // Both buttons always enabled since we cycle through
+            const leftBtn = document.querySelector('.thumbnail-scroll-btn.left');
+            const rightBtn = document.querySelector('.thumbnail-scroll-btn.right');
+            if (leftBtn) leftBtn.disabled = false;
+            if (rightBtn) rightBtn.disabled = false;
+        }
+
         function changeSlide(index) {
             $('#partnerCarousel').carousel(index);
             const thumbnails = document.querySelectorAll('.thumbnail');
@@ -872,7 +880,6 @@
             thumbnails.forEach((thumb, i) => {
                 thumb.classList.toggle('active', i === index);
                 if (i === index && wrapper) {
-                    // Scroll active thumbnail into view
                     thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 }
             });
@@ -902,8 +909,14 @@
         $(document).ready(function () {
             $('#partnerCarousel').on('slid.bs.carousel', function (e) {
                 const index = $(e.relatedTarget).index();
-                document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                const thumbnails = document.querySelectorAll('.thumbnail');
+                const wrapper = document.querySelector('.thumbnail-wrapper');
+
+                thumbnails.forEach((thumb, i) => {
                     thumb.classList.toggle('active', i === index);
+                    if (i === index && wrapper) {
+                        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
                 });
             });
 

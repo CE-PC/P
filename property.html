@@ -1155,33 +1155,41 @@
             L.control.recenter({ position: 'bottomright' }).addTo(map);
         }
 
+        function updateButtonStates() {
+            // Both buttons always enabled since we cycle through
+            const leftBtn = document.querySelector('.thumbnail-scroll-btn.left');
+            const rightBtn = document.querySelector('.thumbnail-scroll-btn.right');
+            if (leftBtn) leftBtn.disabled = false;
+            if (rightBtn) rightBtn.disabled = false;
+        }
+
         function initPropertyThumbnailScroll() {
-            const wrapper = document.querySelector('.thumbnail-wrapper');
             const leftBtn = document.querySelector('.thumbnail-scroll-btn.left');
             const rightBtn = document.querySelector('.thumbnail-scroll-btn.right');
 
-            if (!wrapper || !leftBtn || !rightBtn) return;
+            if (!leftBtn || !rightBtn) return;
 
-            const scrollAmount = 300;
+            // Get total number of slides
+            const totalSlides = document.querySelectorAll('.thumbnail').length;
+            let currentIndex = 0;
 
             leftBtn.addEventListener('click', () => {
-                wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                changeSlide(currentIndex);
             });
 
             rightBtn.addEventListener('click', () => {
-                wrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                currentIndex = (currentIndex + 1) % totalSlides;
+                changeSlide(currentIndex);
             });
 
-            // Update button states
-            const updateButtons = () => {
-                leftBtn.disabled = wrapper.scrollLeft <= 0;
-                rightBtn.disabled = wrapper.scrollLeft >= wrapper.scrollWidth - wrapper.clientWidth - 1;
-            };
+            // Update current index when carousel changes
+            $('#propertyCarousel').on('slid.bs.carousel', function (e) {
+                currentIndex = $(e.relatedTarget).index();
+            });
 
-            wrapper.addEventListener('scroll', updateButtons);
-
-            // Initial button state
-            updateButtons();
+            // Update button states (optional - always enabled for cycling)
+            updateButtonStates();
         }
 
         async function loadProperty() {
