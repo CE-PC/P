@@ -154,21 +154,55 @@
             cursor: pointer;
         }
 
-        .thumbnail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 0.75rem;
+        /* Scrollable Thumbnail Container */
+        .thumbnail-container {
+            position: relative;
             margin-top: 1rem;
         }
 
+        .thumbnail-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #c8102e #f0f0f0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            border-radius: 4px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #c8102e;
+        }
+
+        .thumbnail-grid {
+            display: flex;
+            gap: 0.75rem;
+            padding-bottom: 0.5rem;
+        }
+
         .thumbnail {
-            width: 100%;
+            min-width: 120px;
+            width: 120px;
             height: 100px;
             object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 3px solid transparent;
+            flex-shrink: 0;
         }
 
         .thumbnail:hover {
@@ -178,6 +212,43 @@
 
         .thumbnail.active {
             border-color: #c8102e;
+        }
+
+        /* Scroll Buttons */
+        .thumbnail-scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(200, 16, 46, 0.9);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .thumbnail-scroll-btn:hover {
+            background: rgba(200, 16, 46, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .thumbnail-scroll-btn.left {
+            left: 0;
+        }
+
+        .thumbnail-scroll-btn.right {
+            right: 0;
+        }
+
+        .thumbnail-scroll-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
 
         /* Section Cards */
@@ -260,11 +331,9 @@
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             z-index: 1;
-            /* Keep map layer below navbar */
             position: relative;
         }
 
-        /* Ensure all Leaflet controls stay below navbar */
         .leaflet-control-container {
             z-index: 500 !important;
         }
@@ -482,7 +551,6 @@
             }
         }
 
-        /* Skeleton for header */
         .skeleton-back-btn {
             width: 150px;
             height: 20px;
@@ -509,7 +577,6 @@
             margin-right: auto;
         }
 
-        /* Skeleton for price section */
         .skeleton-price-card {
             background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
             padding: 1rem 2rem;
@@ -536,7 +603,6 @@
             border-radius: 20px;
         }
 
-        /* Skeleton for gallery */
         .skeleton-carousel {
             height: 500px;
             border-radius: 12px;
@@ -555,7 +621,6 @@
             border-radius: 8px;
         }
 
-        /* Skeleton for section cards */
         .skeleton-section-card {
             background: white;
             padding: 2rem;
@@ -579,14 +644,12 @@
             width: 70%;
         }
 
-        /* Skeleton for features */
         .skeleton-feature {
             height: 60px;
             border-radius: 8px;
             margin-bottom: 0.75rem;
         }
 
-        /* Skeleton for contact buttons */
         .skeleton-contact-btn {
             height: 56px;
             border-radius: 8px;
@@ -594,7 +657,6 @@
 
         .loading {
             display: none;
-            /* Hide old loading spinner */
         }
 
         .error-message {
@@ -621,7 +683,6 @@
             justify-content: center;
             transition: all 0.3s ease;
             z-index: 500;
-            /* Keep below navbar (1000) */
         }
 
         .leaflet-control-recenter:hover {
@@ -688,8 +749,10 @@
                 height: 300px;
             }
 
-            .thumbnail-grid {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            .thumbnail {
+                min-width: 80px;
+                width: 80px;
+                height: 70px;
             }
 
             .skeleton-thumbnails {
@@ -697,7 +760,7 @@
             }
 
             .price-amount {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
 
             #property-map {
@@ -727,10 +790,6 @@
 
             .price-highlight {
                 padding: 0.75rem 1.5rem;
-            }
-
-            .price-amount {
-                font-size: 1.75rem;
             }
 
             .price-label {
@@ -772,7 +831,6 @@
 
                 <div class="row">
                     <div class="col-lg-8 mb-4">
-                        <!-- Skeleton Gallery -->
                         <div class="skeleton skeleton-carousel"></div>
                         <div class="skeleton-thumbnails">
                             <div class="skeleton skeleton-thumbnail"></div>
@@ -782,7 +840,6 @@
                             <div class="skeleton skeleton-thumbnail"></div>
                         </div>
 
-                        <!-- Skeleton Description -->
                         <div class="skeleton-section-card">
                             <div class="skeleton skeleton-section-title"></div>
                             <div class="skeleton skeleton-text-line"></div>
@@ -790,7 +847,6 @@
                             <div class="skeleton skeleton-text-line short"></div>
                         </div>
 
-                        <!-- Skeleton Map -->
                         <div class="skeleton-section-card">
                             <div class="skeleton skeleton-section-title"></div>
                             <div class="skeleton" style="height: 400px; border-radius: 12px;"></div>
@@ -798,7 +854,6 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <!-- Skeleton Features -->
                         <div class="skeleton-section-card">
                             <div class="skeleton skeleton-section-title"></div>
                             <div class="skeleton skeleton-feature"></div>
@@ -807,7 +862,6 @@
                             <div class="skeleton skeleton-feature"></div>
                         </div>
 
-                        <!-- Skeleton Contact -->
                         <div class="skeleton-section-card">
                             <div class="skeleton skeleton-section-title"></div>
                             <div style="margin-bottom: 1.5rem;">
@@ -1048,13 +1102,13 @@
                 const marker = L.marker([lat, lon], { icon: customIcon }).addTo(propertyMap);
 
                 marker.bindPopup(`
-    <div style="min-width: 200px;">
-        <div style="font-weight: 700; color: transparent; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px;">${propertyName}</div>
-        <div style="color: #666; font-size: 13px;">
-            <i class="fas fa-map-marker-alt" style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i> ${address}
-        </div>
-    </div>
-`).openPopup();
+                    <div style="min-width: 200px;">
+                        <div style="font-weight: 700; color: transparent; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px;">${propertyName}</div>
+                        <div style="color: #666; font-size: 13px;">
+                            <i class="fas fa-map-marker-alt" style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i> ${address}
+                        </div>
+                    </div>
+                `).openPopup();
 
                 addRecenterControl(propertyMap, lat, lon);
 
@@ -1099,6 +1153,35 @@
             }
 
             L.control.recenter({ position: 'bottomright' }).addTo(map);
+        }
+
+        function initPropertyThumbnailScroll() {
+            const wrapper = document.querySelector('.thumbnail-wrapper');
+            const leftBtn = document.querySelector('.thumbnail-scroll-btn.left');
+            const rightBtn = document.querySelector('.thumbnail-scroll-btn.right');
+
+            if (!wrapper || !leftBtn || !rightBtn) return;
+
+            const scrollAmount = 300;
+
+            leftBtn.addEventListener('click', () => {
+                wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            rightBtn.addEventListener('click', () => {
+                wrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            // Update button states
+            const updateButtons = () => {
+                leftBtn.disabled = wrapper.scrollLeft <= 0;
+                rightBtn.disabled = wrapper.scrollLeft >= wrapper.scrollWidth - wrapper.clientWidth - 1;
+            };
+
+            wrapper.addEventListener('scroll', updateButtons);
+
+            // Initial button state
+            updateButtons();
         }
 
         async function loadProperty() {
@@ -1158,15 +1241,28 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                        <div class="thumbnail-grid">
-                            ${property.images.map((img, i) => `
-                                <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
-                                     alt="Thumbnail ${i + 1}" onclick="changeSlide(${i})">
-                            `).join('')}
+                        <div class="thumbnail-container">
+                            <button class="thumbnail-scroll-btn left">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="thumbnail-wrapper">
+                                <div class="thumbnail-grid" id="property-thumbnail-grid">
+                                    ${property.images.map((img, i) => `
+                                        <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
+                                             alt="Thumbnail ${i + 1}" onclick="changeSlide(${i})" data-index="${i}">
+                                    `).join('')}
+                                </div>
+                            </div>
+                            <button class="thumbnail-scroll-btn right">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     `;
 
                     document.querySelector('.property-gallery').innerHTML = carouselHTML;
+
+                    // Initialize thumbnail scroll
+                    setTimeout(() => initPropertyThumbnailScroll(), 100);
 
                     // Header
                     document.getElementById('property-category').textContent = property.categoryName;
@@ -1225,7 +1321,7 @@
                         initializeMap(property.location, property.name);
                     }, 300);
 
-                }, 1000); // 1 second delay to show skeleton
+                }, 1000);
 
             } catch (error) {
                 console.error('Error loading property:', error);
@@ -1236,8 +1332,14 @@
 
         function changeSlide(index) {
             $('#propertyCarousel').carousel(index);
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const wrapper = document.querySelector('.thumbnail-wrapper');
+
+            thumbnails.forEach((thumb, i) => {
                 thumb.classList.toggle('active', i === index);
+                if (i === index && wrapper) {
+                    thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
             });
         }
 
@@ -1279,8 +1381,14 @@
         $(document).ready(function () {
             $('#propertyCarousel').on('slid.bs.carousel', function (e) {
                 const index = $(e.relatedTarget).index();
-                document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                const thumbnails = document.querySelectorAll('.thumbnail');
+                const wrapper = document.querySelector('.thumbnail-wrapper');
+
+                thumbnails.forEach((thumb, i) => {
                     thumb.classList.toggle('active', i === index);
+                    if (i === index && wrapper) {
+                        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
                 });
             });
         });
