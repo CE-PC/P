@@ -879,7 +879,7 @@
 
             <!-- Actual Property Content -->
             <div id="property-content" style="display: none;">
-                <a href="/projects.html" class="back-button">
+                <a href="#" class="back-button" onclick="goBackToProjects(event)">
                     <i class="fas fa-arrow-left"></i> Back to Projects
                 </a>
 
@@ -1060,6 +1060,19 @@
             return `mailto:cepc.development@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
+        // NEW: Function to go back to projects with category preserved
+        function goBackToProjects(event) {
+            event.preventDefault();
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+
+            if (category) {
+                window.location.href = `/projects.html?category=${category}`;
+            } else {
+                window.location.href = '/projects.html';
+            }
+        }
+
         async function initializeMap(address, propertyName) {
             const mapContainer = document.getElementById('map-container');
 
@@ -1102,24 +1115,24 @@
                 const marker = L.marker([lat, lon], { icon: customIcon }).addTo(propertyMap);
 
                 marker.bindPopup(`
-                    <div style="min-width: 200px;">
-                        <div style="font-weight: 700; color: transparent; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px;">${propertyName}</div>
-                        <div style="color: #666; font-size: 13px;">
-                            <i class="fas fa-map-marker-alt" style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i> ${address}
-                        </div>
+                <div style="min-width: 200px;">
+                    <div style="font-weight: 700; color: transparent; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px;">${propertyName}</div>
+                    <div style="color: #666; font-size: 13px;">
+                        <i class="fas fa-map-marker-alt" style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i> ${address}
                     </div>
-                `).openPopup();
+                </div>
+            `).openPopup();
 
                 addRecenterControl(propertyMap, lat, lon);
 
             } catch (error) {
                 console.error('Error initializing map:', error);
                 mapContainer.innerHTML = `
-                    <div class="map-loading" style="background: #ffe6e6; color: #c8102e;">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <span style="margin-left: 10px;">Unable to load map.</span>
-                    </div>
-                `;
+                <div class="map-loading" style="background: #ffe6e6; color: #c8102e;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span style="margin-left: 10px;">Unable to load map.</span>
+                </div>
+            `;
             }
         }
 
@@ -1156,7 +1169,6 @@
         }
 
         function updateButtonStates() {
-            // Both buttons always enabled since we cycle through
             const leftBtn = document.querySelector('.thumbnail-scroll-btn.left');
             const rightBtn = document.querySelector('.thumbnail-scroll-btn.right');
             if (leftBtn) leftBtn.disabled = false;
@@ -1169,7 +1181,6 @@
 
             if (!leftBtn || !rightBtn) return;
 
-            // Get total number of slides
             const totalSlides = document.querySelectorAll('.thumbnail').length;
             let currentIndex = 0;
 
@@ -1183,12 +1194,10 @@
                 changeSlide(currentIndex);
             });
 
-            // Update current index when carousel changes
             $('#propertyCarousel').on('slid.bs.carousel', function (e) {
                 currentIndex = $(e.relatedTarget).index();
             });
 
-            // Update button states (optional - always enabled for cycling)
             updateButtonStates();
         }
 
@@ -1216,68 +1225,59 @@
 
                 document.title = `${property.name} - Calamba Expressive Properties`;
 
-                // Simulate loading delay to show skeleton
                 setTimeout(() => {
-                    // Hide skeleton
                     skeletonContent.style.display = 'none';
-
-                    // Show actual content
                     content.style.display = 'block';
 
-                    // Carousel
                     const carouselHTML = `
-                        <div id="propertyCarousel" class="carousel slide mb-3" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                ${property.images.map((img, i) => `
-                                    <li data-target="#propertyCarousel" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>
-                                `).join('')}
-                            </ol>
-                            <div class="carousel-inner">
-                                ${property.images.map((img, i) => `
-                                    <div class="carousel-item ${i === 0 ? 'active' : ''}">
-                                        <img src="${img}" class="d-block w-100" alt="${property.name} - Image ${i + 1}" 
-                                             onclick="openFullscreen(this)">
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                        <div class="thumbnail-container">
-                            <button class="thumbnail-scroll-btn left">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <div class="thumbnail-wrapper">
-                                <div class="thumbnail-grid" id="property-thumbnail-grid">
-                                    ${property.images.map((img, i) => `
-                                        <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
-                                             alt="Thumbnail ${i + 1}" onclick="changeSlide(${i})" data-index="${i}">
-                                    `).join('')}
+                    <div id="propertyCarousel" class="carousel slide mb-3" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            ${property.images.map((img, i) => `
+                                <li data-target="#propertyCarousel" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>
+                            `).join('')}
+                        </ol>
+                        <div class="carousel-inner">
+                            ${property.images.map((img, i) => `
+                                <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                                    <img src="${img}" class="d-block w-100" alt="${property.name} - Image ${i + 1}" 
+                                         onclick="openFullscreen(this)">
                                 </div>
-                            </div>
-                            <button class="thumbnail-scroll-btn right">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                            `).join('')}
                         </div>
-                    `;
+                        <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div class="thumbnail-container">
+                        <button class="thumbnail-scroll-btn left">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="thumbnail-wrapper">
+                            <div class="thumbnail-grid" id="property-thumbnail-grid">
+                                ${property.images.map((img, i) => `
+                                    <img src="${img}" class="thumbnail ${i === 0 ? 'active' : ''}" 
+                                         alt="Thumbnail ${i + 1}" onclick="changeSlide(${i})" data-index="${i}">
+                                `).join('')}
+                            </div>
+                        </div>
+                        <button class="thumbnail-scroll-btn right">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                `;
 
                     document.querySelector('.property-gallery').innerHTML = carouselHTML;
-
-                    // Initialize thumbnail scroll
                     setTimeout(() => initPropertyThumbnailScroll(), 100);
 
-                    // Header
                     document.getElementById('property-category').textContent = property.categoryName;
                     document.getElementById('property-title').textContent = property.name;
                     document.getElementById('property-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${property.location}`;
 
-                    // Price and Status
                     if (property.price || property.status) {
                         const priceSection = document.getElementById('price-section');
                         priceSection.style.display = 'block';
@@ -1289,19 +1289,17 @@
                         }
                     }
 
-                    // Features
                     const featuresGrid = document.getElementById('features-grid');
                     property.features.forEach(feature => {
                         const featureItem = document.createElement('div');
                         featureItem.className = 'feature-item';
                         featureItem.innerHTML = `
-                            <i class="${feature.icon}"></i>
-                            <span>${feature.text}</span>
-                        `;
+                        <i class="${feature.icon}"></i>
+                        <span>${feature.text}</span>
+                    `;
                         featuresGrid.appendChild(featureItem);
                     });
 
-                    // Description
                     if (property.description) {
                         document.getElementById('description-section').style.display = 'block';
                         const descElement = document.getElementById('property-description');
@@ -1313,18 +1311,15 @@
                         }
                     }
 
-                    // Update contact links
                     document.getElementById('whatsapp-link').href = getWhatsAppLink(property);
                     document.getElementById('messenger-link').href = getMessengerLink(property);
                     document.getElementById('email-link').href = getEmailLink(property);
 
-                    // Share links
                     const propertyUrl = encodeURIComponent(window.location.href);
                     const propertyName = encodeURIComponent(property.name);
                     document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${propertyUrl}`;
                     document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${propertyUrl}&text=${propertyName}`;
 
-                    // Initialize map
                     setTimeout(() => {
                         initializeMap(property.location, property.name);
                     }, 300);
