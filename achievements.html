@@ -277,7 +277,6 @@
         .contact-section {
             background: white;
             padding: 2rem;
-            padding-bottom: 4.8rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
@@ -539,6 +538,32 @@
                 grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
         }
+
+        .btn-messenger {
+            background: #0084FF;
+            color: white;
+        }
+
+        .btn-messenger:hover {
+            background: #0073e6;
+            color: white;
+        }
+
+        .section-card h3 span {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .contact-section h3 span {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -655,7 +680,7 @@
                         <div class="section-card">
                             <h3>
                                 <i class="fas fa-info-circle"></i>
-                                Our Journey to Excellence
+                                <span>Our Journey to Excellence</span>
                             </h3>
                             <div class="description-text">
                                 Over the years, Calamba Expressive Properties Corporation has earned numerous accolades
@@ -730,9 +755,7 @@
                         <div class="contact-section">
                             <h3>
                                 <i class="fas fa-phone"></i>
-                                <span
-                                    style="display: inline-block; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Connect
-                                    With Us</span>
+                                <span>Connect With Us</span>
                             </h3>
                             <p style="color: #666; margin-bottom: 1.5rem; text-align: center;">
                                 Want to work with an award-winning team? Contact us today!
@@ -743,14 +766,27 @@
                                     <i class="fab fa-whatsapp"></i>
                                     WhatsApp
                                 </a>
+
+                                <a href="https://m.me/103618938300166?text=Hello!%20I'm%20interested%20in%20your%20award-winning%20real%20estate%20services."
+                                    target="_blank" class="contact-btn btn-messenger">
+                                    <i class="fab fa-facebook-messenger"></i>
+                                    Messenger
+                                </a>
+
                                 <a href="mailto:cepc.development@gmail.com?subject=Real%20Estate%20Inquiry"
                                     class="contact-btn btn-email">
                                     <i class="fas fa-envelope"></i>
                                     Email Us
                                 </a>
+
+                                <a href="tel:+639770549679" class="contact-btn btn-phone">
+                                    <i class="fas fa-phone"></i>
+                                    0977-054-9679
+                                </a>
+
                                 <a href="tel:+639276154651" class="contact-btn btn-phone">
                                     <i class="fas fa-phone"></i>
-                                    Call Us
+                                    0927-615-4651
                                 </a>
                             </div>
                         </div>
