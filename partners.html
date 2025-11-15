@@ -452,6 +452,111 @@
                 grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
         }
+
+        .thumbnail-container {
+            position: relative;
+            margin-top: 1rem;
+        }
+
+        .thumbnail-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #c8102e #f0f0f0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            border-radius: 4px;
+        }
+
+        .thumbnail-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #c8102e;
+        }
+
+        .thumbnail-grid {
+            display: flex;
+            gap: 0.75rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .thumbnail {
+            min-width: 120px;
+            width: 120px;
+            height: 100px;
+            object-fit: cover;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 3px solid transparent;
+            flex-shrink: 0;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .thumbnail.active {
+            border-color: #c8102e;
+        }
+
+        /* Optional: Add scroll buttons */
+        .thumbnail-scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(200, 16, 46, 0.9);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .thumbnail-scroll-btn:hover {
+            background: rgba(200, 16, 46, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .thumbnail-scroll-btn.left {
+            left: 0;
+        }
+
+        .thumbnail-scroll-btn.right {
+            right: 0;
+        }
+
+        .thumbnail-scroll-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 992px) {
+            .thumbnail {
+                min-width: 80px;
+                width: 80px;
+                height: 70px;
+            }
+        }
     </style>
 </head>
 
@@ -546,8 +651,18 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 </a>
                             </div>
-                            <div class="thumbnail-grid" id="thumbnail-grid">
-                                <!-- Populated by JavaScript -->
+                            <div class="thumbnail-container">
+                                <button class="thumbnail-scroll-btn left">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="thumbnail-wrapper">
+                                    <div class="thumbnail-grid" id="thumbnail-grid">
+                                        <!-- Populated by JavaScript -->
+                                    </div>
+                                </div>
+                                <button class="thumbnail-scroll-btn right">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
                             </div>
                         </div>
 
@@ -699,8 +814,8 @@
                     const carouselItem = document.createElement('div');
                     carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
                     carouselItem.innerHTML = `
-                        <img src="${imagePath}" alt="${partner.title}" onclick="openLightbox('${imagePath}', '${partner.title}')">
-                    `;
+                <img src="${imagePath}" alt="${partner.title}" onclick="openLightbox('${imagePath}', '${partner.title}')">
+            `;
                     carouselInner.appendChild(carouselItem);
 
                     // Thumbnails
@@ -709,17 +824,57 @@
                     thumbnail.alt = partner.title;
                     thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
                     thumbnail.onclick = () => changeSlide(index);
+                    thumbnail.setAttribute('data-index', index);
                     thumbnailGrid.appendChild(thumbnail);
                 });
+
+                // Initialize scroll buttons if needed
+                initThumbnailScroll();
 
                 console.log(`✅ Loaded ${partners.length} partners`);
             }, 800);
         }
 
+        // Add scroll functionality
+        function initThumbnailScroll() {
+            const wrapper = document.querySelector('.thumbnail-wrapper');
+            const leftBtn = document.querySelector('.thumbnail-scroll-btn.left');
+            const rightBtn = document.querySelector('.thumbnail-scroll-btn.right');
+
+            if (!wrapper || !leftBtn || !rightBtn) return;
+
+            const scrollAmount = 300;
+
+            leftBtn.addEventListener('click', () => {
+                wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            rightBtn.addEventListener('click', () => {
+                wrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            // Update button states
+            wrapper.addEventListener('scroll', () => {
+                leftBtn.disabled = wrapper.scrollLeft <= 0;
+                rightBtn.disabled = wrapper.scrollLeft >= wrapper.scrollWidth - wrapper.clientWidth;
+            });
+
+            // Initial button state
+            leftBtn.disabled = true;
+        }
+
+        // Update changeSlide to scroll active thumbnail into view
         function changeSlide(index) {
             $('#partnerCarousel').carousel(index);
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const wrapper = document.querySelector('.thumbnail-wrapper');
+
+            thumbnails.forEach((thumb, i) => {
                 thumb.classList.toggle('active', i === index);
+                if (i === index && wrapper) {
+                    // Scroll active thumbnail into view
+                    thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
             });
         }
 
