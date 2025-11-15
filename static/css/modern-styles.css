@@ -413,6 +413,10 @@ body {
     padding-right: 1rem;
 }
 
+.content-hidden {
+    display: none;
+}
+
 /* Gradient styling for fa-check-circle icons */
 .fa-check-circle {
     background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
