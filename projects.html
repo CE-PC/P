@@ -73,6 +73,7 @@
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 10px;
+            display: inline-block;
             background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -170,7 +171,10 @@
             left: 18px;
             top: 50%;
             transform: translateY(-50%);
-            color: #69707f;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-size: 1.2rem;
         }
 
@@ -302,7 +306,10 @@
 
         .no-results i {
             font-size: 4rem;
-            color: #e0e0e0;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
         }
 
@@ -334,7 +341,11 @@
 
     <main>
         <div class="container projects-container">
-            <h1 class="section-title text-center">Our Projects</h1>
+            <h1 class="section-title text-center" style="color: transparent !important;">
+                <span
+                    style="display: inline-block; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Our
+                    Projects</span>
+            </h1>
             <p class="section-subtitle text-center">Explore our portfolio of quality properties in Calamba, Laguna</p>
 
             <!-- Skeleton Loading for Filters -->
