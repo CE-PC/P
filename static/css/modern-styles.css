@@ -333,6 +333,12 @@ body {
     color: white;
 }
 
+/* Call to action */
+
+.call-to-action:hover {
+    transform: translateY(-8px);
+}
+
 /* Contact Section */
 .contact-card {
     background: white;
