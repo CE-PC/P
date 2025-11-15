@@ -25,247 +25,6 @@ a:hover {
     text-decoration: none !important;
 }
 
-/* ====================
-   GRADIENT TEXT UTILITIES
-   ==================== */
-
-/* Gradient text for icons and spans */
-.gradient-text {
-    display: inline-block;
-    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Gradient icon class */
-.gradient-icon {
-    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* ====================
-   CARD STYLES
-   ==================== */
-
-/* White card with shadow */
-.card-white {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-/* White card with elevation */
-.card-white-elevated {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Gradient background card */
-.card-gradient {
-    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-    border-radius: 12px;
-    color: white;
-}
-
-/* Facebook gradient background */
-.bg-facebook {
-    background: linear-gradient(135deg, #1877f2 0%, #0c5ba8 100%);
-    color: white;
-}
-
-/* ====================
-   BUTTON STYLES
-   ==================== */
-
-/* White button with gradient text */
-.btn-white-gradient {
-    background-color: white;
-    color: transparent;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-white-gradient span,
-.btn-white-gradient i {
-    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.btn-white-gradient:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Service button style */
-.btn-service {
-    flex: 1;
-    padding: 10px;
-    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
-    color: white;
-    text-align: center;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    display: inline-block;
-    transition: all 0.3s ease;
-}
-
-.btn-service:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
-    color: white;
-}
-
-/* ====================
-   TEXT UTILITIES
-   ==================== */
-
-/* Text colors */
-.text-gray {
-    color: #666;
-}
-
-.text-gray-dark {
-    color: #333;
-}
-
-.text-white-90 {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.text-white-95 {
-    color: rgba(255, 255, 255, 0.95);
-}
-
-/* Font sizes */
-.text-large {
-    font-size: 1.1rem;
-}
-
-.text-medium {
-    font-size: 1.05rem;
-}
-
-.text-small {
-    font-size: 0.95rem;
-}
-
-/* Line heights */
-.line-height-relaxed {
-    line-height: 1.8;
-}
-
-.line-height-comfortable {
-    line-height: 2;
-}
-
-/* ====================
-   IMAGE STYLES
-   ==================== */
-
-/* Carousel image height */
-.carousel-img-height {
-    height: 500px;
-    object-fit: cover;
-    cursor: pointer;
-}
-
-/* Property image height */
-.property-img-height {
-    height: 400px;
-    object-fit: cover;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-/* Contained image */
-.img-contained {
-    width: 100%;
-    height: 400px;
-    object-fit: contain;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* ====================
-   LAYOUT UTILITIES
-   ==================== */
-
-/* Grid layouts */
-.grid-2-col {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-}
-
-.grid-3-col {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-}
-
-/* Flex utilities */
-.button-flex {
-    display: flex;
-    gap: 10px;
-}
-
-.flex-gap-1 {
-    display: flex;
-    gap: 1rem;
-}
-
-.flex-gap-075 {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.feature-item-flex {
-    display: flex;
-    align-items: flex-start;
-}
-
-/* Feature icon wrapper */
-.feature-icon-wrapper {
-    font-size: 2rem;
-    margin-right: 1rem;
-    margin-top: 0.25rem;
-}
-
-/* ====================
-   SPACING UTILITIES
-   ==================== */
-
-.mt-15 {
-    margin-top: 15px;
-}
-
-/* ====================
-   SECTION HEADING
-   ==================== */
-
-.section-heading {
-    color: transparent !important;
-}
-
-.section-heading .gradient-text {
-    display: inline-block;
-}
-
 /* Back to top button with gradient icon */
 .back-to-top {
     position: fixed;
@@ -310,6 +69,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     padding-top: 10px;
+    /* padding-bottom: 60px; */
 }
 
 /* Button - View Property */
@@ -426,6 +186,12 @@ footer {
     color: white;
     padding: 0.6rem 1rem;
     text-align: center;
+    /* position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15); */
 }
 
 .footer-icon {
@@ -442,6 +208,7 @@ footer {
 }
 
 .footer-icon:hover {
+    /* background-color: rgba(255, 255, 255, 0.3); */
     transform: scale(1.2);
 }
 
@@ -455,6 +222,7 @@ footer {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    /* margin-top: 1rem; */
 }
 
 /* Image Gallery */
@@ -645,11 +413,13 @@ main {
     min-height: calc(100vh - 200px);
     padding: 1rem;
     margin: 0 auto;
+    /* padding-bottom: 100px; */
 }
 
 /* Navbar */
 .navbar-brand {
     font-size: 0.95rem;
+    /* Reduced from 1.1rem */
     font-weight: 700;
     background: linear-gradient(135deg, #fff 0%, var(--accent-yellow) 100%);
     -webkit-background-clip: text;
@@ -657,6 +427,7 @@ main {
     background-clip: text;
     transition: transform 0.3s ease, filter 0.3s ease;
     padding: 0.4rem 0.8rem;
+    /* Reduced padding */
     border-radius: 12px;
 }
 
@@ -766,6 +537,7 @@ main {
 
 .nav-link i {
     font-size: 1rem;
+    /* Reduced from 1.1rem */
     transition: transform 0.3s ease;
 }
 
