@@ -87,12 +87,12 @@
             overflow-y: hidden;
             scroll-behavior: smooth;
             scrollbar-width: thin;
-            scrollbar-color: #c8102e #f0f0f0;
+            scrollbar-color: #a77846 #f0f0f0;
             -webkit-overflow-scrolling: touch;
         }
 
         .thumbnail-wrapper::-webkit-scrollbar {
-            height: 8px;
+            height: 10px;
         }
 
         .thumbnail-wrapper::-webkit-scrollbar-track {
@@ -106,7 +106,7 @@
         }
 
         .thumbnail-wrapper::-webkit-scrollbar-thumb:hover {
-            background: #c8102e;
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
         }
 
         .thumbnail-grid {
@@ -133,8 +133,12 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
+        /* Active thumbnail border with gradient */
         .thumbnail.active {
-            border-color: #c8102e;
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #c8102e 0%, #a77846 100%) border-box;
+            box-shadow: 0 0 8px rgba(200, 16, 46, 0.3);
         }
 
         /* Scroll Buttons */
@@ -142,7 +146,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(200, 16, 46, 0.9);
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             color: white;
             border: none;
             width: 36px;
@@ -157,8 +161,9 @@
         }
 
         .thumbnail-scroll-btn:hover {
-            background: rgba(200, 16, 46, 1);
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.5);
         }
 
         .thumbnail-scroll-btn.left {
@@ -184,7 +189,7 @@
         }
 
         .section-card h3 {
-            color: transparent;
+            color: transparent !important;
             background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -194,6 +199,7 @@
             align-items: center;
             gap: 0.75rem;
             font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .section-card h3 i {
@@ -271,12 +277,13 @@
         .contact-section {
             background: white;
             padding: 2rem;
+            padding-bottom: 4.8rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .contact-section h3 {
-            color: transparent;
+            color: transparent !important;
             background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -285,6 +292,15 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .contact-section h3 i {
+            background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .contact-grid {
@@ -496,7 +512,6 @@
 
             to {
                 transform: scale(1);
-                opacity: 1;
             }
         }
 
@@ -523,10 +538,6 @@
             .skeleton-thumbnails {
                 grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
-        }
-
-        .contact-section {
-            padding-bottom: 4.8rem;
         }
     </style>
 </head>
@@ -594,7 +605,9 @@
                 <!-- Header -->
                 <div class="achievements-header">
                     <h1 class="achievements-title">
-                        <i class="fas fa-trophy"></i> Our Achievements & Awards
+                        <i class="fas fa-trophy"
+                            style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        Our Achievements & Awards
                     </h1>
                     <p class="achievements-subtitle">
                         Recognized for excellence in real estate service across the Philippines
@@ -666,11 +679,17 @@
                                 <div class="stat-label">Awards</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number"><i class="fas fa-trophy"></i></div>
+                                <div class="stat-number">
+                                    <i class="fas fa-trophy"
+                                        style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                                </div>
                                 <div class="stat-label">Excellence</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number"><i class="fas fa-star"></i></div>
+                                <div class="stat-number">
+                                    <i class="fas fa-star"
+                                        style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                                </div>
                                 <div class="stat-label">Recognition</div>
                             </div>
                         </div>
@@ -679,7 +698,9 @@
                         <div class="section-card">
                             <h3>
                                 <i class="fas fa-award"></i>
-                                Key Achievements
+                                <span
+                                    style="display: inline-block; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Key
+                                    Achievements</span>
                             </h3>
                             <div class="highlights-list">
                                 <div class="highlight-item">
@@ -709,7 +730,9 @@
                         <div class="contact-section">
                             <h3>
                                 <i class="fas fa-phone"></i>
-                                Connect With Us
+                                <span
+                                    style="display: inline-block; background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Connect
+                                    With Us</span>
                             </h3>
                             <p style="color: #666; margin-bottom: 1.5rem; text-align: center;">
                                 Want to work with an award-winning team? Contact us today!
