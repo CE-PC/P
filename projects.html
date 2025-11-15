@@ -511,7 +511,25 @@
                 activeTab.classList.add('active');
             }
 
-            filterProjects();
+            // Show skeleton, hide actual grid
+            const skeletonGrid = document.getElementById('skeleton-grid');
+            const projectsGrid = document.getElementById('projects-grid');
+            const noResults = document.getElementById('no-results');
+            const statsBar = document.getElementById('stats-bar');
+
+            projectsGrid.style.display = 'none';
+            noResults.style.display = 'none';
+            statsBar.style.display = 'none';
+            skeletonGrid.style.display = 'grid';
+
+            // Delay to show skeleton animation
+            setTimeout(() => {
+                filterProjects();
+
+                // Hide skeleton, show actual grid
+                skeletonGrid.style.display = 'none';
+                statsBar.style.display = 'block';
+            }, 400);
         }
 
         async function loadProjects() {
