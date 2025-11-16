@@ -4,7 +4,15 @@
 <head>
     <style>
         /* Skeleton Loading Styles */
-
+        .skeleton {
+            background: #e0e0e0;
+            background-image: linear-gradient(90deg,
+                    #e0e0e0 0px,
+                    #f0f0f0 40px,
+                    #e0e0e0 80px);
+            background-size: 400px 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+        }
 
         @keyframes shimmer {
             0% {
@@ -20,7 +28,6 @@
             height: 300px;
             border-radius: 12px;
             margin-bottom: 2rem;
-
         }
 
         .skeleton-buttons {
@@ -60,13 +67,17 @@
         .skeleton-facebook-card {
             height: 350px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .skeleton-hero-card {
             height: 350px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .skeleton-section-header {
@@ -123,6 +134,10 @@
             height: 280px;
             border-radius: 16px;
             background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+        }
+
+        .content-hidden {
+            display: none;
         }
     </style>
 
@@ -188,7 +203,6 @@
             border-radius: 6px;
             text-decoration: none;
             font-size: 0.9rem;
-
         }
 
         .services-grid {
@@ -197,6 +211,185 @@
 
         .service-card {
             min-height: 350px;
+        }
+
+        .contact-card .contact-link {
+            width: auto;
+            display: inline-flex;
+            margin: 0 auto;
+        }
+
+        /* Facebook card button hover fix */
+        .property-card .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0.95;
+        }
+
+        .property-card .btn {
+            transition: all 0.3s ease;
+        }
+
+        .skeleton {
+            background: #e0e0e0;
+            background-image: linear-gradient(90deg, #e0e0e0 0px, #f0f0f0 40px, #e0e0e0 80px);
+            background-size: 400px 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -400px 0;
+            }
+
+            100% {
+                background-position: 400px 0;
+            }
+        }
+
+        .skeleton-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .skeleton-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .skeleton-contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .skeleton-contact-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .skeleton-contact-title {
+            height: 28px;
+            width: 180px;
+            margin: 0 auto 10px;
+        }
+
+        .skeleton-contact-text {
+            height: 20px;
+            width: 150px;
+            margin: 0 auto 25px;
+        }
+
+        .skeleton-contact-button {
+            height: 45px;
+            width: 160px;
+            margin: 0 auto;
+            border-radius: 25px;
+        }
+
+        .skeleton-social-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .skeleton-social-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        .skeleton-social-title {
+            height: 32px;
+            width: 300px;
+            margin: 0 auto 1rem;
+        }
+
+        .skeleton-social-text {
+            height: 18px;
+            margin: 0 auto 0.5rem;
+        }
+
+        .skeleton-social-text:last-of-type {
+            width: 70%;
+            margin-bottom: 1.5rem;
+        }
+
+        .skeleton-social-button {
+            height: 50px;
+            width: 250px;
+            margin: 0 auto 1rem;
+            border-radius: 8px;
+        }
+
+        .skeleton-social-rating {
+            height: 16px;
+            width: 280px;
+            margin: 0 auto;
+        }
+
+        .skeleton-bottom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .skeleton-info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .skeleton-info-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .skeleton-info-title {
+            height: 28px;
+            width: 150px;
+            margin: 0 auto 10px;
+        }
+
+        .skeleton-info-text {
+            height: 18px;
+            margin: 0 auto 8px;
+        }
+
+        .skeleton-info-text:last-child {
+            width: 80%;
+        }
+
+        @media (max-width: 768px) {
+            .skeleton-title {
+                width: 90%;
+            }
+
+            .skeleton-subtitle {
+                width: 95%;
+            }
+
+            .skeleton-contact-grid,
+            .skeleton-bottom-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .contact-card .contact-link {
@@ -227,13 +420,19 @@
         <div id="skeleton-content">
             <!-- Hero Skeleton -->
             <section class="container mt-5">
-                <section class="container mt-5">
-                    <div class="row">
-                        <div class="col-12 mx-auto">
-                            <div class="skeleton skeleton-hero-card"></div>
+                <div class="row">
+                    <div class="col-12 mx-auto">
+                        <div class="skeleton-hero-card">
+                            <div class="skeleton skeleton-section-title"></div>
+                            <div class="skeleton skeleton-section-subtitle"></div>
+                            <div class="skeleton-buttons"
+                                style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                                <div class="skeleton skeleton-button"></div>
+                                <div class="skeleton skeleton-button"></div>
+                            </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </section>
 
             <!-- Featured Image Skeleton -->
@@ -256,8 +455,16 @@
             <!-- Facebook Section Skeleton -->
             <section class="container mt-5">
                 <div class="row">
-                    <div class="col-12 mx-auto">
-                        <div class="skeleton skeleton-facebook-card"></div>
+                    <div class="col-12">
+                        <div class="skeleton-social-card">
+                            <div class="skeleton skeleton-social-icon"></div>
+                            <div class="skeleton skeleton-social-title"></div>
+                            <div class="skeleton skeleton-social-text"></div>
+                            <div class="skeleton skeleton-social-text"></div>
+                            <div class="skeleton skeleton-social-text"></div>
+                            <div class="skeleton skeleton-social-button"></div>
+                            <div class="skeleton skeleton-social-rating"></div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -321,14 +528,12 @@
                             <div class="mt-4">
                                 <a href="/projects.html" class="contact-link" style="background-color: white;">
                                     <i class="fas fa-house gradient-icon"></i>
-                                    <span class="gradient-text">Browse
-                                        Properties</span>
+                                    <span class="gradient-text">Browse Properties</span>
                                 </a>
                                 <a href="/contact.html" class="contact-link" style="background-color: white;">
                                     <i class="fas fa-phone"
                                         style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
-                                    <span class="gradient-text">Get
-                                        in Touch</span>
+                                    <span class="gradient-text">Get in Touch</span>
                                 </a>
                             </div>
                         </div>
@@ -346,14 +551,12 @@
                                 onclick="lightbox.open(this.src, 'Calamba Expressive Properties')">
                             <div class="property-card-body">
                                 <h2 class="property-card-title" style="color: transparent !important;">
-                                    <span class="gradient-text">Building
-                                        Dreams, Creating Homes</span>
+                                    <span class="gradient-text">Building Dreams, Creating Homes</span>
                                 </h2>
                                 <p class="property-card-text">
                                     We specialize in providing exceptional real estate services, from property
-                                    development
-                                    to sales and rentals. With years of experience and a commitment to excellence,
-                                    we help you find the perfect property for your needs.
+                                    development to sales and rentals. With years of experience and a commitment to
+                                    excellence, we help you find the perfect property for your needs.
                                 </p>
                             </div>
                         </div>
@@ -373,8 +576,7 @@
                                 </div>
                                 <h3 class="property-card-title"
                                     style="color: white; font-weight: bold; font-size: 1.5rem; margin-bottom: 8px;">
-                                    Follow
-                                    Us on Facebook</h3>
+                                    Follow Us on Facebook</h3>
                                 <p class="property-card-text"
                                     style="color: rgba(255, 255, 255, 0.95); font-size: 0.95rem; margin-bottom: 20px;">
                                     Stay updated with our latest properties, success stories, and real estate tips.
@@ -400,8 +602,7 @@
             <!-- Quick Services -->
             <section class="container mt-5">
                 <h2 class="section-title" style="color: transparent !important;">
-                    <span class="gradient-text">Our
-                        Services</span>
+                    <span class="gradient-text">Our Services</span>
                 </h2>
                 <p class="section-subtitle">Comprehensive real estate solutions tailored to your needs</p>
 
@@ -452,11 +653,9 @@
                     style="background: linear-gradient(135deg, #c8102e 0%, #a77846 100%); border-radius: 1rem; color: white;">
                     <h2 class="mb-3">Ready to Find Your Perfect Property?</h2>
                     <p class="mb-4" style="font-size: 1.1rem;">Let our experienced team guide you through every step of
-                        your
-                        real estate journey.</p>
+                        your real estate journey.</p>
                     <a href="/contact.html" class="contact-link" style="background-color: white; color: #c8102e;">
-                        <i class="fas fa-phone"></i> <span class="gradient-text">Contact
-                            Us Today </span>
+                        <i class="fas fa-phone"></i> <span class="gradient-text">Contact Us Today </span>
                     </a>
                 </div>
             </section>
