@@ -995,6 +995,12 @@ section {
     margin: 0 auto 1rem;
 }
 
+.skeleton-subtitle {
+    height: 24px;
+    width: 40%;
+    margin: 0 auto 2rem;
+}
+
 .skeleton-wrapper {
     display: block;
 }
