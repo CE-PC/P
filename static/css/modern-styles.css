@@ -990,8 +990,9 @@ section {
 }
 
 .skeleton-title {
-    height: 32px;
-    margin-bottom: 15px;
+    height: 48px;
+    width: 250px;
+    margin: 0 auto 1rem;
 }
 
 .skeleton-wrapper {
