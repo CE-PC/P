@@ -20,6 +20,7 @@
             height: 300px;
             border-radius: 12px;
             margin-bottom: 2rem;
+
         }
 
         .skeleton-buttons {
@@ -220,7 +221,19 @@
         <div id="skeleton-content">
             <!-- Hero Skeleton -->
             <section class="container mt-5">
-                <div class="skeleton skeleton-hero"></div>
+                <div class="hero-section"
+                    style="position: relative; padding-bottom: 4rem; background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);">
+                    <!-- Skeleton content inside hero -->
+                    <div class="skeleton skeleton-title" style="margin: 0 auto 1rem; width: 300px; height: 48px;"></div>
+                    <div class="skeleton skeleton-subtitle" style="margin: 0 auto 2rem; width: 400px; height: 24px;">
+                    </div>
+
+                    <!-- Buttons at bottom of hero -->
+                    <div class="skeleton-buttons" style="display: flex; gap: 1rem; justify-content: center;">
+                        <div class="skeleton skeleton-button"></div>
+                        <div class="skeleton skeleton-button"></div>
+                    </div>
+                </div>
             </section>
 
             <!-- Featured Image Skeleton -->
