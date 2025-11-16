@@ -173,6 +173,26 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .skeleton-hero-card {
+            height: 350px;
+            border-radius: 12px;
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .skeleton-section-title {
+            height: 40px;
+            width: 300px;
+            margin: 0 auto 1rem;
+        }
+
+        .skeleton-section-subtitle {
+            height: 20px;
+            width: 400px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -253,15 +273,20 @@
                 </div>
 
                 <!-- Skeleton CTA Section -->
-                <div class="row">
-                    <div class="col-lg-12 mx-auto">
-                        <div class="skeleton-cta-section">
-                            <div class="skeleton skeleton-cta-title"></div>
-                            <div class="skeleton skeleton-cta-text"></div>
-                            <div class="skeleton skeleton-cta-button"></div>
+                <section class="container mt-5">
+                    <div class="row">
+                        <div class="col-12 mx-auto">
+                            <div class="skeleton-hero-card">
+                                <div class="skeleton skeleton-section-title"></div>
+                                <div class="skeleton skeleton-section-subtitle"></div>
+                                <div class="skeleton-buttons"
+                                    style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                                    <div class="skeleton skeleton-button"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
 
             <!-- Actual Content -->
