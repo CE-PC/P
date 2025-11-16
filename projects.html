@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#c8102e">
     <meta charset="UTF-8">
@@ -32,6 +31,7 @@
     <style>
         .projects-container {
             padding: 40px 0;
+            min-height: calc(100vh - 80px) !important;
         }
 
         .projects-grid {
@@ -98,7 +98,6 @@
             position: absolute;
             top: 15px;
             right: 15px;
-
             background: linear-gradient(135deg, var(--primary-red) 0%, var(--warm-brown) 100%);
             color: white;
             padding: 6px 12px;
@@ -264,6 +263,13 @@
             padding: 20px;
         }
 
+        .skeleton-title {
+            height: 28px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            width: 80%;
+        }
+
         .skeleton-location {
             height: 20px;
             border-radius: 4px;
@@ -288,7 +294,6 @@
 
         .loading {
             display: none;
-            /* Hide old loading spinner */
         }
 
         .no-results {
@@ -326,11 +331,6 @@
                 flex-wrap: nowrap;
             }
         }
-
-        .projects-container {
-            padding: 40px 0;
-            min-height: calc(100vh - 80px) !important;
-        }
     </style>
 </head>
 
@@ -348,8 +348,7 @@
             <!-- Actual Title -->
             <div id="actual-title" style="display: none;">
                 <h1 class="section-title text-center" style="color: transparent !important;">
-                    <span class="gradient-text">Our
-                        Projects</span>
+                    <span class="gradient-text">Our Projects</span>
                 </h1>
                 <p class="section-subtitle text-center">Explore our portfolio of quality properties in Calamba, Laguna
                 </p>
@@ -381,7 +380,7 @@
                 <div class="search-container">
                     <i class="fas fa-search search-icon"></i>
                     <input type="text" class="search-input" id="searchInput" placeholder="Search projects..."
-                        onkeyup="filterProjects()">
+                        onkeyup="handleSearchInput()">
                 </div>
             </div>
 
@@ -489,6 +488,7 @@
     <script>
         let allCards = [];
         let currentCategory = 'all';
+        let searchTimeout = null;
 
         // Get URL parameter helper function
         function getUrlParameter(name) {
@@ -536,6 +536,36 @@
                 // Hide skeleton, show actual grid
                 skeletonGrid.style.display = 'none';
                 statsBar.style.display = 'block';
+            }, 400);
+        }
+
+        // Handle search input with debounce and skeleton
+        function handleSearchInput() {
+            // Clear existing timeout
+            if (searchTimeout) {
+                clearTimeout(searchTimeout);
+            }
+
+            // Show skeleton immediately
+            const skeletonGrid = document.getElementById('skeleton-grid');
+            const projectsGrid = document.getElementById('projects-grid');
+            const noResults = document.getElementById('no-results');
+            const statsBar = document.getElementById('stats-bar');
+
+            projectsGrid.style.display = 'none';
+            noResults.style.display = 'none';
+            statsBar.style.display = 'none';
+            skeletonGrid.style.display = 'grid';
+
+            // Set new timeout for search
+            searchTimeout = setTimeout(() => {
+                filterProjects();
+
+                // Hide skeleton after filtering
+                setTimeout(() => {
+                    skeletonGrid.style.display = 'none';
+                    statsBar.style.display = 'block';
+                }, 300);
             }, 400);
         }
 
@@ -605,7 +635,6 @@
                             <i class="fas fa-map-marker-alt"></i> ${fullProperty.location}
                         </div>
                         <div class="project-meta">
-                            
                             ${fullProperty.price ? `<span><i class="fas fa-tag"></i> ${fullProperty.price}</span>` : ''}
                         </div>
                     </div>
@@ -641,8 +670,7 @@
                 const location = card.getAttribute('data-location');
                 const category = card.getAttribute('data-category');
 
-                const matchesSearch = name.includes(searchInput)
-                // || location.includes(searchInput);
+                const matchesSearch = name.includes(searchInput);
                 const matchesCategory = currentCategory === 'all' || category === currentCategory;
 
                 if (matchesSearch && matchesCategory) {
