@@ -63,6 +63,12 @@
             background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
         }
 
+        .skeleton-hero-card {
+            height: 350px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+        }
+
         .skeleton-section-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -209,31 +215,6 @@
         .property-card .btn {
             transition: all 0.3s ease;
         }
-
-        .skeleton-hero-wrapper {
-            position: relative;
-            padding-bottom: 4rem;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .skeleton-hero-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, #e0e0e0 0%, #e0e0e0 45%, #f0f0f0 50%, #e0e0e0 55%, #e0e0e0 100%);
-            background-size: 400px 100%;
-            animation: shimmer 1.5s ease-in-out infinite;
-            z-index: 0;
-        }
-
-        .skeleton-hero-wrapper>* {
-            position: relative;
-            z-index: 1;
-        }
     </style>
 
 </head>
@@ -246,18 +227,13 @@
         <div id="skeleton-content">
             <!-- Hero Skeleton -->
             <section class="container mt-5">
-                <div class="hero-section skeleton-hero-wrapper">
-                    <!-- Skeleton content inside hero -->
-                    <div class="skeleton skeleton-title" style="margin: 0 auto 1rem; width: 300px; height: 48px;"></div>
-                    <div class="skeleton skeleton-subtitle" style="margin: 0 auto 2rem; width: 400px; height: 24px;">
+                <section class="container mt-5">
+                    <div class="row">
+                        <div class="col-12 mx-auto">
+                            <div class="skeleton skeleton-hero-card"></div>
+                        </div>
                     </div>
-
-                    <!-- Buttons at bottom of hero -->
-                    <div class="skeleton-buttons" style="display: flex; gap: 1rem; justify-content: center;">
-                        <div class="skeleton skeleton-button"></div>
-                        <div class="skeleton skeleton-button"></div>
-                    </div>
-                </div>
+                </section>
             </section>
 
             <!-- Featured Image Skeleton -->
