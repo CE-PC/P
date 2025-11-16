@@ -92,41 +92,71 @@ a:hover {
     padding: 10px;
     text-align: center;
     border-radius: 6px;
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 0.9rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
     transition: transform 0.2s, box-shadow 0.2s;
+    border: none !important;
+    outline: none !important;
 }
 
 .btn-action:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    text-decoration: none;
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+.btn-action:focus,
+.btn-action:active,
+.btn-action:visited {
+    outline: none !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-decoration: none !important;
+    border: none !important;
 }
 
 /* WhatsApp button */
 .btn-whatsapp {
-    background: #25D366;
+    background: #25D366 !important;
     color: white !important;
 }
 
 .btn-whatsapp:hover {
-    background: #1fab52;
+    background: #1fab52 !important;
     color: white !important;
+}
+
+.btn-whatsapp:focus,
+.btn-whatsapp:active,
+.btn-whatsapp:visited {
+    background: #1fab52 !important;
+    color: white !important;
+    outline: none !important;
+    border: none !important;
 }
 
 /* Email/Gradient button */
 .btn-gradient {
-    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%) !important;
     color: white !important;
 }
 
 .btn-gradient:hover {
-    background: linear-gradient(135deg, #a70d26 0%, #8f6339 100%);
+    background: linear-gradient(135deg, #a70d26 0%, #8f6339 100%) !important;
     color: white !important;
+}
+
+.btn-gradient:focus,
+.btn-gradient:active,
+.btn-gradient:visited {
+    background: linear-gradient(135deg, #a70d26 0%, #8f6339 100%) !important;
+    color: white !important;
+    outline: none !important;
+    border: none !important;
 }
 
 /* Button container for flex layout */
@@ -135,6 +165,129 @@ a:hover {
     gap: 10px;
     margin-top: 15px;
     flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .btn-container {
+        flex-direction: column;
+    }
+
+    .btn-action {
+        width: 100%;
+    }
+}
+
+/* Override any Bootstrap or other link styles */
+a.btn-action,
+a.btn-whatsapp,
+a.btn-gradient,
+a.contact-btn {
+    text-decoration: none !important;
+    outline: none !important;
+    border: none !important;
+}
+
+a.btn-action:focus,
+a.btn-action:active,
+a.btn-action:visited,
+a.btn-whatsapp:focus,
+a.btn-whatsapp:active,
+a.btn-whatsapp:visited,
+a.btn-gradient:focus,
+a.btn-gradient:active,
+a.btn-gradient:visited,
+a.contact-btn:focus,
+a.contact-btn:active,
+a.contact-btn:visited {
+    text-decoration: none !important;
+    outline: none !important;
+    border: none !important;
+}
+
+/* Specific fix for contact buttons */
+.contact-btn {
+    text-decoration: none !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.contact-btn:focus,
+.contact-btn:active,
+.contact-btn:visited {
+    text-decoration: none !important;
+    outline: none !important;
+    border: none !important;
+}
+
+/* Fix for thumbnail scroll buttons and other buttons */
+button,
+button:focus,
+button:active,
+button:visited {
+    outline: none !important;
+    border: none;
+}
+
+.thumbnail-scroll-btn,
+.thumbnail-scroll-btn:focus,
+.thumbnail-scroll-btn:active,
+.thumbnail-scroll-btn:hover {
+    outline: none !important;
+    border: none !important;
+}
+
+/* Fix for carousel control buttons */
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-control-prev:focus,
+.carousel-control-next:focus,
+.carousel-control-prev:active,
+.carousel-control-next:active {
+    outline: none !important;
+    border: none !important;
+}
+
+.btn-phone {
+    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%) !important;
+    color: white !important;
+}
+
+.btn-phone:hover,
+.btn-phone:focus,
+.btn-phone:active {
+    background: linear-gradient(135deg, #a70d26 0%, #8f6339 100%) !important;
+    color: white !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.btn-email {
+    background: #a77846 !important;
+    color: white !important;
+}
+
+.btn-email:hover,
+.btn-email:focus,
+.btn-email:active {
+    background: #8f6339 !important;
+    color: white !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.btn-messenger {
+    background: #0084FF !important;
+    color: white !important;
+}
+
+.btn-messenger:hover,
+.btn-messenger:focus,
+.btn-messenger:active {
+    background: #0073e6 !important;
+    color: white !important;
+    outline: none !important;
+    border: none !important;
 }
 
 /* Responsive adjustments */
