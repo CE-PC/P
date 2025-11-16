@@ -209,6 +209,31 @@
         .property-card .btn {
             transition: all 0.3s ease;
         }
+
+        .skeleton-hero-wrapper {
+            position: relative;
+            padding-bottom: 4rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .skeleton-hero-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, #e0e0e0 0%, #e0e0e0 45%, #f0f0f0 50%, #e0e0e0 55%, #e0e0e0 100%);
+            background-size: 400px 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .skeleton-hero-wrapper>* {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 
 </head>
@@ -221,7 +246,7 @@
         <div id="skeleton-content">
             <!-- Hero Skeleton -->
             <section class="container mt-5">
-                <div class="skeleton hero-section" style="position: relative; padding-bottom: 4rem; ">
+                <div class="hero-section skeleton-hero-wrapper">
                     <!-- Skeleton content inside hero -->
                     <div class="skeleton skeleton-title" style="margin: 0 auto 1rem; width: 300px; height: 48px;"></div>
                     <div class="skeleton skeleton-subtitle" style="margin: 0 auto 2rem; width: 400px; height: 24px;">
