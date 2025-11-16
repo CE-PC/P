@@ -79,6 +79,76 @@ a:hover {
     color: white;
 }
 
+
+
+/* ============================================
+   REUSABLE BUTTON CLASSES
+   Add these to your master CSS file (modern-styles.css)
+   ============================================ */
+
+/* Base button style */
+.btn-action {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+/* WhatsApp button */
+.btn-whatsapp {
+    background: #25D366;
+    color: white !important;
+}
+
+.btn-whatsapp:hover {
+    background: #1fab52;
+    color: white !important;
+}
+
+/* Email/Gradient button */
+.btn-gradient {
+    background: linear-gradient(135deg, #c8102e 0%, #a77846 100%);
+    color: white !important;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #a70d26 0%, #8f6339 100%);
+    color: white !important;
+}
+
+/* Button container for flex layout */
+.btn-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .btn-container {
+        flex-direction: column;
+    }
+
+    .btn-action {
+        width: 100%;
+    }
+}
+
+
 /* ====================
    BUTTON STYLES
    ==================== */
