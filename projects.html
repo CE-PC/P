@@ -196,7 +196,15 @@
            ============================================ */
 
         .skeleton-wrapper {
+            display: none;
+        }
+
+        .skeleton-wrapper.show {
             display: block;
+        }
+
+        #skeleton-grid.show {
+            display: grid !important;
         }
 
         .skeleton {
@@ -340,7 +348,7 @@
     <main>
         <div class="container projects-container">
             <!-- Skeleton Loading for Title -->
-            <div id="skeleton-title" class="skeleton-wrapper">
+            <div id="skeleton-title" class="skeleton-wrapper show">
                 <div class="skeleton skeleton-header" style="max-width: 400px; margin: 0 auto 15px;"></div>
                 <div class="skeleton skeleton-header" style="max-width: 500px; height: 24px; margin: 0 auto;"></div>
             </div>
@@ -355,7 +363,7 @@
             </div>
 
             <!-- Skeleton Loading for Filters -->
-            <div id="skeleton-filters" class="filters-container skeleton-wrapper">
+            <div id="skeleton-filters" class="filters-container skeleton-wrapper show">
                 <div class="skeleton-tabs">
                     <div class="skeleton skeleton-tab"></div>
                     <div class="skeleton skeleton-tab"></div>
@@ -390,7 +398,7 @@
             </div>
 
             <!-- Skeleton Loading for Projects Grid -->
-            <div id="skeleton-grid" class="projects-grid skeleton-wrapper">
+            <div id="skeleton-grid" class="projects-grid skeleton-wrapper show">
                 <!-- Generate 6 skeleton cards -->
                 <div class="skeleton-card">
                     <div class="project-image-wrapper">
@@ -527,14 +535,14 @@
             projectsGrid.style.display = 'none';
             noResults.style.display = 'none';
             statsBar.style.display = 'none';
-            skeletonGrid.style.display = 'grid';
+            skeletonGrid.classList.add('show');
 
             // Delay to show skeleton animation
             setTimeout(() => {
                 filterProjects();
 
                 // Hide skeleton, show actual grid
-                skeletonGrid.style.display = 'none';
+                skeletonGrid.classList.remove('show');
                 statsBar.style.display = 'block';
             }, 400);
         }
@@ -555,7 +563,7 @@
             projectsGrid.style.display = 'none';
             noResults.style.display = 'none';
             statsBar.style.display = 'none';
-            skeletonGrid.style.display = 'grid';
+            skeletonGrid.classList.add('show');
 
             // Set new timeout for search
             searchTimeout = setTimeout(() => {
@@ -563,7 +571,7 @@
 
                 // Hide skeleton after filtering
                 setTimeout(() => {
-                    skeletonGrid.style.display = 'none';
+                    skeletonGrid.classList.remove('show');
                     statsBar.style.display = 'block';
                 }, 300);
             }, 400);
@@ -591,9 +599,9 @@
             // Simulate loading delay to show skeleton
             setTimeout(async () => {
                 // Hide skeletons
-                skeletonGrid.style.display = 'none';
-                skeletonFilters.style.display = 'none';
-                document.getElementById('skeleton-title').style.display = 'none';
+                skeletonGrid.classList.remove('show');
+                skeletonFilters.classList.remove('show');
+                document.getElementById('skeleton-title').classList.remove('show');
 
                 // Show actual content
                 grid.style.display = 'grid';
