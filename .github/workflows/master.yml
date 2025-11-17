@@ -79,7 +79,7 @@ jobs:
         run: |
           git config user.name "jeterg"
           git config user.email "jeterg@users.noreply.github.com"
-          git add static/js/properties.js static/js/partners.js partners projects property
+          git add static/js/properties.js static/js/partners.js partners.html projects.html property.html
           git commit -m "🤖 Update generated data files and cache versions"
           git push
           echo "✅ Generated files committed to repo"
