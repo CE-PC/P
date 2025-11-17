@@ -31,7 +31,7 @@ static/images/projects/
 - Includes category metadata
 - Maintains all original functionality
 
-#### projects.html ✅
+#### projects ✅
 - Added category dropdown filter
 - Shows category badges on cards
 - Filters by both category and search term
@@ -39,7 +39,7 @@ static/images/projects/
 - Handles empty states (no results message)
 - Updated card click to include category parameter
 
-#### property.html ✅
+#### property ✅
 - Now accepts `?category=X&id=Y` parameters
 - Displays category badge
 - Loads images from categorized paths
@@ -75,7 +75,7 @@ Every property card shows its category with a colored badge in the top-right cor
 ### URL Structure
 **New format:**
 ```
-property.html?category=house-and-lot&id=1
+property?category=house-and-lot&id=1
 ```
 
 **Why this is good:**
@@ -108,7 +108,7 @@ property.html?category=house-and-lot&id=1
 
 4. **Done!** Visit:
    ```
-   yoursite.com/property.html?category=house-and-lot&id=my-new-property
+   yoursite.com/property?category=house-and-lot&id=my-new-property
    ```
 
 ### Adding a New Category
@@ -194,8 +194,8 @@ const count = PROPERTY_DATA.getTotalProjects();
 1. ✅ Create category folders
 2. ✅ Move property folders into categories
 3. ✅ Replace generate-properties.js
-4. ✅ Replace projects.html
-5. ✅ Replace property.html
+4. ✅ Replace projects
+5. ✅ Replace property
 6. ✅ Run `node generate-properties.js`
 7. ✅ Test locally
 8. ✅ Commit and push

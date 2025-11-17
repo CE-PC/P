@@ -2,19 +2,19 @@
     // Define navigation items
     const navItems = [
         { href: '/', icon: 'fas fa-home', text: 'Home', page: 'index' },
-        { href: '/about.html', icon: 'fas fa-info-circle', text: 'About', page: 'about' },
-        { href: '/services.html', icon: 'fas fa-concierge-bell', text: 'Services', page: 'services' },
-        { href: '/projects.html', icon: 'fas fa-city', text: 'Projects', page: 'projects' },
-        { href: '/team.html', icon: 'fas fa-users', text: 'Team', page: 'team' },
-        { href: '/achievements.html', icon: 'fas fa-trophy', text: 'Achievements', page: 'achievements' },
-        { href: '/partners.html', icon: 'fas fa-handshake', text: 'Partners', page: 'partners' },
-        { href: '/contact.html', icon: 'fas fa-envelope', text: 'Contact', page: 'contact' }
+        { href: '/about', icon: 'fas fa-info-circle', text: 'About', page: 'about' },
+        { href: '/services', icon: 'fas fa-concierge-bell', text: 'Services', page: 'services' },
+        { href: '/projects', icon: 'fas fa-city', text: 'Projects', page: 'projects' },
+        { href: '/team', icon: 'fas fa-users', text: 'Team', page: 'team' },
+        { href: '/achievements', icon: 'fas fa-trophy', text: 'Achievements', page: 'achievements' },
+        { href: '/partners', icon: 'fas fa-handshake', text: 'Partners', page: 'partners' },
+        { href: '/contact', icon: 'fas fa-envelope', text: 'Contact', page: 'contact' }
     ];
 
     function getCurrentPage() {
         const path = window.location.pathname;
-        if (path === '/' || path.endsWith('index.html')) return 'index';
-        const page = path.split('/').pop().replace('.html', '');
+        if (path === '/' || path.endsWith('index')) return 'index';
+        const page = path.split('/').pop().replace('', '');
         return page || 'index';
     }
 

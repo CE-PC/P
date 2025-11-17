@@ -13,7 +13,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.calambaexpressive.com/projects.html">
+    <meta property="og:url" content="https://www.calambaexpressive.com/projects">
     <meta property="og:title" content="Properties & Projects - Calamba Expressive Properties">
     <meta property="og:description"
         content="Explore our portfolio of quality properties in Calamba, Laguna. Find your perfect home or investment today.">
@@ -631,7 +631,7 @@
                         card.setAttribute('data-name', fullProperty.name.toLowerCase());
                         card.setAttribute('data-location', fullProperty.location.toLowerCase());
                         card.setAttribute('data-category', category);
-                        card.onclick = () => window.location.href = `/property.html?category=${category}&id=${id}`;
+                        card.onclick = () => window.location.href = `/property?category=${category}&id=${id}`;
 
                         card.innerHTML = `
                     <div class="project-image-wrapper">
