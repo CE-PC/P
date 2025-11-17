@@ -121,13 +121,6 @@ window.PROPERTY_DATA = {
                                 "image_102.jpeg"
                         ]
                 },
-                "13": {
-                        "name": "13",
-                        "location": "Calamba, Laguna, Philippines",
-                        "category": "house-and-lot",
-                        "folder": "13",
-                        "images": []
-                },
                 "Turn over Unit (Model House)": {
                         "name": "Turn over Unit (Model House)",
                         "location": "Calamba, Laguna, Philippines",
