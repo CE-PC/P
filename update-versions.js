@@ -10,9 +10,9 @@ const fs = require('fs');
 const path = require('path');
 
 const FILES_TO_UPDATE = [
-    './partners',
-    './projects',
-    './property'
+    './partners.html',
+    './projects.html',
+    './property.html'
 ];
 
 function updateVersions() {
