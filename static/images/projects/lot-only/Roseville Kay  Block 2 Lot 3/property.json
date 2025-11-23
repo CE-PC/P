@@ -1,0 +1,21 @@
+{
+    "features": [
+        {
+            "icon": "fas fa-vector-square",
+            "text": "Lot Area: 42 SQM"
+        },
+        {
+            "icon": "fas fa-file-alt",
+            "text": "Clean Title"
+        }
+    ],
+    "description": "• Residential Area\n• Transportation\n• Schools nearby",
+    "location": "Anlog, Calamba",
+    "price": "₱385,000.00",
+    "status": "CLEAN TITLE",
+    "statusOptions": [
+        "available",
+        "reserved",
+        "sold"
+    ]
+}
