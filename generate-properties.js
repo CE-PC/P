@@ -45,22 +45,61 @@ function scanProjects() {
 
         folders.forEach(folder => {
             const folderPath = path.join(categoryPath, folder);
+
+            // Debug: Show the actual path being checked
+            const propertyJsonPath = path.join(folderPath, 'property.json');
+            console.log(`  📍 Checking: ${propertyJsonPath}`);
+
             const files = fs.readdirSync(folderPath);
+
+            // Debug: Show all files in the folder
+            console.log(`  📄 Files found: ${files.join(', ')}`);
 
             // Only include actual image files
             const images = files.filter(file =>
                 /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
             ).sort();
 
+            // Try to load property.json if it exists
+            let propertyData = null;
+            if (fs.existsSync(propertyJsonPath)) {
+                try {
+                    const jsonContent = fs.readFileSync(propertyJsonPath, 'utf8');
+                    propertyData = JSON.parse(jsonContent);
+                    console.log(`  ✅ ${folder}: ${images.length} image${images.length !== 1 ? 's' : ''} + property.json LOADED`);
+                } catch (err) {
+                    console.log(`  ⚠️  ${folder}: Error reading property.json - ${err.message}`);
+                }
+            } else {
+                console.log(`  ℹ️  ${folder}: property.json NOT FOUND at ${propertyJsonPath}`);
+            }
+
+            // Try to load description.txt if it exists
+            let descriptionText = null;
+            const descriptionPath = path.join(folderPath, 'description.txt');
+            if (fs.existsSync(descriptionPath)) {
+                try {
+                    descriptionText = fs.readFileSync(descriptionPath, 'utf8');
+                    console.log(`  📝 ${folder}: description.txt found`);
+                } catch (err) {
+                    console.log(`  ⚠️  ${folder}: Error reading description.txt - ${err.message}`);
+                }
+            }
+
+            if (!propertyData && !descriptionText) {
+                console.log(`  ✓ ${folder}: ${images.length} image${images.length !== 1 ? 's' : ''} (no metadata)`);
+            }
+
             projectsByCategory[category][folder] = {
                 name: folder,
-                location: DEFAULT_LOCATION, // Use default location
+                location: DEFAULT_LOCATION,
                 category: category,
                 folder: folder,
-                images: images
+                images: images,
+                propertyData: propertyData,
+                descriptionText: descriptionText
             };
 
-            console.log(`  ✓ ${folder}: ${images.length} image${images.length !== 1 ? 's' : ''}`);
             totalProjects++;
         });
 
@@ -121,69 +160,57 @@ window.PROPERTY_DATA = {
 
         // Default values
         let description = null;
-        let location = project.location || this.defaultLocation; // Use default if not set
-        let status = null;               // e.g., "CLEAN CCT COMPLETE"
-        let price = null;                // e.g., "₱5,500,000.00"
-        let contact = [];                // optional contact info array
-        let other = null;                // optional notes
+        let location = project.location || this.defaultLocation;
+        let status = null;
+        let price = null;
+        let contact = [];
+        let other = null;
 
         // Base features for all properties
         let features = [
-            { icon: "fas fa-building", text: this.getCategoryName(category) }, // category
-            // { icon: "fas fa-home", text: "Residential Property" },        // type of property
-            { icon: "fas fa-map-marker-alt", text: location },            // location
-            // { icon: "fas fa-images", text: images.length + " Photo" + (images.length !== 1 ? "s" : "") } // images count
+            { icon: "fas fa-building", text: this.getCategoryName(category) },
+            { icon: "fas fa-map-marker-alt", text: location },
         ];
 
-        // Load property.json if exists
-        try {
-            const response = await fetch(\`\${this.basePath}\${category}/\${project.folder}/property.json\`);
-            if (response.ok) {
-                const jsonData = await response.json();
+        // Use preloaded property data if available
+        if (project.propertyData) {
+            const jsonData = project.propertyData;
 
-                // Override location if specified, otherwise use default
-                if (jsonData.location) {
-                    location = jsonData.location;
-                } else {
-                    location = this.defaultLocation;
-                }
-                
-                const locIndex = features.findIndex(f => f.icon === "fas fa-map-marker-alt");
-                if (locIndex >= 0) features[locIndex].text = location;
-
-                // Override status, price, contact, other
-                if (jsonData.status) status = jsonData.status;
-                if (jsonData.price) price = jsonData.price;
-                if (jsonData.contact) contact = jsonData.contact;
-                if (jsonData.other) other = jsonData.other;
-
-                // Override description if provided
-                if (jsonData.description) description = jsonData.description;
-
-                // Add extra features from property.json
-                if (Array.isArray(jsonData.features)) {
-                    features = features.concat(
-                        jsonData.features.map(f => ({
-                            icon: f.icon || "fas fa-info-circle",
-                            text: f.text
-                        }))
-                    );
-                }
-
-                // ✅ Automatically add status and price as features
-                if (status) features.push({ icon: "fas fa-check-circle", text: status });
-                if (price) features.push({ icon: "fas fa-money-bill-wave", text: price });
-
+            // Override location if specified, otherwise use default
+            if (jsonData.location) {
+                location = jsonData.location;
             } else {
-                // fallback to description.txt if property.json is missing
-                const resp = await fetch(\`\${this.basePath}\${category}/\${project.folder}/description.txt\`);
-                if (resp.ok) description = await resp.text();
+                location = this.defaultLocation;
             }
-        } catch (err) {
-            try {
-                const resp = await fetch(\`\${this.basePath}\${category}/\${project.folder}/description.txt\`);
-                if (resp.ok) description = await resp.text();
-            } catch {}
+            
+            const locIndex = features.findIndex(f => f.icon === "fas fa-map-marker-alt");
+            if (locIndex >= 0) features[locIndex].text = location;
+
+            // Override status, price, contact, other
+            if (jsonData.status) status = jsonData.status;
+            if (jsonData.price) price = jsonData.price;
+            if (jsonData.contact) contact = jsonData.contact;
+            if (jsonData.other) other = jsonData.other;
+
+            // Override description if provided
+            if (jsonData.description) description = jsonData.description;
+
+            // Add extra features from property.json
+            if (Array.isArray(jsonData.features)) {
+                features = features.concat(
+                    jsonData.features.map(f => ({
+                        icon: f.icon || "fas fa-info-circle",
+                        text: f.text
+                    }))
+                );
+            }
+
+            // Automatically add status and price as features
+            if (status) features.push({ icon: "fas fa-check-circle", text: status });
+            if (price) features.push({ icon: "fas fa-money-bill-wave", text: price });
+        } else if (project.descriptionText) {
+            // Fallback to description.txt if no property.json
+            description = project.descriptionText;
         }
 
         // Return the full property object
