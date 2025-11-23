@@ -66,7 +66,7 @@ function scanProjects() {
                 try {
                     const jsonContent = fs.readFileSync(propertyJsonPath, 'utf8');
                     propertyData = JSON.parse(jsonContent);
-                    console.log(`  ✅ ${folder}: ${images.length} image${images.length !== 1 ? 's' : ''} + property.json LOADED`);
+                    console.log(`  ✅ ${folder}: ${images.length} image${images.length !== 1 ? 's' : ''} + property.json LOADED\n`);
                 } catch (err) {
                     console.log(`  ⚠️  ${folder}: Error reading property.json - ${err.message}`);
                 }
