@@ -9,12 +9,12 @@ window.PROPERTY_DATA = {
     defaultLocation: "Calamba, Laguna, Philippines",
     categories: [
     {
-        "id": "commercial-lot",
-        "name": "Commercial Lot"
+        "id": "Condominium",
+        "name": "Condominium"
     },
     {
-        "id": "commercial-space",
-        "name": "Commercial Space"
+        "id": "commercial-lot",
+        "name": "Commercial Lot"
     },
     {
         "id": "house-and-lot",
@@ -23,163 +23,1070 @@ window.PROPERTY_DATA = {
     {
         "id": "house-only",
         "name": "House Only"
+    },
+    {
+        "id": "lot-only",
+        "name": "Lot Only"
     }
 ],
     projectsByCategory: {
-        "commercial-lot": {
-                "8": {
-                        "name": "8",
+        "Condominium": {
+                "Amaia Steps Nuvali Clara A 116": {
+                        "name": "Amaia Steps Nuvali Clara A 116",
                         "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-lot",
-                        "folder": "8",
+                        "category": "Condominium",
+                        "folder": "Amaia Steps Nuvali Clara A 116",
                         "images": [
-                                "image_106.jpeg"
-                        ]
+                                "CLARA_A_116_AMAIA_STEPS_NUVALI_CANLUBANG_CALAMBA.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 32.90 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "Proposed 1 Bedroom"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "1 Comfort Room"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        }
+                                ],
+                                "description": "• School\n• Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Canlubang, Calamba City",
+                                "price": "₱5,500,000.00",
+                                "status": "CLEAN CCT COMPLETE",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Miramonti Green Residences Room No 1511": {
+                        "name": "Miramonti Green Residences Room No 1511",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "Condominium",
+                        "folder": "Miramonti Green Residences Room No 1511",
+                        "images": [
+                                "RMNO1511_MIRAMONTI_STO_TOMAS.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 27 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "Proposed 1 Bedroom"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "1 Comfort Room"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        }
+                                ],
+                                "description": "• School\n• Market\n• Commercial Area\n• Transportation\n• Mall (SM Sto. Tomas)\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Sto. Tomas, Batangas",
+                                "price": "₱5,400,000.00",
+                                "status": "CLEAN CCT COMPLETE (Turn over December)",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Miramonti Green Residences Room No 503": {
+                        "name": "Miramonti Green Residences Room No 503",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "Condominium",
+                        "folder": "Miramonti Green Residences Room No 503",
+                        "images": [
+                                "RMNO503_MIRAMONTI_STO_TOMAS.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 25 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "Proposed 1 Bedroom"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "1 Comfort Room"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        }
+                                ],
+                                "description": "• School\n• Market\n• Commercial Area\n• Transportation\n• Mall (SM Sto. Tomas)\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Sto. Tomas, Batangas",
+                                "price": "₱5,200,000.00",
+                                "status": "CLEAN CCT COMPLETE (Turn over December)",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Miramonti Green Residences Room No 513": {
+                        "name": "Miramonti Green Residences Room No 513",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "Condominium",
+                        "folder": "Miramonti Green Residences Room No 513",
+                        "images": [
+                                "RMNO513_MIRAMONTI_STO_TOMAS.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 25 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "Proposed 1 Bedroom"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "1 Comfort Room"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        }
+                                ],
+                                "description": "• School\n• Market\n• Commercial Area\n• Transportation\n• Mall (SM Sto. Tomas)\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Sto. Tomas, Batangas",
+                                "price": "₱5,200,000.00",
+                                "status": "CLEAN CCT COMPLETE (Turn over December)",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 }
         },
-        "commercial-space": {
-                "7": {
-                        "name": "7",
+        "commercial-lot": {
+                "Laguna Buenavista Lot 7": {
+                        "name": "Laguna Buenavista Lot 7",
                         "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-space",
-                        "folder": "7",
+                        "category": "commercial-lot",
+                        "folder": "Laguna Buenavista Lot 7",
                         "images": [
-                                "Image_104.jpeg"
-                        ]
+                                "LOT_7LAGUNA_BUENAVISTA_EXEC_BARANDAL.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 88 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-building",
+                                                "text": "Residential / Commercial"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
+                                "location": "Exec. Barandal, Calamba",
+                                "price": "₱13,000.00/sqm",
+                                "status": "CLEAN TITLE RESIDENTIAL / COMMERCIAL",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "9": {
-                        "name": "9",
+                "Laguna Buenavista Lot 8": {
+                        "name": "Laguna Buenavista Lot 8",
                         "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-space",
-                        "folder": "9",
+                        "category": "commercial-lot",
+                        "folder": "Laguna Buenavista Lot 8",
                         "images": [
-                                "Image_108.jpeg"
-                        ]
+                                "LOT_8_LAGUNA_BUENAVISTA_EXEC_BARANDAL.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 88 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-building",
+                                                "text": "Residential / Commercial"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
+                                "location": "Exec. Barandal, Calamba",
+                                "price": "₱13,000.00/sqm",
+                                "status": "CLEAN TITLE RESIDENTIAL / COMMERCIAL",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "10": {
-                        "name": "10",
+                "Laguna Buenavista Lot 9": {
+                        "name": "Laguna Buenavista Lot 9",
                         "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-space",
-                        "folder": "10",
+                        "category": "commercial-lot",
+                        "folder": "Laguna Buenavista Lot 9",
                         "images": [
-                                "Screenshot 2024-07-16 at 4.11.39 AM.png",
-                                "image_111.jpeg",
-                                "image_112.jpeg"
-                        ]
+                                "LOT_9_LAGUNA_BUENAVISTA_EXEC_BARANDAL.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 88 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-building",
+                                                "text": "Residential / Commercial"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
+                                "location": "Exec. Barandal, Calamba",
+                                "price": "₱13,000.00/sqm",
+                                "status": "CLEAN TITLE RESIDENTIAL / COMMERCIAL",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "11": {
-                        "name": "11",
+                "Mabini Height Lipa City Block 1 Lot 17": {
+                        "name": "Mabini Height Lipa City Block 1 Lot 17",
                         "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-space",
-                        "folder": "11",
+                        "category": "commercial-lot",
+                        "folder": "Mabini Height Lipa City Block 1 Lot 17",
                         "images": [
-                                "image_115.jpeg",
-                                "image_116.jpeg",
-                                "image_117.jpeg",
-                                "image_118.jpeg"
-                        ]
+                                "BLOCK_1_LOT_17_MABINI_HEIGHT_LIPA_CITY.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 53 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 83 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "Proposed 2 Bedrooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "1 Comfort Room"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-building",
+                                                "text": "Residential / Commercial"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Lipa, Batangas City",
+                                "price": "₱3,840,000.00",
+                                "status": "COMPLETE FINISHED RESIDENTIAL / COMMERCIAL",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "12": {
-                        "name": "12",
+                "Marawoy Commercial Property With Improvement": {
+                        "name": "Marawoy Commercial Property With Improvement",
                         "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-space",
-                        "folder": "12",
+                        "category": "commercial-lot",
+                        "folder": "Marawoy Commercial Property With Improvement",
                         "images": [
-                                "image_120.jpeg",
-                                "image_121.jpeg",
-                                "image_122.jpeg",
-                                "image_123.jpeg"
-                        ]
+                                "MARAWOY_LIPA_CITY.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 213 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-home",
+                                                "text": "With Improvement"
+                                        },
+                                        {
+                                                "icon": "fas fa-building",
+                                                "text": "Residential / Commercial"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Major Roads\n• Commercial Area\n• Transportation\n• City Center",
+                                "location": "Lipa City, Batangas",
+                                "price": "₱13,000,000.00",
+                                "status": "CLEAN TITLE RESIDENTIAL / COMMERCIAL",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 }
         },
         "house-and-lot": {
-                "2": {
-                        "name": "2",
+                "Camella Frontiera Block 1 Lot 2 Phase 1 ": {
+                        "name": "Camella Frontiera Block 1 Lot 2 Phase 1 ",
                         "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
-                        "folder": "2",
+                        "folder": "Camella Frontiera Block 1 Lot 2 Phase 1 ",
                         "images": [
-                                "image_89.jpeg",
-                                "image_90.jpeg"
-                        ]
+                                "CAMELLA_FRONTIERA_BLOCK_1_LOT_2_PHASE_1.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-home",
+                                                "text": "Complete Finished"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Batangas",
+                                "price": "Contact for pricing",
+                                "status": "COMPLETE FINISHED",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "5": {
-                        "name": "5",
+                "Carmel Village Diana Model Block 30 Lot 3": {
+                        "name": "Carmel Village Diana Model Block 30 Lot 3",
                         "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
-                        "folder": "5",
+                        "folder": "Carmel Village Diana Model Block 30 Lot 3",
                         "images": [
-                                "a.jpeg"
-                        ]
+                                "BLOCK_30_LOT_3_CARMEL_VILLAGE_PH2_BARANDAL_CALAMBA.png",
+                                "image.jpg",
+                                "property_01_CALAMBA.jpeg"
+                        ],
+                        "propertyData": {
+                                "propertyName": "Carmel Village Diana Model",
+                                "vicinity": "CALAMBA",
+                                "address": "BLOCK 30 LOT 3 CARMEL VILLAGE PH2 BARANDAL CALAMBA",
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 80 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 120 SQM (Estimate)"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "2 Bedrooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "1 Comfort Room"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-broom",
+                                                "text": "Service Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-couch",
+                                                "text": "Living Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Dining Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-car",
+                                                "text": "Car Port"
+                                        },
+                                        {
+                                                "icon": "fas fa-couch",
+                                                "text": "With Improvement and Furnitures & Fixtures"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Barandal, Calamba",
+                                "price": "₱5,500,000.00",
+                                "status": "COMPLETE FINISHED WITH IMPROVEMENT AND FURNITURES & FIXTURES",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "6": {
-                        "name": "6",
+                "Madison South Batino Block 12 Lot 07": {
+                        "name": "Madison South Batino Block 12 Lot 07",
                         "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
-                        "folder": "6",
+                        "folder": "Madison South Batino Block 12 Lot 07",
                         "images": [
-                                "image_102.jpeg"
-                        ]
+                                "BLOCK_12_LOT_07_MADISON_SOUTH_BATINO_CALAMBA.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 100 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 96 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "3 Bedrooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "2 Comfort Rooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-broom",
+                                                "text": "Service Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-couch",
+                                                "text": "Living Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Dining Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-home",
+                                                "text": "Balcony"
+                                        },
+                                        {
+                                                "icon": "fas fa-car",
+                                                "text": "Car Port"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Calamba City, Laguna",
+                                "price": "₱7,000,000.00",
+                                "status": "Complete Finished (April 2026 - End of contract rent)",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "Turn over Unit (Model House)": {
-                        "name": "Turn over Unit (Model House)",
+                "Madison South Batino Block 14 Lot 24": {
+                        "name": "Madison South Batino Block 14 Lot 24",
                         "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
-                        "folder": "Turn over Unit (Model House)",
+                        "folder": "Madison South Batino Block 14 Lot 24",
                         "images": [
-                                "image_131.jpeg",
-                                "image_135.jpeg",
-                                "image_136.jpeg",
-                                "image_137.jpeg",
-                                "image_138.jpeg",
-                                "image_142.jpeg",
-                                "image_143.jpeg"
-                        ]
+                                "BLOCK_14_LOT_24_MADISON_SOUTH_BATINO_CALAMBA.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 100 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 100 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "3 Bedrooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "2 Comfort Rooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-broom",
+                                                "text": "Service Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-couch",
+                                                "text": "Living Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Dining Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-home",
+                                                "text": "Balcony"
+                                        },
+                                        {
+                                                "icon": "fas fa-car",
+                                                "text": "Car Port"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Calamba City, Laguna",
+                                "price": "₱7,000,000.00",
+                                "status": "Complete Finished (April 2026 - End of contract rent)",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Sentosa Azumi Block 10 Lot 11": {
+                        "name": "Sentosa Azumi Block 10 Lot 11",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "house-and-lot",
+                        "folder": "Sentosa Azumi Block 10 Lot 11",
+                        "images": [
+                                "SENTOSA_PUNTA_CALAMBA.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 60 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 80 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "3 Bedrooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "2 Comfort Rooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-broom",
+                                                "text": "Service Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-couch",
+                                                "text": "Living Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Dining Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-home",
+                                                "text": "Balcony"
+                                        },
+                                        {
+                                                "icon": "fas fa-car",
+                                                "text": "Car Port"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Brgy. Punta, Calamba City",
+                                "price": "₱3,840,000.00",
+                                "status": "COMPLETE FINISHED",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 }
         },
         "house-only": {
-                "1": {
-                        "name": "1",
+                "Lanceta Townhouse Room No 1": {
+                        "name": "Lanceta Townhouse Room No 1",
                         "location": "Calamba, Laguna, Philippines",
                         "category": "house-only",
-                        "folder": "1",
+                        "folder": "Lanceta Townhouse Room No 1",
                         "images": [
-                                "image_83.jpeg",
-                                "image_84.jpeg",
-                                "image_86.jpeg",
-                                "image_87.jpeg",
-                                "other.jpeg"
-                        ]
+                                "LANCETA_TOWNHOUSE_RM_NO_1_BARANDAL_CALAMBA.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 45 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 80 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "2 Bedrooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "1 Comfort Room"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-broom",
+                                                "text": "Service Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-couch",
+                                                "text": "Living Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Dining Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-home",
+                                                "text": "Balcony"
+                                        },
+                                        {
+                                                "icon": "fas fa-car",
+                                                "text": "Car Port"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Brgy. Barandal, Calamba City",
+                                "price": "₱3,584,000.00",
+                                "status": "COMPLETE FINISHED",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "3": {
-                        "name": "3",
+                "Lanceta Townhouse Unit 3": {
+                        "name": "Lanceta Townhouse Unit 3",
                         "location": "Calamba, Laguna, Philippines",
                         "category": "house-only",
-                        "folder": "3",
+                        "folder": "Lanceta Townhouse Unit 3",
                         "images": [
-                                "image_92.jpeg"
-                        ]
+                                "LANCETA_TOWNHOUSE_UNIT_3_BARANDAL_CALAMBA.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 50 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-ruler-combined",
+                                                "text": "Floor Area: 88 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-bed",
+                                                "text": "2 Bedrooms"
+                                        },
+                                        {
+                                                "icon": "fas fa-hot-tub",
+                                                "text": "1 Comfort Room"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Kitchen Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-broom",
+                                                "text": "Service Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-couch",
+                                                "text": "Living Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-utensils",
+                                                "text": "Dining Area"
+                                        },
+                                        {
+                                                "icon": "fas fa-home",
+                                                "text": "Balcony"
+                                        },
+                                        {
+                                                "icon": "fas fa-car",
+                                                "text": "Car Port"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Brgy. Barandal, Calamba City",
+                                "price": "₱3,584,000.00",
+                                "status": "COMPLETE FINISHED",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                }
+        },
+        "lot-only": {
+                "Bilog Bilog Tanauan Batangas City": {
+                        "name": "Bilog Bilog Tanauan Batangas City",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "lot-only",
+                        "folder": "Bilog Bilog Tanauan Batangas City",
+                        "images": [
+                                "BILOG-BILOG_TANAUAN_BATANGAS_CITY.png"
+                        ],
+                        "propertyData": {
+                                "propertyName": "Bilog-Bilog Tanauan Batangas City",
+                                "vicinity": "BATANGAS",
+                                "address": "BILOG-BILOG TANAUAN BATANGAS CITY",
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 6,151 sq m"
+                                        },
+                                        {
+                                                "icon": "fas fa-tractor",
+                                                "text": "Farm Lot"
+                                        },
+                                        {
+                                                "icon": "fas fa-check-circle",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Agricultural Land\n• Clean Title\n• Tanauan Location",
+                                "location": "Tanauan, Batangas City",
+                                "price": "Contact for pricing",
+                                "status": "CLEAN TITLE",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "4": {
-                        "name": "4",
+                "Bucal Bypass Road Farm Lot": {
+                        "name": "Bucal Bypass Road Farm Lot",
                         "location": "Calamba, Laguna, Philippines",
-                        "category": "house-only",
-                        "folder": "4",
+                        "category": "lot-only",
+                        "folder": "Bucal Bypass Road Farm Lot",
                         "images": [
-                                "image_94.jpeg",
-                                "image_95.jpeg",
-                                "image_97.jpeg",
-                                "image_98.jpeg"
-                        ]
+                                "BUCAL_BYPASS_ROAD_CALAMBA_CITY.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "propertyName": "Bucal Bypass Road Calamba City",
+                                "vicinity": "CALAMBA",
+                                "address": "BUCAL BYPASS ROAD CALAMBA CITY",
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 1.7 Hectares"
+                                        },
+                                        {
+                                                "icon": "fas fa-tractor",
+                                                "text": "Farm Lot"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Title on Process"
+                                        }
+                                ],
+                                "description": "• Bypass Road\n• Major Highway\n• Transportation",
+                                "location": "Calamba City",
+                                "price": "Contact for pricing",
+                                "status": "TITLE ON PROCESS",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 },
-                "1400": {
-                        "name": "1400",
+                "Hacienda Erlinda Bgry. Behia Tiaong Quezon Farm Lot": {
+                        "name": "Hacienda Erlinda Bgry. Behia Tiaong Quezon Farm Lot",
                         "location": "Calamba, Laguna, Philippines",
-                        "category": "house-only",
-                        "folder": "1400",
+                        "category": "lot-only",
+                        "folder": "Hacienda Erlinda Bgry. Behia Tiaong Quezon Farm Lot",
                         "images": [
-                                "image_127.jpeg"
-                        ]
+                                "HACIENDA_ERLINDA_BGRY_BEHIA_TIAONG_QUEZON.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "propertyName": "Hacienda Erlinda Bgry. Behia Tiaong Quezon",
+                                "vicinity": "QUEZON PROVINCE",
+                                "address": "HACIENDA ERLINDA BGRY. BEHIA TIAONG QUEZON",
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: Est. 1 Hectare"
+                                        },
+                                        {
+                                                "icon": "fas fa-tractor",
+                                                "text": "Farm Lot"
+                                        },
+                                        {
+                                                "icon": "fas fa-check-circle",
+                                                "text": "Clean Title with Improvement"
+                                        }
+                                ],
+                                "description": "• Hacienda Property\n• With Improvements\n• Clean Title",
+                                "location": "Tiaong, Quezon Province",
+                                "price": "Contact for pricing",
+                                "status": "CLEAN TITLE WITH IMPROVEMENT",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Madison South Block 2 Lot 22": {
+                        "name": "Madison South Block 2 Lot 22",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "lot-only",
+                        "folder": "Madison South Block 2 Lot 22",
+                        "images": [
+                                "BLOCK_2_LOT_22_MADISON_SOUTH_BATINO_CALAMBA.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 100 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-home",
+                                                "text": "David Roy Model House Design Available"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Lot Only"
+                                        }
+                                ],
+                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
+                                "location": "Madison South Batino, Calamba",
+                                "price": "₱2,000,000.00",
+                                "status": "LOT ONLY / DAVID ROY MODEL HOUSE",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Roseville Kay  Block 2 Lot 3": {
+                        "name": "Roseville Kay  Block 2 Lot 3",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "lot-only",
+                        "folder": "Roseville Kay  Block 2 Lot 3",
+                        "images": [
+                                "BLOCK_2_LOT_3_ROSEVILLE_KAY_ANLOG_CALAMBA.png"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 42 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Residential Area\n• Transportation\n• Schools nearby",
+                                "location": "Anlog, Calamba",
+                                "price": "₱385,000.00",
+                                "status": "CLEAN TITLE",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Roseville Kay  Block 3 Lot 4": {
+                        "name": "Roseville Kay  Block 3 Lot 4",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "lot-only",
+                        "folder": "Roseville Kay  Block 3 Lot 4",
+                        "images": [
+                                "BLOCK_3_LOT_4_ROSEVILLE_KAY_ANLOG_CALAMBA.png",
+                                "image.jpg"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 60 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Residential Area\n• Transportation\n• Schools nearby",
+                                "location": "Anlog, Calamba",
+                                "price": "₱550,000.00",
+                                "status": "CLEAN TITLE",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Roseville Kay Block 1 Lot 6": {
+                        "name": "Roseville Kay Block 1 Lot 6",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "lot-only",
+                        "folder": "Roseville Kay Block 1 Lot 6",
+                        "images": [
+                                "BLOCK_1_LOT_6_ROSEVILLE_KAY_ANLOG_CALAMBA.png"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 60 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Residential Area\n• Transportation\n• Schools nearby",
+                                "location": "Anlog, Calamba",
+                                "price": "₱550,000.00",
+                                "status": "CLEAN TITLE",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
+                },
+                "Roseville Kay Block 1 Lot 7": {
+                        "name": "Roseville Kay Block 1 Lot 7",
+                        "location": "Calamba, Laguna, Philippines",
+                        "category": "lot-only",
+                        "folder": "Roseville Kay Block 1 Lot 7",
+                        "images": [
+                                "BLOCK_1_LOT_7_ROSEVILLE_KAY_ANLOG_CALAMBA.png"
+                        ],
+                        "propertyData": {
+                                "features": [
+                                        {
+                                                "icon": "fas fa-vector-square",
+                                                "text": "Lot Area: 60 SQM"
+                                        },
+                                        {
+                                                "icon": "fas fa-file-alt",
+                                                "text": "Clean Title"
+                                        }
+                                ],
+                                "description": "• Residential Area\n• Transportation\n• Schools nearby",
+                                "location": "Anlog, Calamba",
+                                "price": "₱550,000.00",
+                                "status": "CLEAN TITLE",
+                                "statusOptions": [
+                                        "available",
+                                        "reserved",
+                                        "sold"
+                                ]
+                        },
+                        "descriptionText": null
                 }
         }
 },
@@ -197,69 +1104,57 @@ window.PROPERTY_DATA = {
 
         // Default values
         let description = null;
-        let location = project.location || this.defaultLocation; // Use default if not set
-        let status = null;               // e.g., "CLEAN CCT COMPLETE"
-        let price = null;                // e.g., "₱5,500,000.00"
-        let contact = [];                // optional contact info array
-        let other = null;                // optional notes
+        let location = project.location || this.defaultLocation;
+        let status = null;
+        let price = null;
+        let contact = [];
+        let other = null;
 
         // Base features for all properties
         let features = [
-            { icon: "fas fa-building", text: this.getCategoryName(category) }, // category
-            // { icon: "fas fa-home", text: "Residential Property" },        // type of property
-            { icon: "fas fa-map-marker-alt", text: location },            // location
-            // { icon: "fas fa-images", text: images.length + " Photo" + (images.length !== 1 ? "s" : "") } // images count
+            { icon: "fas fa-building", text: this.getCategoryName(category) },
+            { icon: "fas fa-map-marker-alt", text: location },
         ];
 
-        // Load property.json if exists
-        try {
-            const response = await fetch(`${this.basePath}${category}/${project.folder}/property.json`);
-            if (response.ok) {
-                const jsonData = await response.json();
+        // Use preloaded property data if available
+        if (project.propertyData) {
+            const jsonData = project.propertyData;
 
-                // Override location if specified, otherwise use default
-                if (jsonData.location) {
-                    location = jsonData.location;
-                } else {
-                    location = this.defaultLocation;
-                }
-                
-                const locIndex = features.findIndex(f => f.icon === "fas fa-map-marker-alt");
-                if (locIndex >= 0) features[locIndex].text = location;
-
-                // Override status, price, contact, other
-                if (jsonData.status) status = jsonData.status;
-                if (jsonData.price) price = jsonData.price;
-                if (jsonData.contact) contact = jsonData.contact;
-                if (jsonData.other) other = jsonData.other;
-
-                // Override description if provided
-                if (jsonData.description) description = jsonData.description;
-
-                // Add extra features from property.json
-                if (Array.isArray(jsonData.features)) {
-                    features = features.concat(
-                        jsonData.features.map(f => ({
-                            icon: f.icon || "fas fa-info-circle",
-                            text: f.text
-                        }))
-                    );
-                }
-
-                // ✅ Automatically add status and price as features
-                if (status) features.push({ icon: "fas fa-check-circle", text: status });
-                if (price) features.push({ icon: "fas fa-money-bill-wave", text: price });
-
+            // Override location if specified, otherwise use default
+            if (jsonData.location) {
+                location = jsonData.location;
             } else {
-                // fallback to description.txt if property.json is missing
-                const resp = await fetch(`${this.basePath}${category}/${project.folder}/description.txt`);
-                if (resp.ok) description = await resp.text();
+                location = this.defaultLocation;
             }
-        } catch (err) {
-            try {
-                const resp = await fetch(`${this.basePath}${category}/${project.folder}/description.txt`);
-                if (resp.ok) description = await resp.text();
-            } catch {}
+            
+            const locIndex = features.findIndex(f => f.icon === "fas fa-map-marker-alt");
+            if (locIndex >= 0) features[locIndex].text = location;
+
+            // Override status, price, contact, other
+            if (jsonData.status) status = jsonData.status;
+            if (jsonData.price) price = jsonData.price;
+            if (jsonData.contact) contact = jsonData.contact;
+            if (jsonData.other) other = jsonData.other;
+
+            // Override description if provided
+            if (jsonData.description) description = jsonData.description;
+
+            // Add extra features from property.json
+            if (Array.isArray(jsonData.features)) {
+                features = features.concat(
+                    jsonData.features.map(f => ({
+                        icon: f.icon || "fas fa-info-circle",
+                        text: f.text
+                    }))
+                );
+            }
+
+            // Automatically add status and price as features
+            if (status) features.push({ icon: "fas fa-check-circle", text: status });
+            if (price) features.push({ icon: "fas fa-money-bill-wave", text: price });
+        } else if (project.descriptionText) {
+            // Fallback to description.txt if no property.json
+            description = project.descriptionText;
         }
 
         // Return the full property object
