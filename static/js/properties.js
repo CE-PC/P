@@ -38,6 +38,9 @@ window.PROPERTY_DATA = {
                         "folder": "Amaia Steps Nuvali Clara A 116",
                         "images": [
                                 "CLARA_A_116_AMAIA_STEPS_NUVALI_CANLUBANG_CALAMBA.png",
+                                "Screenshot 2025-11-23 at 2.42.11 AM.png",
+                                "Screenshot 2025-11-23 at 2.43.44 AM.png",
+                                "Screenshot 2025-11-23 at 2.44.01 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -78,6 +81,9 @@ window.PROPERTY_DATA = {
                         "folder": "Miramonti Green Residences Room No 1511",
                         "images": [
                                 "RMNO1511_MIRAMONTI_STO_TOMAS.png",
+                                "Screenshot 2025-11-23 at 2.41.37 AM.png",
+                                "Screenshot 2025-11-23 at 2.44.19 AM.png",
+                                "Screenshot 2025-11-23 at 2.44.29 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -118,6 +124,9 @@ window.PROPERTY_DATA = {
                         "folder": "Miramonti Green Residences Room No 503",
                         "images": [
                                 "RMNO503_MIRAMONTI_STO_TOMAS.png",
+                                "Screenshot 2025-11-23 at 2.41.37 AM.png",
+                                "Screenshot 2025-11-23 at 2.44.19 AM.png",
+                                "Screenshot 2025-11-23 at 2.44.29 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -158,6 +167,9 @@ window.PROPERTY_DATA = {
                         "folder": "Miramonti Green Residences Room No 513",
                         "images": [
                                 "RMNO513_MIRAMONTI_STO_TOMAS.png",
+                                "Screenshot 2025-11-23 at 2.41.37 AM.png",
+                                "Screenshot 2025-11-23 at 2.44.19 AM.png",
+                                "Screenshot 2025-11-23 at 2.44.29 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -308,6 +320,10 @@ window.PROPERTY_DATA = {
                         "folder": "Mabini Height Lipa City Block 1 Lot 17",
                         "images": [
                                 "BLOCK_1_LOT_17_MABINI_HEIGHT_LIPA_CITY.png",
+                                "Screenshot 2025-11-23 at 2.38.10 AM.png",
+                                "Screenshot 2025-11-23 at 2.38.19 AM.png",
+                                "Screenshot 2025-11-23 at 2.38.28 AM.png",
+                                "Screenshot 2025-11-23 at 2.38.56 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -494,6 +510,13 @@ window.PROPERTY_DATA = {
                         "folder": "Madison South Batino Block 12 Lot 07",
                         "images": [
                                 "BLOCK_12_LOT_07_MADISON_SOUTH_BATINO_CALAMBA.png",
+                                "Screenshot 2025-11-23 at 2.41.11 AM.png",
+                                "Screenshot 2025-11-23 at 2.45.50 AM.png",
+                                "Screenshot 2025-11-23 at 2.45.55 AM.png",
+                                "Screenshot 2025-11-23 at 2.45.59 AM.png",
+                                "Screenshot 2025-11-23 at 2.46.04 AM.png",
+                                "Screenshot 2025-11-23 at 2.46.08 AM.png",
+                                "Screenshot 2025-11-23 at 2.46.13 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -558,6 +581,13 @@ window.PROPERTY_DATA = {
                         "folder": "Madison South Batino Block 14 Lot 24",
                         "images": [
                                 "BLOCK_14_LOT_24_MADISON_SOUTH_BATINO_CALAMBA.png",
+                                "Screenshot 2025-11-23 at 2.41.11 AM.png",
+                                "Screenshot 2025-11-23 at 2.45.50 AM.png",
+                                "Screenshot 2025-11-23 at 2.45.55 AM.png",
+                                "Screenshot 2025-11-23 at 2.45.59 AM.png",
+                                "Screenshot 2025-11-23 at 2.46.04 AM.png",
+                                "Screenshot 2025-11-23 at 2.46.08 AM.png",
+                                "Screenshot 2025-11-23 at 2.46.13 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -688,6 +718,7 @@ window.PROPERTY_DATA = {
                         "folder": "Lanceta Townhouse Room No 1",
                         "images": [
                                 "LANCETA_TOWNHOUSE_RM_NO_1_BARANDAL_CALAMBA.png",
+                                "Screenshot 2025-11-23 at 2.40.00 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -752,6 +783,7 @@ window.PROPERTY_DATA = {
                         "folder": "Lanceta Townhouse Unit 3",
                         "images": [
                                 "LANCETA_TOWNHOUSE_UNIT_3_BARANDAL_CALAMBA.png",
+                                "Screenshot 2025-11-23 at 2.40.00 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -817,7 +849,8 @@ window.PROPERTY_DATA = {
                         "category": "lot-only",
                         "folder": "Bilog Bilog Tanauan Batangas City",
                         "images": [
-                                "BILOG-BILOG_TANAUAN_BATANGAS_CITY.png"
+                                "BILOG-BILOG_TANAUAN_BATANGAS_CITY.png",
+                                "Screenshot 2025-11-23 at 2.40.27 AM.png"
                         ],
                         "propertyData": {
                                 "propertyName": "Bilog-Bilog Tanauan Batangas City",
@@ -895,6 +928,7 @@ window.PROPERTY_DATA = {
                         "folder": "Hacienda Erlinda Bgry. Behia Tiaong Quezon Farm Lot",
                         "images": [
                                 "HACIENDA_ERLINDA_BGRY_BEHIA_TIAONG_QUEZON.png",
+                                "Screenshot 2025-11-23 at 2.42.24 AM.png",
                                 "image.jpg"
                         ],
                         "propertyData": {
