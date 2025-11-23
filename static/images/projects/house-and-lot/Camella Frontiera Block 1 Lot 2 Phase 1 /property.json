@@ -1,10 +1,5 @@
 {
-    "features": [
-        {
-            "icon": "fas fa-home",
-            "text": "Complete Finished"
-        }
-    ],
+    "features": [],
     "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
     "location": "Batangas",
     "price": "Contact for pricing",

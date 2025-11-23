@@ -206,7 +206,6 @@ window.PROPERTY_DATA = {
             }
 
             // Automatically add status and price as features
-            if (status) features.push({ icon: "fas fa-check-circle", text: status });
             if (price) features.push({ icon: "fas fa-money-bill-wave", text: price });
         } else if (project.descriptionText) {
             // Fallback to description.txt if no property.json
