@@ -223,10 +223,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-building",
                                                 "text": "Residential / Commercial"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
@@ -259,10 +255,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-building",
                                                 "text": "Residential / Commercial"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
@@ -295,10 +287,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-building",
                                                 "text": "Residential / Commercial"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
@@ -347,10 +335,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-utensils",
                                                 "text": "Kitchen Area"
-                                        },
-                                        {
-                                                "icon": "fas fa-building",
-                                                "text": "Residential / Commercial"
                                         }
                                 ],
                                 "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
@@ -387,10 +371,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-building",
                                                 "text": "Residential / Commercial"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Major Roads\n• Commercial Area\n• Transportation\n• City Center",
@@ -417,12 +397,7 @@ window.PROPERTY_DATA = {
                                 "image.jpg"
                         ],
                         "propertyData": {
-                                "features": [
-                                        {
-                                                "icon": "fas fa-home",
-                                                "text": "Complete Finished"
-                                        }
-                                ],
+                                "features": [],
                                 "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
                                 "location": "Batangas",
                                 "price": "Contact for pricing",
@@ -864,10 +839,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-tractor",
                                                 "text": "Farm Lot"
-                                        },
-                                        {
-                                                "icon": "fas fa-check-circle",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Agricultural Land\n• Clean Title\n• Tanauan Location",
@@ -903,10 +874,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-tractor",
                                                 "text": "Farm Lot"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Title on Process"
                                         }
                                 ],
                                 "description": "• Bypass Road\n• Major Highway\n• Transportation",
@@ -943,10 +910,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-tractor",
                                                 "text": "Farm Lot"
-                                        },
-                                        {
-                                                "icon": "fas fa-check-circle",
-                                                "text": "Clean Title with Improvement"
                                         }
                                 ],
                                 "description": "• Hacienda Property\n• With Improvements\n• Clean Title",
@@ -979,10 +942,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-home",
                                                 "text": "David Roy Model House Design Available"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Lot Only"
                                         }
                                 ],
                                 "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
@@ -1010,10 +969,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-vector-square",
                                                 "text": "Lot Area: 42 SQM"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Residential Area\n• Transportation\n• Schools nearby",
@@ -1042,10 +997,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-vector-square",
                                                 "text": "Lot Area: 60 SQM"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Residential Area\n• Transportation\n• Schools nearby",
@@ -1073,10 +1024,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-vector-square",
                                                 "text": "Lot Area: 60 SQM"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Residential Area\n• Transportation\n• Schools nearby",
@@ -1104,10 +1051,6 @@ window.PROPERTY_DATA = {
                                         {
                                                 "icon": "fas fa-vector-square",
                                                 "text": "Lot Area: 60 SQM"
-                                        },
-                                        {
-                                                "icon": "fas fa-file-alt",
-                                                "text": "Clean Title"
                                         }
                                 ],
                                 "description": "• Residential Area\n• Transportation\n• Schools nearby",
@@ -1184,8 +1127,8 @@ window.PROPERTY_DATA = {
             }
 
             // Automatically add status and price as features
-            if (status) features.push({ icon: "fas fa-check-circle", text: status });
-            if (price) features.push({ icon: "fas fa-money-bill-wave", text: price });
+            // if (price) features.push({ icon: "fas fa-money-bill-wave", text: price });
+            // if (status) features.push({ icon: "fas fa-check-circle", text: status });
         } else if (project.descriptionText) {
             // Fallback to description.txt if no property.json
             description = project.descriptionText;
