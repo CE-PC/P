@@ -37,6 +37,11 @@ window.PROPERTY_DATA = {
                         "category": "Condominium",
                         "folder": "Amaia Steps Nuvali Clara A 116",
                         "images": [
+                                "469041064_475311942247396_93659307541540443_n.jpg",
+                                "469079444_475312085580715_8681079646481833024_n.jpg",
+                                "469081734_475311875580736_5130363023032414587_n.jpg",
+                                "469086880_475311912247399_5988935804241490915_n.jpg",
+                                "469197871_475312015580722_8754773731523296821_n.jpg",
                                 "CLARA_A_116_AMAIA_STEPS_NUVALI_CANLUBANG_CALAMBA.png",
                                 "Screenshot 2025-11-23 at 2.42.11 AM.png",
                                 "Screenshot 2025-11-23 at 2.43.44 AM.png",
@@ -80,10 +85,15 @@ window.PROPERTY_DATA = {
                         "category": "Condominium",
                         "folder": "Miramonti Green Residences Room No 1511",
                         "images": [
+                                "1.jpg",
+                                "127271b3-6a93-46ed-ac5e-ffbcfe007d13.jpg",
+                                "6ffc0c1e-a892-4a72-b115-8332298bdfcf.jpg",
+                                "9c3f926f-4cfb-4e70-af73-35bc37f58e6c.jpg",
                                 "RMNO1511_MIRAMONTI_STO_TOMAS.png",
                                 "Screenshot 2025-11-23 at 2.41.37 AM.png",
                                 "Screenshot 2025-11-23 at 2.44.19 AM.png",
                                 "Screenshot 2025-11-23 at 2.44.29 AM.png",
+                                "d64ec164-e6be-42db-8b35-93bbcd156030.jpg",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -123,10 +133,15 @@ window.PROPERTY_DATA = {
                         "category": "Condominium",
                         "folder": "Miramonti Green Residences Room No 503",
                         "images": [
+                                "1.jpg",
+                                "127271b3-6a93-46ed-ac5e-ffbcfe007d13.jpg",
+                                "6ffc0c1e-a892-4a72-b115-8332298bdfcf.jpg",
+                                "9c3f926f-4cfb-4e70-af73-35bc37f58e6c.jpg",
                                 "RMNO503_MIRAMONTI_STO_TOMAS.png",
                                 "Screenshot 2025-11-23 at 2.41.37 AM.png",
                                 "Screenshot 2025-11-23 at 2.44.19 AM.png",
                                 "Screenshot 2025-11-23 at 2.44.29 AM.png",
+                                "d64ec164-e6be-42db-8b35-93bbcd156030.jpg",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -166,10 +181,15 @@ window.PROPERTY_DATA = {
                         "category": "Condominium",
                         "folder": "Miramonti Green Residences Room No 513",
                         "images": [
+                                "1.jpg",
+                                "127271b3-6a93-46ed-ac5e-ffbcfe007d13.jpg",
+                                "6ffc0c1e-a892-4a72-b115-8332298bdfcf.jpg",
+                                "9c3f926f-4cfb-4e70-af73-35bc37f58e6c.jpg",
                                 "RMNO513_MIRAMONTI_STO_TOMAS.png",
                                 "Screenshot 2025-11-23 at 2.41.37 AM.png",
                                 "Screenshot 2025-11-23 at 2.44.19 AM.png",
                                 "Screenshot 2025-11-23 at 2.44.29 AM.png",
+                                "d64ec164-e6be-42db-8b35-93bbcd156030.jpg",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -308,10 +328,15 @@ window.PROPERTY_DATA = {
                         "folder": "Mabini Height Lipa City Block 1 Lot 17",
                         "images": [
                                 "BLOCK_1_LOT_17_MABINI_HEIGHT_LIPA_CITY.png",
+                                "ONE.jpg",
+                                "SEVEN.jpg",
+                                "SIX.jpg",
                                 "Screenshot 2025-11-23 at 2.38.10 AM.png",
                                 "Screenshot 2025-11-23 at 2.38.19 AM.png",
                                 "Screenshot 2025-11-23 at 2.38.28 AM.png",
                                 "Screenshot 2025-11-23 at 2.38.56 AM.png",
+                                "THREE.jpg",
+                                "TWO.jpg",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -416,6 +441,14 @@ window.PROPERTY_DATA = {
                         "category": "house-and-lot",
                         "folder": "Carmel Village Diana Model Block 30 Lot 3",
                         "images": [
+                                "516253390_10229211721098261_3923883082540261968_n.jpg",
+                                "517360973_10229211720818254_3692490393941891703_n.jpg",
+                                "517576970_10229211719578223_1322442393423595788_n.jpg",
+                                "517583848_10229211721498271_1358545193309310891_n.jpg",
+                                "518173304_10229211721218264_1351974668689899885_n.jpg",
+                                "518263084_10229211719138212_9083029356250806846_n.jpg",
+                                "518768494_10229211721298266_1901391101661006787_n.jpg",
+                                "556019216_10230092052986008_1208662465375177277_n.jpg",
                                 "BLOCK_30_LOT_3_CARMEL_VILLAGE_PH2_BARANDAL_CALAMBA.png",
                                 "image.jpg",
                                 "property_01_CALAMBA.jpeg"
@@ -484,6 +517,16 @@ window.PROPERTY_DATA = {
                         "category": "house-and-lot",
                         "folder": "Madison South Batino Block 12 Lot 07",
                         "images": [
+                                "461034436_423883550723569_2849885680095663375_n.jpg",
+                                "461037185_423890030722921_89933818663459878_n.jpg",
+                                "461051921_423889727389618_2196429663114875589_n.jpg",
+                                "461064899_423889824056275_967667702136379688_n.jpg",
+                                "461071581_423890100722914_7504972597505695044_n.jpg",
+                                "461084925_423883284056929_1283647678002433532_n.jpg",
+                                "461119342_423889764056281_2516368061194214062_n.jpg",
+                                "461164548_423892034056054_2198415786811937944_n.jpg",
+                                "461165371_423889857389605_4200145683322943036_n.jpg",
+                                "461175321_423891767389414_5393633441448589623_n.jpg",
                                 "BLOCK_12_LOT_07_MADISON_SOUTH_BATINO_CALAMBA.png",
                                 "Screenshot 2025-11-23 at 2.41.11 AM.png",
                                 "Screenshot 2025-11-23 at 2.45.50 AM.png",
@@ -555,6 +598,16 @@ window.PROPERTY_DATA = {
                         "category": "house-and-lot",
                         "folder": "Madison South Batino Block 14 Lot 24",
                         "images": [
+                                "461034436_423883550723569_2849885680095663375_n.jpg",
+                                "461037185_423890030722921_89933818663459878_n.jpg",
+                                "461051921_423889727389618_2196429663114875589_n.jpg",
+                                "461064899_423889824056275_967667702136379688_n.jpg",
+                                "461071581_423890100722914_7504972597505695044_n.jpg",
+                                "461084925_423883284056929_1283647678002433532_n.jpg",
+                                "461119342_423889764056281_2516368061194214062_n.jpg",
+                                "461164548_423892034056054_2198415786811937944_n.jpg",
+                                "461165371_423889857389605_4200145683322943036_n.jpg",
+                                "461175321_423891767389414_5393633441448589623_n.jpg",
                                 "BLOCK_14_LOT_24_MADISON_SOUTH_BATINO_CALAMBA.png",
                                 "Screenshot 2025-11-23 at 2.41.11 AM.png",
                                 "Screenshot 2025-11-23 at 2.45.50 AM.png",
@@ -626,6 +679,16 @@ window.PROPERTY_DATA = {
                         "category": "house-and-lot",
                         "folder": "Sentosa Azumi Block 10 Lot 11",
                         "images": [
+                                "10.jpg",
+                                "11.jpg",
+                                "3.jpg",
+                                "4.jpg",
+                                "415865684_405472131901038_6716193613262264798_n(1).jpg",
+                                "5.jpg",
+                                "6.jpg",
+                                "7.jpg",
+                                "8.jpg",
+                                "9.jpg",
                                 "SENTOSA_PUNTA_CALAMBA.png",
                                 "image.jpg"
                         ],
@@ -692,6 +755,17 @@ window.PROPERTY_DATA = {
                         "category": "house-only",
                         "folder": "Lanceta Townhouse Room No 1",
                         "images": [
+                                "234397630_234548638540528_7170487676431991296_n.jpg",
+                                "448073321_353752367736688_421485742614067442_n.jpg",
+                                "448079571_353751177736807_4019324163608353004_n.jpg",
+                                "448083836_353751957736729_6755103501897585868_n.jpg",
+                                "448086978_353750804403511_6645917145057291455_n.jpg",
+                                "448202828_353750357736889_4552860113516355463_n.jpg",
+                                "448202843_353751464403445_4918236345687446869_n.jpg",
+                                "448204944_353750614403530_838755774204095992_n.jpg",
+                                "448205828_353751661070092_3217602861185091715_n.jpg",
+                                "540474715_809635448151369_1299993555380705980_n.jpg",
+                                "LANCETA.jpg",
                                 "LANCETA_TOWNHOUSE_RM_NO_1_BARANDAL_CALAMBA.png",
                                 "Screenshot 2025-11-23 at 2.40.00 AM.png",
                                 "image.jpg"
@@ -757,6 +831,17 @@ window.PROPERTY_DATA = {
                         "category": "house-only",
                         "folder": "Lanceta Townhouse Unit 3",
                         "images": [
+                                "234397630_234548638540528_7170487676431991296_n.jpg",
+                                "448073321_353752367736688_421485742614067442_n.jpg",
+                                "448079571_353751177736807_4019324163608353004_n.jpg",
+                                "448083836_353751957736729_6755103501897585868_n.jpg",
+                                "448086978_353750804403511_6645917145057291455_n.jpg",
+                                "448202828_353750357736889_4552860113516355463_n.jpg",
+                                "448202843_353751464403445_4918236345687446869_n.jpg",
+                                "448204944_353750614403530_838755774204095992_n.jpg",
+                                "448205828_353751661070092_3217602861185091715_n.jpg",
+                                "540474715_809635448151369_1299993555380705980_n.jpg",
+                                "LANCETA.jpg",
                                 "LANCETA_TOWNHOUSE_UNIT_3_BARANDAL_CALAMBA.png",
                                 "Screenshot 2025-11-23 at 2.40.00 AM.png",
                                 "image.jpg"
@@ -894,6 +979,7 @@ window.PROPERTY_DATA = {
                         "category": "lot-only",
                         "folder": "Hacienda Erlinda Bgry. Behia Tiaong Quezon Farm Lot",
                         "images": [
+                                "7.jpg",
                                 "HACIENDA_ERLINDA_BGRY_BEHIA_TIAONG_QUEZON.png",
                                 "Screenshot 2025-11-23 at 2.42.24 AM.png",
                                 "image.jpg"
@@ -930,6 +1016,16 @@ window.PROPERTY_DATA = {
                         "category": "lot-only",
                         "folder": "Madison South Block 2 Lot 22",
                         "images": [
+                                "461034436_423883550723569_2849885680095663375_n.jpg",
+                                "461037185_423890030722921_89933818663459878_n.jpg",
+                                "461051921_423889727389618_2196429663114875589_n.jpg",
+                                "461064899_423889824056275_967667702136379688_n.jpg",
+                                "461071581_423890100722914_7504972597505695044_n.jpg",
+                                "461084925_423883284056929_1283647678002433532_n.jpg",
+                                "461119342_423889764056281_2516368061194214062_n.jpg",
+                                "461164548_423892034056054_2198415786811937944_n.jpg",
+                                "461165371_423889857389605_4200145683322943036_n.jpg",
+                                "461175321_423891767389414_5393633441448589623_n.jpg",
                                 "BLOCK_2_LOT_22_MADISON_SOUTH_BATINO_CALAMBA.png",
                                 "image.jpg"
                         ],
@@ -962,7 +1058,11 @@ window.PROPERTY_DATA = {
                         "category": "lot-only",
                         "folder": "Roseville Kay  Block 2 Lot 3",
                         "images": [
-                                "BLOCK_2_LOT_3_ROSEVILLE_KAY_ANLOG_CALAMBA.png"
+                                "1d7fdb02-8346-437f-a4ba-027a19e8b774.jpg",
+                                "95baf4b0-d7ce-4c2b-8f3c-eca4e5f1379e.jpg",
+                                "9d1d7129-0627-4357-bf18-481f50c5b44f.jpg",
+                                "BLOCK_2_LOT_3_ROSEVILLE_KAY_ANLOG_CALAMBA.png",
+                                "c0b7431c-39da-4131-b5be-1f51061b20ff.jpg"
                         ],
                         "propertyData": {
                                 "features": [
@@ -989,7 +1089,11 @@ window.PROPERTY_DATA = {
                         "category": "lot-only",
                         "folder": "Roseville Kay  Block 3 Lot 4",
                         "images": [
+                                "1d7fdb02-8346-437f-a4ba-027a19e8b774.jpg",
+                                "95baf4b0-d7ce-4c2b-8f3c-eca4e5f1379e.jpg",
+                                "9d1d7129-0627-4357-bf18-481f50c5b44f.jpg",
                                 "BLOCK_3_LOT_4_ROSEVILLE_KAY_ANLOG_CALAMBA.png",
+                                "c0b7431c-39da-4131-b5be-1f51061b20ff.jpg",
                                 "image.jpg"
                         ],
                         "propertyData": {
@@ -1017,7 +1121,11 @@ window.PROPERTY_DATA = {
                         "category": "lot-only",
                         "folder": "Roseville Kay Block 1 Lot 6",
                         "images": [
-                                "BLOCK_1_LOT_6_ROSEVILLE_KAY_ANLOG_CALAMBA.png"
+                                "1d7fdb02-8346-437f-a4ba-027a19e8b774.jpg",
+                                "95baf4b0-d7ce-4c2b-8f3c-eca4e5f1379e.jpg",
+                                "9d1d7129-0627-4357-bf18-481f50c5b44f.jpg",
+                                "BLOCK_1_LOT_6_ROSEVILLE_KAY_ANLOG_CALAMBA.png",
+                                "c0b7431c-39da-4131-b5be-1f51061b20ff.jpg"
                         ],
                         "propertyData": {
                                 "features": [
@@ -1044,7 +1152,11 @@ window.PROPERTY_DATA = {
                         "category": "lot-only",
                         "folder": "Roseville Kay Block 1 Lot 7",
                         "images": [
-                                "BLOCK_1_LOT_7_ROSEVILLE_KAY_ANLOG_CALAMBA.png"
+                                "1d7fdb02-8346-437f-a4ba-027a19e8b774.jpg",
+                                "95baf4b0-d7ce-4c2b-8f3c-eca4e5f1379e.jpg",
+                                "9d1d7129-0627-4357-bf18-481f50c5b44f.jpg",
+                                "BLOCK_1_LOT_7_ROSEVILLE_KAY_ANLOG_CALAMBA.png",
+                                "c0b7431c-39da-4131-b5be-1f51061b20ff.jpg"
                         ],
                         "propertyData": {
                                 "features": [
