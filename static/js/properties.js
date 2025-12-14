@@ -327,7 +327,6 @@ window.PROPERTY_DATA = {
                         "category": "commercial-lot",
                         "folder": "Mabini Height Lipa City Block 1 Lot 17",
                         "images": [
-                                "BLOCK_1_LOT_17_MABINI_HEIGHT_LIPA_CITY.png",
                                 "ONE.jpg",
                                 "SEVEN.jpg",
                                 "SIX.jpg",
@@ -337,7 +336,8 @@ window.PROPERTY_DATA = {
                                 "Screenshot 2025-11-23 at 2.38.56 AM.png",
                                 "THREE.jpg",
                                 "TWO.jpg",
-                                "image.jpg"
+                                "image.jpg",
+                                "xBLOCK_1_LOT_17_MABINI_HEIGHT_LIPA_CITY.png"
                         ],
                         "propertyData": {
                                 "features": [
@@ -412,11 +412,11 @@ window.PROPERTY_DATA = {
                 }
         },
         "house-and-lot": {
-                "Camella Frontiera Block 1 Lot 2 Phase 1 ": {
-                        "name": "Camella Frontiera Block 1 Lot 2 Phase 1 ",
+                "Camella Frontiera Block 1 Lot 2 Phase 1": {
+                        "name": "Camella Frontiera Block 1 Lot 2 Phase 1",
                         "location": "Calamba, Laguna, Philippines",
                         "category": "house-and-lot",
-                        "folder": "Camella Frontiera Block 1 Lot 2 Phase 1 ",
+                        "folder": "Camella Frontiera Block 1 Lot 2 Phase 1",
                         "images": [
                                 "CAMELLA_FRONTIERA_BLOCK_1_LOT_2_PHASE_1.png",
                                 "image.jpg"
