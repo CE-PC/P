@@ -225,102 +225,6 @@ window.PROPERTY_DATA = {
                 }
         },
         "commercial-lot": {
-                "Laguna Buenavista Lot 7": {
-                        "name": "Laguna Buenavista Lot 7",
-                        "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-lot",
-                        "folder": "Laguna Buenavista Lot 7",
-                        "images": [
-                                "LOT_7LAGUNA_BUENAVISTA_EXEC_BARANDAL.png",
-                                "image.jpg"
-                        ],
-                        "propertyData": {
-                                "features": [
-                                        {
-                                                "icon": "fas fa-vector-square",
-                                                "text": "Lot Area: 88 SQM"
-                                        },
-                                        {
-                                                "icon": "fas fa-building",
-                                                "text": "Residential / Commercial"
-                                        }
-                                ],
-                                "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
-                                "location": "Exec. Barandal, Calamba",
-                                "price": "₱13,000.00/sqm",
-                                "status": "CLEAN TITLE RESIDENTIAL / COMMERCIAL",
-                                "statusOptions": [
-                                        "available",
-                                        "reserved",
-                                        "sold"
-                                ]
-                        },
-                        "descriptionText": null
-                },
-                "Laguna Buenavista Lot 8": {
-                        "name": "Laguna Buenavista Lot 8",
-                        "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-lot",
-                        "folder": "Laguna Buenavista Lot 8",
-                        "images": [
-                                "LOT_8_LAGUNA_BUENAVISTA_EXEC_BARANDAL.png",
-                                "image.jpg"
-                        ],
-                        "propertyData": {
-                                "features": [
-                                        {
-                                                "icon": "fas fa-vector-square",
-                                                "text": "Lot Area: 88 SQM"
-                                        },
-                                        {
-                                                "icon": "fas fa-building",
-                                                "text": "Residential / Commercial"
-                                        }
-                                ],
-                                "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
-                                "location": "Exec. Barandal, Calamba",
-                                "price": "₱13,000.00/sqm",
-                                "status": "CLEAN TITLE RESIDENTIAL / COMMERCIAL",
-                                "statusOptions": [
-                                        "available",
-                                        "reserved",
-                                        "sold"
-                                ]
-                        },
-                        "descriptionText": null
-                },
-                "Laguna Buenavista Lot 9": {
-                        "name": "Laguna Buenavista Lot 9",
-                        "location": "Calamba, Laguna, Philippines",
-                        "category": "commercial-lot",
-                        "folder": "Laguna Buenavista Lot 9",
-                        "images": [
-                                "LOT_9_LAGUNA_BUENAVISTA_EXEC_BARANDAL.png",
-                                "image.jpg"
-                        ],
-                        "propertyData": {
-                                "features": [
-                                        {
-                                                "icon": "fas fa-vector-square",
-                                                "text": "Lot Area: 88 SQM"
-                                        },
-                                        {
-                                                "icon": "fas fa-building",
-                                                "text": "Residential / Commercial"
-                                        }
-                                ],
-                                "description": "• Major Roads\n• Commercial Area\n• Transportation\n• SLEX (Expressway)",
-                                "location": "Exec. Barandal, Calamba",
-                                "price": "₱13,000.00/sqm",
-                                "status": "CLEAN TITLE RESIDENTIAL / COMMERCIAL",
-                                "statusOptions": [
-                                        "available",
-                                        "reserved",
-                                        "sold"
-                                ]
-                        },
-                        "descriptionText": null
-                },
                 "Mabini Height Lipa City Block 1 Lot 17": {
                         "name": "Mabini Height Lipa City Block 1 Lot 17",
                         "location": "Calamba, Laguna, Philippines",
@@ -412,29 +316,6 @@ window.PROPERTY_DATA = {
                 }
         },
         "house-and-lot": {
-                "Camella Frontiera Block 1 Lot 2 Phase 1": {
-                        "name": "Camella Frontiera Block 1 Lot 2 Phase 1",
-                        "location": "Calamba, Laguna, Philippines",
-                        "category": "house-and-lot",
-                        "folder": "Camella Frontiera Block 1 Lot 2 Phase 1",
-                        "images": [
-                                "CAMELLA_FRONTIERA_BLOCK_1_LOT_2_PHASE_1.png",
-                                "image.jpg"
-                        ],
-                        "propertyData": {
-                                "features": [],
-                                "description": "• School\n• Public Market\n• Commercial Area\n• Transportation\n• Mall\n• Industrial Park\n• Church\n• SLEX (Expressway)",
-                                "location": "Batangas",
-                                "price": "Contact for pricing",
-                                "status": "COMPLETE FINISHED",
-                                "statusOptions": [
-                                        "available",
-                                        "reserved",
-                                        "sold"
-                                ]
-                        },
-                        "descriptionText": null
-                },
                 "Carmel Village Diana Model Block 30 Lot 3": {
                         "name": "Carmel Village Diana Model Block 30 Lot 3",
                         "location": "Calamba, Laguna, Philippines",
